@@ -1,5 +1,9 @@
 const generateUUID = require("generate-uuid.js");
 
+/**
+ * Creates a standard deck of playing cards (without jokers)
+ * @returns {Array} All the cards in a standard deck of playing cards (without jokers)
+ */
 function createDeck() {
   const NAMES = [
     "1",
@@ -17,47 +21,46 @@ function createDeck() {
     "K",
   ];
   const SUITS = ["C", "S", "D", "H"];
-  const cards = [];
-
-  SUITS.forEach((suit) => {
-    NAMES.forEach((name) => {
-      cards.push(name + suit);
-    });
-  });
+  const cards = SUITS.flatMap((suit) => NAMES.map((name) => `${name}${suit}`));
 
   return cards;
 }
 
 module.exports = class Deck {
+  /**
+   * Gets called when the Deck class is instantiated
+   */
   constructor() {
     this.cards = createDeck();
 
     this.id = generateUUID();
   }
 
+  /**
+   * Shuffles the deck
+   * @returns {Deck} A shuffled deck of playing cards
+   */
   shuffle() {
-    let oldCards = this.cards;
-    let newCards = [];
-
-    for (let i = 0; i < oldCards.length; i++) {
-      const card = oldCards[Math.floor(Math.random() * oldCards.length)];
-
-      newCards.push(card);
+    for (let i = this.deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
     }
-
-    this.cards = newCards;
 
     return this;
   }
 
+  /**
+   * Draws a card
+   * @returns {string} The card that's drawn
+   */
   draw() {
-    const card = this.cards[0];
-
-    this.cards.splice(0, 1);
-
-    return card;
+    return this.cards.shift();
   }
 
+  /**
+   * Resets the deck to its initial state
+   * @returns {Deck} A standard deck of playing cards (without jokers)
+   */
   reset() {
     this.cards = createDeck();
 
