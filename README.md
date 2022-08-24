@@ -6,7 +6,7 @@ With this package you can create a deck of playing cards.
 
 ## Installation
 
-**Node.js and npm are required.**
+**Node.js is required.**
 
 ```
 npm i generate-playing-cards.js
@@ -20,40 +20,101 @@ After installing the package you can finally write some code! First you'll have 
 const { Deck } = require("generate-playing-cards.js");
 ```
 
-Then just put the new keyword before it and it will generate a simple deck of playing cards for you!
+Then just put the `new` keyword before it and it will generate a simple deck of playing cards for you!
+Use the `cards` variable to get all the cards.
+To demonstrate that it works you could log it.
+
+**Tip: store your new deck in a variable.**
 
 ```js
-new Deck();
+console.log(new Deck().cards);
 ```
 
-Now to demonstrate that it works you can log it.
+Now you have a basic deck, but it's not shuffled.
+To shuffle your deck of cards call the `shuffle()` method on the deck you'd like to shuffle.
+Log it so you can see that it works.
+
+**Tip: if you have a variable containing a deck, the value of that variable automatically changes to the shuffled deck if you call the method on it.**
 
 ```js
-console.log(new Deck());
+console.log(new Deck().shuffle().cards);
 ```
+
+Now you have a shuffled deck, but you can't do anything with it.
+To draw a card call the `draw()` method on the deck you'd like to draw a card from.
+Log it to see your drawn card.
+
+**Tip: Like you can see in the example below you can chain some methods**
+
+**Tip 2: if you have a variable containing a deck, the card that you draw will automatically be deleted from the deck.**
+
+**Attention: You can't put a method _behind_ the `draw()` method**
+
+```js
+console.log(new Deck().shuffle().draw());
+```
+
+To reset a deck call the `reset()` method on the deck you'd like to reset.
+Log it so you can see that the deck resets.
 
 Final code will look something like this:
 
 ```js
-const { Deck } = require("generate-playing-cards.js");
-console.log(new Deck());
+const { Deck } = require("generate-playing-cards.js"); // Imported the Deck class
+const deck = new Deck(); // Created a basic deck of cards and stored it in a variable called: deck
+
+console.log("A basic deck of cards:", deck.cards);
+console.log("A shuffled deck of cards:", deck.shuffle().cards);
+console.log("The drawn card:", deck.draw());
+console.log("The deck after drawing a card:", deck.cards);
+console.log("A resetted deck of cards:", deck.reset().cards);
 ```
 
-Output will look like this:
+Output will look something like this:
 
 ```js
-Deck {
-  cards: [
-    '1C',  '2C',  '3C',  '4C', '5C', '6C', '7C',
-    '8C',  '9C',  '10C', 'JC', 'QC', 'KC', '1S',
-    '2S',  '3S',  '4S',  '5S', '6S', '7S', '8S',
-    '9S',  '10S', 'JS',  'QS', 'KS', '1D', '2D',
-    '3D',  '4D',  '5D',  '6D', '7D', '8D', '9D',
-    '10D', 'JD',  'QD',  'KD', '1H', '2H', '3H',
-    '4H',  '5H',  '6H',  '7H', '8H', '9H', '10H',
-    'JH',  'QH',  'KH'
-  ]
-}
+A basic deck of cards: [
+  '1C',  '2C',  '3C',  '4C', '5C', '6C', '7C',
+  '8C',  '9C',  '10C', 'JC', 'QC', 'KC', '1S',
+  '2S',  '3S',  '4S',  '5S', '6S', '7S', '8S',
+  '9S',  '10S', 'JS',  'QS', 'KS', '1D', '2D',
+  '3D',  '4D',  '5D',  '6D', '7D', '8D', '9D',
+  '10D', 'JD',  'QD',  'KD', '1H', '2H', '3H',
+  '4H',  '5H',  '6H',  '7H', '8H', '9H', '10H',
+  'JH',  'QH',  'KH'
+]
+A shuffled deck of cards: [
+  '6S', '5C', '6D',  '5C', '9D',  '8S',  '10D',
+  '9H', '3S', '7C',  '9C', 'KH',  'JC',  '8C',
+  '7C', '6C', 'JH',  '7C', '3D',  '9H',  '4H',
+  '7S', '9C', '10D', '6H', '10D', '3H',  '6D',
+  '7D', '6D', 'KD',  '5C', '1C',  'QH',  '6D',
+  '4H', '3D', '3H',  '6S', '9C',  'QD',  '1C',
+  'QS', 'QH', '10C', 'KH', 'KH',  '10D', '4H',
+  '5S', '1H', '10C'
+]
+The drawn card: 6S
+The deck after drawing a card: [
+  '5C',  '6D',  '5C',  '9D', '8S',  '10D',
+  '9H',  '3S',  '7C',  '9C', 'KH',  'JC',
+  '8C',  '7C',  '6C',  'JH', '7C',  '3D',
+  '9H',  '4H',  '7S',  '9C', '10D', '6H',
+  '10D', '3H',  '6D',  '7D', '6D',  'KD',
+  '5C',  '1C',  'QH',  '6D', '4H',  '3D',
+  '3H',  '6S',  '9C',  'QD', '1C',  'QS',
+  'QH',  '10C', 'KH',  'KH', '10D', '4H',
+  '5S',  '1H',  '10C'
+]
+A resetted deck of cards: [
+  '1C',  '2C',  '3C',  '4C', '5C', '6C', '7C',
+  '8C',  '9C',  '10C', 'JC', 'QC', 'KC', '1S',
+  '2S',  '3S',  '4S',  '5S', '6S', '7S', '8S',
+  '9S',  '10S', 'JS',  'QS', 'KS', '1D', '2D',
+  '3D',  '4D',  '5D',  '6D', '7D', '8D', '9D',
+  '10D', 'JD',  'QD',  'KD', '1H', '2H', '3H',
+  '4H',  '5H',  '6H',  '7H', '8H', '9H', '10H',
+  'JH',  'QH',  'KH'
+]
 ```
 
 There you go, it's as easy as that!
