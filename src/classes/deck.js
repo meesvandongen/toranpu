@@ -41,9 +41,9 @@ module.exports = class Deck {
    * @returns {Deck} A shuffled deck of playing cards
    */
   shuffle() {
-    for (let i = this.deck.length - 1; i > 0; i--) {
+    for (let i = this.cards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+      [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
     }
 
     return this;
