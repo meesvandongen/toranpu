@@ -49,4 +49,12 @@ module.exports = class Deck {
 
     return this;
   }
+
+  draw() {
+    const card = this.cards[0];
+
+    this.cards.splice(0, 1);
+
+    return card;
+  }
 };
