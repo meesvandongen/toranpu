@@ -58,6 +58,18 @@ Deck {
 
 There you go, it's as easy as that!
 
+## Packages
+
+This package uses the following packages:
+
+- [generate-uuid.js@1.0.2](https://www.npmjs.com/package/generate-uuid.js/v/1.0.2)
+
+## Links
+
+- [generate-uuid.js](https://www.npmjs.com/package/generate-uuid.js)
+- [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js)
+- [npm](https://www.npmjs.com/package/generate-playing-cards.js)
+
 ## Help
 
 If you need help or you've found a bug feel free to create an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues)

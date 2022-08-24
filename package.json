@@ -1,7 +1,10 @@
 {
   "name": "generate-playing-cards.js",
-  "version": "0.0.3",
-  "tag": "latest",
+  "version": "0.1.0",
+  "tags": [
+    "dev",
+    "latest"
+  ],
   "description": "With this package you can create a deck of playing cards.",
   "main": "src/index.js",
   "scripts": {
@@ -26,6 +29,6 @@
   },
   "homepage": "https://github.com/MaestroDagan/generate-playing-cards.js#readme",
   "dependencies": {
-    "generate-uuid.js": "^1.0.1"
+    "generate-uuid.js": "^1.0.2"
   }
 }
