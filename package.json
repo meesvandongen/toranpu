@@ -1,5 +1,5 @@
 {
-  "name": "playing-cards.js",
+  "name": "generate-playing-cards.js",
   "version": "0.0.1",
   "tag": "dev",
   "description": "With this package you can create a deck of playing cards.",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MaestroDagan/playing-cards.js.git"
+    "url": "git+https://github.com/MaestroDagan/generate-playing-cards.js.git"
   },
   "keywords": [
     "deck",
@@ -22,9 +22,9 @@
   "author": "Dagan Roosenmaallen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MaestroDagan/playing-cards.js/issues"
+    "url": "https://github.com/MaestroDagan/generate-playing-cards.js/issues"
   },
-  "homepage": "https://github.com/MaestroDagan/playing-cards.js#readme",
+  "homepage": "https://github.com/MaestroDagan/generate-playing-cards.js#readme",
   "dependencies": {
     "generate-uuid.js": "^1.0.1"
   }
