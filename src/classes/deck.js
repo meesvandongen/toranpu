@@ -57,4 +57,10 @@ module.exports = class Deck {
 
     return card;
   }
+
+  reset() {
+    this.cards = createDeck();
+
+    return this;
+  }
 };
