@@ -1,4 +1,4 @@
-# playing-cards.js
+# generate-playing-cards.js
 
 ## About
 
@@ -9,7 +9,7 @@ With this package you can create a deck of playing cards.
 **Node.js and npm are required.**
 
 ```
-npm i playing-cards.js
+npm i generate-playing-cards.js
 ```
 
 ## Example
@@ -17,7 +17,7 @@ npm i playing-cards.js
 After installing the package you can finally write some code! First you'll have to require the package and destructure the class Deck.
 
 ```js
-const { Deck } = require("playing-cards.js");
+const { Deck } = require("generate-playing-cards.js");
 ```
 
 Then just put the new keyword before it and it will generate a simple deck of playing cards for you!
@@ -35,7 +35,7 @@ console.log(new Deck());
 Final code will look something like this:
 
 ```js
-const { Deck } = require("playing-cards.js");
+const { Deck } = require("generate-playing-cards.js");
 console.log(new Deck());
 ```
 
