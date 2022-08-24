@@ -1,28 +1,37 @@
+const generateUUID = require("generate-uuid.js");
+
+function createDeck() {
+  const NAMES = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+  ];
+  const SUITS = ["C", "S", "D", "H"];
+  const cards = [];
+
+  SUITS.forEach((suit) => {
+    NAMES.forEach((name) => {
+      cards.push(name + suit);
+    });
+  });
+
+  return cards;
+}
+
 module.exports = class Deck {
   constructor() {
-    let NAMES = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "J",
-      "Q",
-      "K",
-    ];
-    let SUITS = ["C", "S", "D", "H"];
+    this.cards = createDeck();
 
-    this.cards = [];
-
-    SUITS.forEach((suit) => {
-      NAMES.forEach((name) => {
-        this.cards.push(name + suit);
-      });
-    });
+    this.id = generateUUID();
   }
 };
