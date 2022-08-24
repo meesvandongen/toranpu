@@ -1,0 +1,28 @@
+{
+  "name": "playing-cards.js",
+  "version": "0.0.1-dev",
+  "description": "With this package you can create a deck of playing cards and play games with it like patience.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaestroDagan/playing-cards.js.git"
+  },
+  "keywords": [
+    "deck",
+    "playing",
+    "cards",
+    "patience"
+  ],
+  "author": "Dagan Roosenmaallen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaestroDagan/playing-cards.js/issues"
+  },
+  "homepage": "https://github.com/MaestroDagan/playing-cards.js#readme",
+  "dependencies": {
+    "generate-uuid.js": "^1.0.1"
+  }
+}
