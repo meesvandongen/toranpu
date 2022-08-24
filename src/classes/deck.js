@@ -34,4 +34,19 @@ module.exports = class Deck {
 
     this.id = generateUUID();
   }
+
+  shuffle() {
+    let oldCards = this.cards;
+    let newCards = [];
+
+    for (let i = 0; i < oldCards.length; i++) {
+      const card = oldCards[Math.floor(Math.random() * oldCards.length)];
+
+      newCards.push(card);
+    }
+
+    this.cards = newCards;
+
+    return this;
+  }
 };
