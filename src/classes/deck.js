@@ -17,13 +17,7 @@ function createDeck() {
     "K",
   ];
   const SUITS = ["C", "S", "D", "H"];
-  const cards = [];
-
-  SUITS.forEach((suit) => {
-    NAMES.forEach((name) => {
-      cards.push(name + suit);
-    });
-  });
+  const cards = SUITS.flatMap((suit) => NAMES.map((name) => `${name}${suit}`));
 
   return cards;
 }
@@ -36,26 +30,16 @@ module.exports = class Deck {
   }
 
   shuffle() {
-    let oldCards = this.cards;
-    let newCards = [];
-
-    for (let i = 0; i < oldCards.length; i++) {
-      const card = oldCards[Math.floor(Math.random() * oldCards.length)];
-
-      newCards.push(card);
+    for (let i = this.deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
     }
-
-    this.cards = newCards;
 
     return this;
   }
 
   draw() {
-    const card = this.cards[0];
-
-    this.cards.splice(0, 1);
-
-    return card;
+    return this.cards.shift();
   }
 
   reset() {
