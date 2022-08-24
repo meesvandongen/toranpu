@@ -1,7 +1,6 @@
 {
   "name": "generate-playing-cards.js",
-  "version": "0.1.1",
-  "tag": "dev",
+  "version": "0.1.4",
   "description": "With this package you can create a deck of playing cards.",
   "main": "src/index.js",
   "scripts": {
