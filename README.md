@@ -198,7 +198,3 @@ This package uses the following packages:
 ## Help
 
 If you need help or you've found a bug feel free to create an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues)
-
-```
-
-```
