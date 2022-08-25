@@ -49,4 +49,19 @@ module.exports = class Patience {
 
     this.id = generateUUID();
   }
+
+  draw() {
+    const card = this.stock.shift();
+
+    if (!card) {
+      this.stock = this.talon;
+      this.talon = [];
+
+      return null;
+    }
+
+    this.talon.push(card);
+
+    return card;
+  }
 };
