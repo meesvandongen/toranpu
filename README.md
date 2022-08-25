@@ -2,7 +2,7 @@
 
 ## About
 
-With this package you can create a deck of playing cards.
+With this package you can create a deck of playing cards and initialize a game of patience.
 
 ## Installation
 

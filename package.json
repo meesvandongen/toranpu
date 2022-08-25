@@ -1,7 +1,7 @@
 {
   "name": "generate-playing-cards.js",
-  "version": "0.1.4",
-  "description": "With this package you can create a deck of playing cards.",
+  "version": "0.2.0",
+  "description": "With this package you can create a deck of playing cards and initialize a game of patience.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,10 @@
     "cards",
     "create",
     "generate",
-    "generator"
+    "generator",
+    "patience",
+    "kingdom",
+    "solitaire"
   ],
   "author": "Dagan Roosenmaallen",
   "license": "ISC",
