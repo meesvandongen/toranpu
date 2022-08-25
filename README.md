@@ -2,7 +2,9 @@
 
 ## About
 
-With this package you can create a deck of playing cards and initialize a game of patience.
+With this package you can create a deck of playing cards and play a game of patience (the easy version/draws 1 card at a time)
+
+**Huge thanks for downloading my package, we already have _228_ download on the first day! While it's still in BETA, If you'd like a discord server for help and talking with the community etc. Pls open an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues).**
 
 ## Installation
 
@@ -26,31 +28,31 @@ Then just put the `new` keyword before it and it will generate a simple deck of 
 Use the `cards` variable to get all the cards.
 To demonstrate that it works you could log it.
 
-**Tip: store your new deck in a variable.**
+**Tip: Store your new deck in a variable.**
 
 ```js
 console.log(new Deck().cards);
 ```
 
 Now you have a basic deck, but it's not shuffled.
-To shuffle your deck of cards call the `shuffle()` method on the deck you'd like to shuffle.
+To shuffle your deck of cards call the `shuffle()`.
 Log it so you can see that it works.
 
-**Tip: if you have a variable containing a deck, the value of that variable automatically changes to the shuffled deck if you call the method on it.**
+**Tip: If you have a variable containing a deck, the value of that variable automatically changes to the shuffled deck if you call the method on it.**
 
 ```js
 console.log(new Deck().shuffle().cards);
 ```
 
 Now you have a shuffled deck, but you can't do anything with it.
-To draw a card call the `draw()` method on the deck you'd like to draw a card from.
+To draw a card call the `draw()` method.
 Log it to see your drawn card.
 
-**Tip: Like you can see in the example below you can chain some methods**
+**Tip: Like you can see in the example below you can chain some methods.**
 
-**Tip 2: if you have a variable containing a deck, the card that you draw will automatically be deleted from the deck.**
+**Tip 2: If you have a variable containing a deck, the card that you draw will automatically be deleted from the deck.**
 
-**Attention: You can't put a method _behind_ the `draw()` method**
+**Attention: You can't put a method _behind_ the `draw()` method.**
 
 ```js
 console.log(new Deck().shuffle().draw());
@@ -62,8 +64,8 @@ Log it so you can see that the deck resets.
 Final code will look something like this:
 
 ```js
-const { Deck } = require("generate-playing-cards.js"); // Imported the Deck class
-const deck = new Deck(); // Created a basic deck of cards and stored it in a variable called: deck
+const { Deck } = require("generate-playing-cards.js"); // Import the Deck class
+const deck = new Deck(); // Create a basic deck of cards and stored it in a variable called: deck
 
 console.log("A basic deck of cards:", deck.cards);
 console.log("A shuffled deck of cards:", deck.shuffle().cards);
@@ -130,33 +132,63 @@ const { Patience } = require("generate-playing-cards.js");
 Then just put the `new` keyword before it and pass a `Deck` as first param, it will generate a basic patience game in initial state!
 To demonstrate that it works you could log it.
 
-**Tip: store your game of patience in a variable.**
+**Tip: Store your game of patience in a variable.**
 
 ```js
 console.log(new Patience(new Deck().shuffle()));
 ```
 
+Now you have a game of patience in initial state, but you can't do anything with it.
+To draw a card from the stock and place it on the talon call the `draw()` method.
+Log it so you can see that the card is transferred to the talon.
+
+**Tip: When you try to draw a card from the stock while it's empty it'll transfer all the cards from the talon back to the stock.**
+
+**Attention: This package uses the easy way of playing patience (draws 1 card at a time).**
+
+```js
+console.log(new Patience(new Deck().shuffle()).draw());
+```
+
+So now you know how to draw cards from the stock, but what does it matter when you can't do anything with the cards?
+To transfer a card from his current location to a new location use the `move()` method.
+Log it so you can see that the card is transferred to the new location.
+
+**Attention: Like you can see in the example below you'll have to give the current location and new location of the card as a string!**
+
+```js
+console.log(
+  new Patience(new Deck().shuffle()).draw().move("talon", "8C", "tableau[0]")
+);
+```
+
 Final code will look something like this:
 
 ```js
-const { Deck, Patience } = require("generate-playing-cards.js"); // Imported the Deck and Patience class
-console.log(new Patience(new Deck().shuffle())); // Generated a game of patience using a new shuffled deck.
+const { Deck, Patience } = require("generate-playing-cards.js"); // Import the Deck and Patience class
+const game = new Patience(new Deck().shuffle()); // Create a game of patience using a new shuffled deck.
+
+console.log("Transferred a card from the stock to the talon", game.draw());
+console.log(
+  "Transferred a the card '8C' from the talon to the first column on the tableau",
+  game.move("talon", "8C", "tableau[0]")
+);
 ```
 
 Final output will look something like this:
 
 ```js
-Patience {
+Transferred a card from the stock to the talon Patience {
   deck: Deck {
     cards: [
-      'KC', '10C', '7H', '2H',
-      '2D', '3H',  '3D', '4H',
-      '9D', 'QD',  '5D', '7D',
-      '1C', '10S', '1D', '1S',
-      'KD', '9C',  '7C', '8H',
-      '1H', 'QH',  '9H', '8C'
+      '9D', '9S',  'JC',  '8H',
+      '1H', '10S', '9C',  '10H',
+      '2D', '4S',  '7H',  '7D',
+      'QH', '6C',  '6D',  '5H',
+      'JH', '3C',  '10D', '3S',
+      '6S', '8S',  '2C'
     ],
-    id: 'vyucz7ho-5drs-e0rh-aofi-a1npm37aaaxr'
+    id: 'iq34cmzm-apqe-l8w7-9jin-8zp11q6zz8xi'
   },
   tableau: [
     { open: [Array], closed: [] },
@@ -168,20 +200,60 @@ Patience {
     { open: [Array], closed: [Array] }
   ],
   stock: [
-    'KC', '10C', '7H', '2H',
-    '2D', '3H',  '3D', '4H',
-    '9D', 'QD',  '5D', '7D',
-    '1C', '10S', '1D', '1S',
-    'KD', '9C',  '7C', '8H',
-    '1H', 'QH',  '9H', '8C'
+    '9D', '9S',  'JC',  '8H',
+    '1H', '10S', '9C',  '10H',
+    '2D', '4S',  '7H',  '7D',
+    'QH', '6C',  '6D',  '5H',
+    'JH', '3C',  '10D', '3S',
+    '6S', '8S',  '2C'
+  ],
+  talon: [ '4C' ],
+  foundations: [ [], [], [], [] ],
+  id: 'kc74gwdp-9746-adg4-tl03-ola0dax1m0l5'
+}
+Transferred a the card '8C' from the talon to the first column on the tableau Patience {
+  deck: Deck {
+    cards: [
+      '9D', '9S',  'JC',  '8H',
+      '1H', '10S', '9C',  '10H',
+      '2D', '4S',  '7H',  '7D',
+      'QH', '6C',  '6D',  '5H',
+      'JH', '3C',  '10D', '3S',
+      '6S', '8S',  '2C'
+    ],
+    id: 'iq34cmzm-apqe-l8w7-9jin-8zp11q6zz8xi'
+  },
+  tableau: [
+    { open: [Array], closed: [] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] }
+  ],
+  stock: [
+    '9D', '9S',  'JC',  '8H',
+    '1H', '10S', '9C',  '10H',
+    '2D', '4S',  '7H',  '7D',
+    'QH', '6C',  '6D',  '5H',
+    'JH', '3C',  '10D', '3S',
+    '6S', '8S',  '2C'
   ],
   talon: [],
   foundations: [ [], [], [], [] ],
-  id: 're9vj7lz-03ia-qb4o-usur-pzagaihvc19n'
+  id: 'kc74gwdp-9746-adg4-tl03-ola0dax1m0l5'
 }
 ```
 
 There you go, it's as easy as that!
+
+## To Do
+
+- Error handling (custom errors)
+- Refactoring and optimizing
+- Adding the official version of patience (drawing 3 cards at a time)? **(optional)**
+- Adding more games like uno? **(optional)**
 
 ## Packages
 
@@ -198,7 +270,3 @@ This package uses the following packages:
 ## Help
 
 If you need help or you've found a bug feel free to create an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues)
-
-```
-
-```
