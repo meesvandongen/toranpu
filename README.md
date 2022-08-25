@@ -14,7 +14,9 @@ npm i generate-playing-cards.js
 
 ## Example
 
-After installing the package you can finally write some code! First you'll have to require the package and destructure the class Deck.
+### **Deck**
+
+After installing the package you can finally write some code! First you'll have to require the package and destructure the Deck class.
 
 ```js
 const { Deck } = require("generate-playing-cards.js");
@@ -117,6 +119,68 @@ A resetted deck of cards: [
 ]
 ```
 
+### **Patience**
+
+First you'll have to require the package and destructure the Patience class.
+
+```js
+const { Patience } = require("generate-playing-cards.js");
+```
+
+Then just put the `new` keyword before it and pass a `Deck` as first param, it will generate a basic patience game in initial state!
+To demonstrate that it works you could log it.
+
+**Tip: store your game of patience in a variable.**
+
+```js
+console.log(new Patience(new Deck().shuffle()));
+```
+
+Final code will look something like this:
+
+```js
+const { Deck, Patience } = require("generate-playing-cards.js"); // Imported the Deck and Patience class
+console.log(new Patience(new Deck().shuffle())); // Generated a game of patience using a new shuffled deck.
+```
+
+Final output will look something like this:
+
+```js
+Patience {
+  deck: Deck {
+    cards: [
+      'KC', '10C', '7H', '2H',
+      '2D', '3H',  '3D', '4H',
+      '9D', 'QD',  '5D', '7D',
+      '1C', '10S', '1D', '1S',
+      'KD', '9C',  '7C', '8H',
+      '1H', 'QH',  '9H', '8C'
+    ],
+    id: 'vyucz7ho-5drs-e0rh-aofi-a1npm37aaaxr'
+  },
+  tableau: [
+    { open: [Array], closed: [] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] },
+    { open: [Array], closed: [Array] }
+  ],
+  stock: [
+    'KC', '10C', '7H', '2H',
+    '2D', '3H',  '3D', '4H',
+    '9D', 'QD',  '5D', '7D',
+    '1C', '10S', '1D', '1S',
+    'KD', '9C',  '7C', '8H',
+    '1H', 'QH',  '9H', '8C'
+  ],
+  talon: [],
+  foundations: [ [], [], [], [] ],
+  id: 're9vj7lz-03ia-qb4o-usur-pzagaihvc19n'
+}
+```
+
 There you go, it's as easy as that!
 
 ## Packages
@@ -134,3 +198,7 @@ This package uses the following packages:
 ## Help
 
 If you need help or you've found a bug feel free to create an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues)
+
+```
+
+```
