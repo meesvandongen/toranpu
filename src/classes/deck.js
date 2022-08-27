@@ -1,37 +1,12 @@
+const createDeckCards = require("../functions/createDeckCards");
 const generateUUID = require("generate-uuid.js");
-
-/**
- * Creates a standard deck of playing cards (without jokers)
- * @returns {Array} All the cards in a standard deck of playing cards (without jokers)
- */
-function createDeck() {
-  const NAMES = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K",
-  ];
-  const SUITS = ["C", "S", "D", "H"];
-  const cards = SUITS.flatMap((suit) => NAMES.map((name) => `${name}${suit}`));
-
-  return cards;
-}
 
 module.exports = class Deck {
   /**
    * Gets called when the Deck class is instantiated
    */
   constructor() {
-    this.cards = createDeck();
+    this.cards = createDeckCards();
 
     this.id = generateUUID();
   }
@@ -62,7 +37,7 @@ module.exports = class Deck {
    * @returns {Deck} A standard deck of playing cards (without jokers)
    */
   reset() {
-    this.cards = createDeck();
+    this.cards = createDeckCards();
 
     return this;
   }
