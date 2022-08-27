@@ -4,7 +4,7 @@
 
 With this package you can create a deck of playing cards and play a game of patience (the easy version/draws 1 card at a time)
 
-**Huge thanks for downloading my package, we already have _228_ download on the first day! While it's still in BETA, If you'd like a discord server for help and talking with the community etc. Pls open an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues).**
+**Huge thanks for downloading my package, we already have _510_ downloads in the first 3 days! While it's still in BETA, If you'd like a discord server for help and talking with the community etc. Pls open an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues).**
 
 ## Installation
 
@@ -250,7 +250,6 @@ There you go, it's as easy as that!
 
 ## To Do
 
-- Error handling (custom errors)
 - Refactoring and optimizing
 - Adding the official version of patience (drawing 3 cards at a time)? **(optional)**
 - Adding more games like uno? **(optional)**

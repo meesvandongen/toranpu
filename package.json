@@ -1,6 +1,6 @@
 {
   "name": "generate-playing-cards.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "With this package you can create a deck of playing cards and play a game of patience (the easy version/draws 1 card at a time).",
   "main": "src/index.js",
   "scripts": {
