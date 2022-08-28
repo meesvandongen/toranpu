@@ -1,6 +1,6 @@
 /**
- * Creates all the cards in a standard deck of playing cards (without jokers)
- * @returns {Array} All the cards in a standard deck of playing cards (without jokers)
+ * Creates all the cards in a standard deck of playing cards
+ * @returns {number[]} All the cards in a standard deck of playing cards
  */
 module.exports = function createDeckCards() {
   const NAMES = [

@@ -1,6 +1,6 @@
 module.exports.TypeError = class TypeError extends Error {
   /**
-   * Gets called when the TypeError class is instantiated
+   * A TypeError
    * @param {string} expected The expected type of the variable
    * @param {string} varName The name of the variable
    * @param {string} got The actual type of the variable
@@ -13,7 +13,7 @@ module.exports.TypeError = class TypeError extends Error {
 
 module.exports.ValidationError = class ValidationError extends Error {
   /**
-   * Gets called when the TypeError class is instantiated
+   * A ValidationError
    * @param {Array} expected The array with options of the variable
    * @param {string} varName The name of the variable
    * @param {string} got The actual value of the variable
@@ -29,12 +29,15 @@ module.exports.ValidationError = class ValidationError extends Error {
 };
 module.exports.PatienceRuleError = class PatienceRuleError extends Error {
   /**
-   * Gets called when the PatienceRuleError class is instantiated
+   * A PatienceRuleError
    * @param {string} locationCard The card that's being tried to move
    * @param {string} destinationCard The card where the locationCard is gonna be placed under
+   * @param {string} destination The parent where the card has to move to
    */
-  constructor(locationCard, destinationCard) {
-    super(`A ${locationCard} can't be placed under a(n) ${destinationCard}`);
+  constructor(locationCard, destinationCard, destination) {
+    super(
+      `A ${locationCard} can't be placed under a(n) ${destinationCard} in the ${destination}`
+    );
     this.name = "PatienceRuleError";
   }
 };
