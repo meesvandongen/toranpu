@@ -4,7 +4,7 @@
 
 With this package you can create a deck of playing cards and play a game of patience (the easy version/draws 1 card at a time)
 
-**Huge thanks for downloading my package, we already have _510_ downloads in the first 3 days! While it's still in BETA, If you'd like a discord server for help and talking with the community etc. Pls open an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues).**
+**Huge thanks for downloading my package, we already have _510_ downloads in the first 3 days! While it was still in BETA, If you'd like a discord server for help and talking with the community etc. Pls open an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues).**
 
 ## Installation
 
@@ -248,17 +248,22 @@ Transferred a the card '8C' from the talon to the first column on the tableau Pa
 
 There you go, it's as easy as that!
 
-## To Do
+## Idea's
 
-- Refactoring and optimizing
+### **My**
+
 - Adding the official version of patience (drawing 3 cards at a time)? **(optional)**
 - Adding more games like uno? **(optional)**
+
+### **Your**
+
+If you have an idea pls create an issue on [GitHub](https://github.com/MaestroDagan/generate-playing-cards.js/issues)
 
 ## Packages
 
 This package uses the following packages:
 
-- [generate-uuid.js@1.0.2](https://www.npmjs.com/package/generate-uuid.js/v/1.0.2)
+- [generate-uuid.js@2.0.0](https://www.npmjs.com/package/generate-uuid.js/v/2.0.0)
 
 ## Links
 

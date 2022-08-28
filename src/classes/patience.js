@@ -4,7 +4,7 @@ const generateUUID = require("generate-uuid.js");
 
 module.exports = class Patience {
   /**
-   * Gets called when the Patience class is instantiated
+   * A game of patience
    * @param {Deck} deck The deck where you'd like to play Patience with
    */
   constructor(deck) {
@@ -13,42 +13,20 @@ module.exports = class Patience {
 
     this.deck = deck;
 
-    this.tableau = [
-      { open: [deck.draw()], closed: [] },
-      { open: [deck.draw()], closed: [deck.draw()] },
-      { open: [deck.draw()], closed: [deck.draw(), deck.draw()] },
-      {
-        open: [deck.draw()],
-        closed: [deck.draw(), deck.draw(), deck.draw()],
-      },
-      {
-        open: [deck.draw()],
-        closed: [deck.draw(), deck.draw(), deck.draw(), deck.draw()],
-      },
-      {
-        open: [deck.draw()],
-        closed: [
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-        ],
-      },
-      {
-        open: [deck.draw()],
-        closed: [
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-          deck.draw(),
-        ],
-      },
-    ];
+    this.tableau = [];
 
-    this.stock = deck.cards;
+    for (let i = 0; i < 8; i++) {
+      this.tableau[i] = {
+        open: [deck.draw()],
+        closed: [],
+      };
+
+      for (let i2 = 0; i2 < i; i2++) {
+        this.tableau[i].closed.push(deck.draw());
+      }
+    }
+
+    this.stock = this.deck.cards;
     this.talon = [];
     this.foundations = [[], [], [], []];
 
@@ -56,7 +34,7 @@ module.exports = class Patience {
   }
 
   /**
-   * Draws a card from the stock pile and puts it in the talon
+   * Draws a card from the stock pile and places it in the talon
    * @returns {Patience} The game of patience where this method is called on
    */
   draw() {
@@ -89,65 +67,40 @@ module.exports = class Patience {
     if (typeof destination != "string")
       throw new TypeError("string", "destination", typeof destination);
 
-    const CARD_RANKS = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "J",
-      "Q",
-      "K",
-      undefined,
-    ];
+    const cardRanks = [undefined];
+
+    for (let i = 1; i < 11; i++) {
+      cardRanks.push(`${i}`);
+    }
+
+    cardRanks.push("J", "Q", "K", undefined);
 
     const options = {
-      CARD_LOCATION: [
-        "tableau[0]",
-        "tableau[1]",
-        "tableau[2]",
-        "tableau[3]",
-        "tableau[4]",
-        "tableau[5]",
-        "tableau[6]",
-        "talon",
-        "foundations[0]",
-        "foundations[1]",
-        "foundations[2]",
-        "foundations[3]",
-      ],
-      DESTINATION: [
-        "tableau[0]",
-        "tableau[1]",
-        "tableau[2]",
-        "tableau[3]",
-        "tableau[4]",
-        "tableau[5]",
-        "tableau[6]",
-        "foundations[0]",
-        "foundations[1]",
-        "foundations[2]",
-        "foundations[3]",
-      ],
+      cardLocation: ["talon"],
+      destination: [],
       card: createDeckCards(),
     };
 
-    if (!options.CARD_LOCATION.includes(cardLocation))
+    for (let i = 0; i < 7; i++) {
+      options.cardLocation.push(`tableau[${i}]`);
+      options.destination.push(`tableau[${i}]`);
+    }
+    for (let i = 0; i < 4; i++) {
+      options.cardLocation.push(`foundations[${i}]`);
+      options.destination.push(`foundations[${i}]`);
+    }
+
+    if (!options.cardLocation.includes(cardLocation))
       throw new ValidationError(
-        options.CARD_LOCATION,
+        options.cardLocation,
         "cardLocation",
         cardLocation
       );
     if (!options.card.includes(card))
       throw new ValidationError(options.card, "card", card);
-    if (!options.DESTINATION.includes(destination))
+    if (!options.destination.includes(destination))
       throw new ValidationError(
-        options.DESTINATION,
+        options.destination,
         "destination",
         destination
       );
@@ -155,95 +108,82 @@ module.exports = class Patience {
     const cardLocationArray = cardLocation.toLowerCase().split("[");
     const destinationArray = destination.toLowerCase().split("[");
 
-    if (this[destinationArray[0]][parseInt(destinationArray[1])].open) {
-      if (
-        this[destinationArray[0]][parseInt(destinationArray[1])].open.length < 1
-      ) {
+    let destinationCardParent =
+      this[destinationArray[0]][parseInt(destinationArray[1])].open;
+
+    if (destinationCardParent) {
+      if (destinationCardParent.length < 1) {
         if (!card.startsWith("K"))
-          throw new PatienceRuleError(card, "empty space in the tableau");
+          throw new PatienceRuleError(
+            card,
+            "empty space",
+            destination.slice(0, destination.length - 3)
+          );
       } else {
+        const destinationCard =
+          destinationCardParent[destinationCardParent.length - 1];
         if (
           !(
             ((card.endsWith("C") || card.endsWith("S")) &&
-              (this[destinationArray[0]][parseInt(destinationArray[1])].open[
-                this[destinationArray[0]][parseInt(destinationArray[1])].open
-                  .length - 1
-              ].endsWith("H") ||
-                this[destinationArray[0]][parseInt(destinationArray[1])].open[
-                  this[destinationArray[0]][parseInt(destinationArray[1])].open
-                    .length - 1
-                ].endsWith("D"))) ||
+              (destinationCard.endsWith("H") ||
+                destinationCard.endsWith("D"))) ||
             ((card.endsWith("H") || card.endsWith("D")) &&
-              (this[destinationArray[0]][parseInt(destinationArray[1])].open[
-                this[destinationArray[0]][parseInt(destinationArray[1])].open
-                  .length - 1
-              ].endsWith("C") ||
-                this[destinationArray[0]][parseInt(destinationArray[1])].open[
-                  this[destinationArray[0]][parseInt(destinationArray[1])].open
-                    .length - 1
-                ].endsWith("S")))
+              (destinationCard.endsWith("C") || destinationCard.endsWith("S")))
           ) ||
-          !this[destinationArray[0]][parseInt(destinationArray[1])].open[
-            this[destinationArray[0]][parseInt(destinationArray[1])].open
-              .length - 1
-          ].startsWith(CARD_RANKS[CARD_RANKS.indexOf(card.slice(0, 1)) + 1])
-        )
-          throw new PatienceRuleError(
-            card,
-            `${
-              this[destinationArray[0]][parseInt(destinationArray[1])].open[
-                this[destinationArray[0]][parseInt(destinationArray[1])].open
-                  .length - 1
-              ]
-            } in the tableau`
-          );
-      }
-      this[destinationArray[0]][parseInt(destinationArray[1])].open.push(card);
-    } else {
-      if (this[destinationArray[0]][parseInt(destinationArray[1])].length < 1) {
-        if (!card.startsWith("K"))
-          throw new PatienceRuleError(card, "empty space in the foundations");
-      } else {
-        if (
-          !(
-            card.endsWith(
-              this[destinationArray[0]][parseInt(destinationArray[1])][
-                this[destinationArray[0]][parseInt(destinationArray[1])]
-                  .length - 1
-              ].slice(1)
-            ) ||
-            !this[destinationArray[0]][parseInt(destinationArray[1])][
-              this[destinationArray[0]][parseInt(destinationArray[1])].length -
-                1
-            ].startsWith(CARD_RANKS[CARD_RANKS.indexOf(card.slice(0, 1)) + 1])
+          !destinationCard.startsWith(
+            cardRanks[cardRanks.indexOf(card.slice(0, 1)) + 1]
           )
         )
           throw new PatienceRuleError(
             card,
-            `${
-              this[destinationArray[0]][parseInt(destinationArray[1])][
-                this[destinationArray[0]][parseInt(destinationArray[1])]
-                  .length - 1
-              ]
-            } in the foundations`
+            destinationCard,
+            destination.slice(0, destination.length - 3)
+          );
+      }
+      this[destinationArray[0]][parseInt(destinationArray[1])].open.push(card);
+    } else {
+      destinationCardParent =
+        this[destinationArray[0]][parseInt(destinationArray[1])];
+
+      if (destinationCardParent.length < 1) {
+        if (!card.startsWith("1"))
+          throw new PatienceRuleError(
+            card,
+            "empty space",
+            destination.slice(0, destination.length - 3)
+          );
+      } else {
+        const destinationCard =
+          destinationCardParent[destinationCardParent.length - 1];
+
+        if (
+          !(
+            card.endsWith(destinationCard.slice(1)) ||
+            !destinationCard.startsWith(
+              cardRanks[cardRanks.indexOf(card.slice(0, 1)) - 1]
+            )
+          )
+        )
+          throw new PatienceRuleError(
+            card,
+            destinationCard,
+            destination.slice(0, destination.length - 3)
           );
       }
 
       this[destinationArray[0]][parseInt(destinationArray[1])].push(card);
     }
 
+    const cardLocationParent =
+      this[cardLocationArray[0]][parseInt(cardLocationArray[1])];
+
     if (cardLocationArray[1]) {
-      if (this[cardLocationArray[0]][parseInt(cardLocationArray[1])].open) {
+      if (cardLocationParent.open) {
         this[cardLocationArray[0]][parseInt(cardLocationArray[1])].open.splice(
-          this[cardLocationArray[0]][
-            parseInt(cardLocationArray[1])
-          ].open.indexOf(card)
+          cardLocationParent.open.indexOf(card)
         );
 
-        if (
-          !this[cardLocationArray[0]][parseInt(cardLocationArray[1])].open[0] &&
-          this[cardLocationArray[0]][parseInt(cardLocationArray[1])].closed[0]
-        ) {
+        if (!cardLocationParent.open[0] && cardLocationParent.closed[0]) {
           this[cardLocationArray[0]][parseInt(cardLocationArray[1])].open.push(
             this[cardLocationArray[0]][
               parseInt(cardLocationArray[1])
@@ -252,9 +192,7 @@ module.exports = class Patience {
         }
       } else {
         this[cardLocationArray[0]][parseInt(cardLocationArray[1])].splice(
-          this[cardLocationArray[0]][parseInt(cardLocationArray[1])].indexOf(
-            card
-          )
+          cardLocationParent.indexOf(card)
         );
       }
     } else {

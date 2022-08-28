@@ -3,7 +3,7 @@ const generateUUID = require("generate-uuid.js");
 
 module.exports = class Deck {
   /**
-   * Gets called when the Deck class is instantiated
+   * A Deck of playing cards
    */
   constructor() {
     this.cards = createDeckCards();
@@ -34,7 +34,7 @@ module.exports = class Deck {
 
   /**
    * Resets the deck to its initial state
-   * @returns {Deck} A standard deck of playing cards (without jokers)
+   * @returns {Deck} A standard deck of playing cards
    */
   reset() {
     this.cards = createDeckCards();
