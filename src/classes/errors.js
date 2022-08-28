@@ -41,3 +41,27 @@ module.exports.PatienceRuleError = class PatienceRuleError extends Error {
     this.name = "PatienceRuleError";
   }
 };
+module.exports.TopTalonError = class TopTalonError extends Error {
+  /**
+   * A PatienceRuleError
+   */
+  constructor() {
+    super(
+      "When you're moving a card from the talon it can only be the top card of the talon"
+    );
+    this.name = "PatienceRuleError";
+  }
+};
+module.exports.BottomToFoundationsError = class BottomToFoundationsError extends (
+  Error
+) {
+  /**
+   * A PatienceRuleError
+   */
+  constructor() {
+    super(
+      "When you're moving a card to a foundation it can only be the lowest card of the column"
+    );
+    this.name = "PatienceRuleError";
+  }
+};
