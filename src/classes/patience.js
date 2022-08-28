@@ -1,4 +1,10 @@
-const { TypeError, ValidationError, PatienceRuleError } = require("./errors");
+const {
+  TypeError,
+  ValidationError,
+  PatienceRuleError,
+  TopTalonError,
+  BottomToFoundationsError,
+} = require("./errors");
 const createDeckCards = require("../functions/createDeckCards");
 const generateUUID = require("generate-uuid.js");
 
@@ -15,7 +21,7 @@ module.exports = class Patience {
 
     this.tableau = [];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 7; i++) {
       this.tableau[i] = {
         open: [deck.draw()],
         closed: [],
@@ -130,9 +136,8 @@ module.exports = class Patience {
             ((card.endsWith("H") || card.endsWith("D")) &&
               (destinationCard.endsWith("C") || destinationCard.endsWith("S")))
           ) ||
-          !destinationCard.startsWith(
-            cardRanks[cardRanks.indexOf(card.slice(0, 1)) + 1]
-          )
+          destinationCard.slice(0, destinationCard.length - 1) !=
+            cardRanks[cardRanks.indexOf(card.slice(0, card.length - 1)) + 1]
         )
           throw new PatienceRuleError(
             card,
@@ -140,13 +145,12 @@ module.exports = class Patience {
             destination.slice(0, destination.length - 3)
           );
       }
-      this[destinationArray[0]][parseInt(destinationArray[1])].open.push(card);
     } else {
       destinationCardParent =
         this[destinationArray[0]][parseInt(destinationArray[1])];
 
       if (destinationCardParent.length < 1) {
-        if (!card.startsWith("1"))
+        if (card.slice(0, card.length - 1) != "1")
           throw new PatienceRuleError(
             card,
             "empty space",
@@ -157,12 +161,9 @@ module.exports = class Patience {
           destinationCardParent[destinationCardParent.length - 1];
 
         if (
-          !(
-            card.endsWith(destinationCard.slice(1)) ||
-            !destinationCard.startsWith(
-              cardRanks[cardRanks.indexOf(card.slice(0, 1)) - 1]
-            )
-          )
+          !card.endsWith(destinationCard.slice(destinationCard.length - 1)) ||
+          destinationCard.slice(0, destinationCard.length - 1) !=
+            cardRanks[cardRanks.indexOf(card.slice(0, card.length - 1)) - 1]
         )
           throw new PatienceRuleError(
             card,
@@ -170,8 +171,6 @@ module.exports = class Patience {
             destination.slice(0, destination.length - 3)
           );
       }
-
-      this[destinationArray[0]][parseInt(destinationArray[1])].push(card);
     }
 
     const cardLocationParent =
@@ -179,24 +178,34 @@ module.exports = class Patience {
 
     if (cardLocationArray[1]) {
       if (cardLocationParent.open) {
-        this[cardLocationArray[0]][parseInt(cardLocationArray[1])].open.splice(
-          cardLocationParent.open.indexOf(card)
-        );
+        if (
+          destination.startsWith("foundations") &&
+          cardLocationParent.open[0] != card
+        )
+          throw new BottomToFoundationsError();
+        cardLocationParent.open
+          .splice(
+            cardLocationParent.open.indexOf(card),
+            cardLocationParent.open.length -
+              cardLocationParent.open.indexOf(card)
+          )
+          .forEach((element) => destinationCardParent.push(element));
 
         if (!cardLocationParent.open[0] && cardLocationParent.closed[0]) {
-          this[cardLocationArray[0]][parseInt(cardLocationArray[1])].open.push(
+          cardLocationParent.open.push(
             this[cardLocationArray[0]][
               parseInt(cardLocationArray[1])
             ].closed.shift()
           );
         }
       } else {
-        this[cardLocationArray[0]][parseInt(cardLocationArray[1])].splice(
-          cardLocationParent.indexOf(card)
-        );
+        cardLocationParent
+          .splice(cardLocationParent.indexOf(card))
+          .forEach((element) => destinationCardParent.push(element));
       }
     } else {
-      this.talon.splice(this.talon.indexOf(card));
+      if (this.talon[0] != card) throw new TopTalonError();
+      destinationCardParent.push(this.talon.splice(this.talon.indexOf(card)));
     }
 
     return this;
