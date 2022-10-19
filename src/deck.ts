@@ -56,3 +56,15 @@ export function draw(deck: Deck): [Deck, Card] {
 
   return [newDeck, card];
 }
+
+export function place(deck: Deck, card: Card): Deck {
+  return [card, ...deck];
+}
+
+export function getRank(card: Card): Rank {
+  return card[0] as Rank;
+}
+
+export function getSuit(card: Card): Suit {
+  return card[1] as Suit;
+}

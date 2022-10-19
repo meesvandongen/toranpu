@@ -1,4 +1,13 @@
-import { create, Deck, draw, shuffle } from "./deck";
+import {
+  Card,
+  create,
+  Deck,
+  draw,
+  getRank,
+  getSuit,
+  place,
+  shuffle,
+} from "./deck";
 
 export class TypeError extends Error {
   constructor(expected: string, varName: string, got: string) {
@@ -54,14 +63,45 @@ interface Column {
   closed: Deck;
 }
 
-interface KlondikeLayout {
+interface TableauSource {
+  type: "tableau";
+  column: number;
+  index: number;
+}
+
+interface TableauDestination {
+  type: "tableau";
+  column: number;
+}
+
+interface FoundationLocation {
+  type: "foundation";
+  column: number;
+}
+
+interface StockLocation {
+  type: "stock";
+}
+
+interface DiscardSource {
+  type: "discard";
+}
+
+export type Source = TableauSource | DiscardSource;
+
+export type Destination =
+  | TableauDestination
+  | FoundationLocation
+  | StockLocation;
+
+interface GameState {
   foundations: [Deck, Deck, Deck, Deck];
   stock: Deck;
   discard: Deck;
   tableau: [Column, Column, Column, Column, Column, Column, Column];
 }
 
-export function empty(): KlondikeLayout {
+export function empty(): GameState {
   return {
     foundations: [[], [], [], []],
     stock: [],
@@ -78,7 +118,7 @@ export function empty(): KlondikeLayout {
   };
 }
 
-export function setupGame(): KlondikeLayout {
+export function setupGame(): GameState {
   const layout = empty();
   let deck = shuffle(create());
 
@@ -100,76 +140,90 @@ export function setupGame(): KlondikeLayout {
   return layout;
 }
 
-/**
- * Draws a card from the stock pile and places it in the talon
- * @returns {Patience} The game of patience where this method is called on
- */
-export function drawC() {
-  const card = this.stock.shift();
-
-  if (!card) {
-    this.stock = this.talon;
-    this.talon = [];
-
-    return this;
+export function drawFromStock(state: GameState): GameState {
+  if (state.stock.length === 0) {
+    throw new Error("There are no cards left in the stock");
   }
 
-  this.talon.push(card);
+  const [newStock, card] = draw(state.stock);
+  const newDiscard = place(state.discard, card);
 
-  return this;
+  return {
+    ...state,
+    stock: newStock,
+    discard: newDiscard,
+  };
 }
 
-/**
- *
- * @param {string} cardLocation The parent of the cards current location
- * @param {string} card The card that you'd like to move
- * @param {string} destination The parent where you'd like to move the card to
- * @returns {Patience} The game of patience where this method is called on
- */
-export function move(cardLocation, card, destination) {
-  if (typeof cardLocation != "string")
-    throw new TypeError("string", "cardLocation", typeof cardLocation);
-  if (typeof card != "string")
-    throw new TypeError("string", "card", typeof card);
-  if (typeof destination != "string")
-    throw new TypeError("string", "destination", typeof destination);
+export function findCard(state: GameState, location: Source): Card {
+  switch (location.type) {
+    case "tableau":
+      if (location.state === "open") {
+        return state.tableau[location.column].open[location.index];
+      }
+      return state.tableau[location.column].closed[location.index];
+    case "foundation":
+      return state.foundations[location.index][location.index];
+    case "stock":
+      return state.stock[0];
+    case "discard":
+      return state.discard[0];
+  }
+}
 
-  const cardRanks = [undefined];
+function findTableauCards(
+  state: GameState,
+  column: number,
+  index: number
+): Deck {
+  return state.tableau[column].open.slice(index);
+}
 
-  for (let i = 1; i < 11; i++) {
-    cardRanks.push(`${i}`);
+export function moveFromTableau(
+  state: GameState,
+  source: TableauSource,
+  destination: Destination
+): GameState {
+  const cards = findTableauCards(state, source.column, source.index);
+
+  if (destination.type === "tableau") {
+    return moveToTableau(state, cards, destination.column);
   }
 
-  cardRanks.push("J", "Q", "K", undefined);
-
-  const options = {
-    cardLocation: ["talon"],
-    destination: [],
-    card: createDeckCards(),
-  };
-
-  for (let i = 0; i < 7; i++) {
-    options.cardLocation.push(`tableau[${i}]`);
-    options.destination.push(`tableau[${i}]`);
+  if (cards.length !== 1) {
+    throw new PatienceRuleError("card", "stack", "tableau");
   }
-  for (let i = 0; i < 4; i++) {
-    options.cardLocation.push(`foundations[${i}]`);
-    options.destination.push(`foundations[${i}]`);
+  const card = cards[0];
+
+  if (destination.type === "foundation") {
+    return moveToFoundation(state, card, destination.column);
   }
 
-  if (!options.cardLocation.includes(cardLocation))
-    throw new ValidationError(
-      options.cardLocation,
-      "cardLocation",
-      cardLocation
-    );
-  if (!options.card.includes(card))
-    throw new ValidationError(options.card, "card", card);
-  if (!options.destination.includes(destination))
-    throw new ValidationError(options.destination, "destination", destination);
+  throw new TypeError("Destination", "destination", destination.type);
+}
 
-  const cardLocationArray = cardLocation.toLowerCase().split("[");
-  const destinationArray = destination.toLowerCase().split("[");
+function moveToTableau(
+  state: GameState,
+  cards: Deck,
+  column: number
+): GameState {}
+
+function moveToFoundation(
+  state: GameState,
+  card: Card,
+  foundationColumn: number
+): GameState {}
+
+function moveToStock(state: GameState, card: Card): GameState {}
+
+export function move(
+  state: GameState,
+  source: Location,
+  destination: Location
+) {
+  const card = findCard(state, source);
+  const rank = getRank(card);
+  const suit = getSuit(card);
 
   let destinationCardParent =
     this[destinationArray[0]][parseInt(destinationArray[1])].open;
@@ -259,7 +313,7 @@ export function move(cardLocation, card, destination) {
         .forEach((element) => destinationCardParent.push(element));
     }
   } else {
-    if (this.talon[0] != card) throw new TopTalonError();
+    if (talon[0] != card) throw new TopTalonError();
     destinationCardParent.push(this.talon.splice(this.talon.indexOf(card)));
   }
 
