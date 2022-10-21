@@ -3,83 +3,38 @@ import {
   create,
   Deck,
   draw,
+  drawMultiple,
   getRank,
+  getCardValue,
   getSuit,
   place,
+  placeMultiple,
+  Rank,
   shuffle,
 } from "./deck";
 
-export class TypeError extends Error {
-  constructor(expected: string, varName: string, got: string) {
-    super(`Expected type ${expected} as ${varName}, but got: ${got}`);
-    this.name = "TypeError";
-  }
-}
-
-export class ValidationError extends Error {
-  constructor(expected: string[], varName: string, got: string) {
-    super(
-      `${got} is not a valid ${varName}, valid ${varName}s: [${expected.join(
-        ", "
-      )}]`
-    );
-    this.name = "ValidationError";
-  }
-}
-
-export class PatienceRuleError extends Error {
-  constructor(
-    locationCard: string,
-    destinationCard: string,
-    destination: string
-  ) {
-    super(
-      `A ${locationCard} can't be placed under a(n) ${destinationCard} in the ${destination}`
-    );
-    this.name = "PatienceRuleError";
-  }
-}
-
-export class TopTalonError extends Error {
-  constructor() {
-    super(
-      "When you're moving a card from the talon it can only be the top card of the talon"
-    );
-    this.name = "PatienceRuleError";
-  }
-}
-
-export class BottomToFoundationsError extends Error {
-  constructor() {
-    super(
-      "When you're moving a card to a foundation it can only be the lowest card of the column"
-    );
-    this.name = "PatienceRuleError";
-  }
-}
-
-interface Column {
+export interface Column {
   open: Deck;
   closed: Deck;
 }
 
-interface TableauSource {
+export interface TableauSource {
   type: "tableau";
   column: number;
   index: number;
 }
 
-interface TableauDestination {
+export interface TableauDestination {
   type: "tableau";
   column: number;
 }
 
-interface FoundationLocation {
+export interface FoundationLocation {
   type: "foundation";
   column: number;
 }
 
-interface StockLocation {
+export interface StockLocation {
   type: "stock";
 }
 
@@ -94,14 +49,18 @@ export type Destination =
   | FoundationLocation
   | StockLocation;
 
-interface GameState {
-  foundations: [Deck, Deck, Deck, Deck];
+export type Foundations = [Deck, Deck, Deck, Deck];
+
+export type Tableau = [Column, Column, Column, Column, Column, Column, Column];
+
+export interface GameState {
+  foundations: Foundations;
   stock: Deck;
   discard: Deck;
-  tableau: [Column, Column, Column, Column, Column, Column, Column];
+  tableau: Tableau;
 }
 
-export function empty(): GameState {
+function empty(): GameState {
   return {
     foundations: [[], [], [], []],
     stock: [],
@@ -155,28 +114,39 @@ export function drawFromStock(state: GameState): GameState {
   };
 }
 
-export function findCard(state: GameState, location: Source): Card {
-  switch (location.type) {
-    case "tableau":
-      if (location.state === "open") {
-        return state.tableau[location.column].open[location.index];
-      }
-      return state.tableau[location.column].closed[location.index];
-    case "foundation":
-      return state.foundations[location.index][location.index];
-    case "stock":
-      return state.stock[0];
-    case "discard":
-      return state.discard[0];
-  }
-}
-
-function findTableauCards(
+function drawTableauCards(
   state: GameState,
-  column: number,
-  index: number
-): Deck {
-  return state.tableau[column].open.slice(index);
+  columnIndex: number,
+  deckIndex: number
+): [GameState, Deck] {
+  let deckOpen = state.tableau[columnIndex].open;
+  let deckClosed = state.tableau[columnIndex].closed;
+
+  const amountToDraw = deckOpen.length - deckIndex;
+  const [deck, drawnCards] = drawMultiple(deckOpen, amountToDraw);
+  deckOpen = deck;
+
+  if (deckOpen.length === 0) {
+    let [newColumnDeckClosed, drawnCard] = draw(deckClosed);
+    deckOpen = place(deckOpen, drawnCard);
+    deckClosed = newColumnDeckClosed;
+  }
+
+  return [
+    {
+      ...state,
+      tableau: state.tableau.map((column, _columnIndex) => {
+        if (columnIndex === _columnIndex) {
+          return {
+            open: deckOpen,
+            closed: deckClosed,
+          };
+        }
+        return column;
+      }) as Tableau,
+    },
+    drawnCards,
+  ];
 }
 
 export function moveFromTableau(
@@ -184,138 +154,130 @@ export function moveFromTableau(
   source: TableauSource,
   destination: Destination
 ): GameState {
-  const cards = findTableauCards(state, source.column, source.index);
+  const [newState, drawnCards] = drawTableauCards(
+    state,
+    source.column,
+    source.index
+  );
 
   if (destination.type === "tableau") {
-    return moveToTableau(state, cards, destination.column);
+    return placeOnTableau(newState, drawnCards, destination.column);
   }
 
-  if (cards.length !== 1) {
-    throw new PatienceRuleError("card", "stack", "tableau");
+  if (drawnCards.length !== 1) {
+    throw Error("Can only move one card to a foundation");
   }
-  const card = cards[0];
+  const card = drawnCards[0];
 
   if (destination.type === "foundation") {
-    return moveToFoundation(state, card, destination.column);
+    return placeToFoundation(state, card, destination.column);
   }
 
-  throw new TypeError("Destination", "destination", destination.type);
+  throw Error("invalid move");
 }
 
-function moveToTableau(
+function placeOnTableau(
   state: GameState,
   cards: Deck,
-  column: number
-): GameState {}
+  targetIndex: number
+): GameState {
+  const deck = placeMultiple(state.tableau[targetIndex].open, cards);
+  return {
+    ...state,
+    tableau: state.tableau.map((column, columnIndex) => {
+      if (columnIndex === targetIndex) {
+        return {
+          ...column,
+          open: deck,
+        };
+      }
+      return column;
+    }) as Tableau,
+  };
+}
 
-function moveToFoundation(
+function placeToFoundation(
   state: GameState,
   card: Card,
   foundationColumn: number
-): GameState {}
+): GameState {
+  const foundation = state.foundations[foundationColumn];
+  const parentCard = foundation[foundation.length - 1];
 
-function moveToStock(state: GameState, card: Card): GameState {}
+  const cardSuit = getSuit(card);
+  const cardRank = getRank(card);
+  const cardValue = getCardValue(card);
 
-export function move(
+  if (!parentCard) {
+    if (cardRank === Rank.ace) {
+      return {
+        ...state,
+        foundations: state.foundations.map((foundation, index) => {
+          if (index === foundationColumn) {
+            return place(foundation, card);
+          }
+          return foundation;
+        }) as Foundations,
+      };
+    }
+    throw Error("Cannot place card on empty foundation");
+  }
+
+  const parentCardSuit = getSuit(parentCard);
+  const parentCardValue = getCardValue(parentCard);
+
+  if (cardSuit === parentCardSuit && cardValue === parentCardValue + 1) {
+    return {
+      ...state,
+      foundations: state.foundations.map((foundation, index) => {
+        if (index === foundationColumn) {
+          return place(foundation, card);
+        }
+        return foundation;
+      }) as Foundations,
+    };
+  }
+
+  throw Error("Invalid move");
+}
+
+export function restoreStock(state: GameState): GameState {
+  if (state.stock.length > 0) {
+    throw Error("There are still cards in the stock");
+  }
+
+  const newStock = state.discard.slice(0, state.discard.length - 1);
+  const newDiscard = [];
+
+  return {
+    ...state,
+    stock: newStock,
+    discard: newDiscard,
+  };
+}
+
+export function moveFromStock(
   state: GameState,
-  source: Location,
-  destination: Location
-) {
-  const card = findCard(state, source);
-  const rank = getRank(card);
-  const suit = getSuit(card);
+  destination: Destination
+): GameState {
+  const [newStock, card] = draw(state.stock);
 
-  let destinationCardParent =
-    this[destinationArray[0]][parseInt(destinationArray[1])].open;
+  const newState = {
+    ...state,
+    stock: newStock,
+  };
 
-  if (destinationCardParent) {
-    if (destinationCardParent.length < 1) {
-      if (!card.startsWith("K"))
-        throw new PatienceRuleError(
-          card,
-          "empty space",
-          destination.slice(0, destination.length - 3)
-        );
-    } else {
-      const destinationCard =
-        destinationCardParent[destinationCardParent.length - 1];
-      if (
-        !(
-          ((card.endsWith("C") || card.endsWith("S")) &&
-            (destinationCard.endsWith("H") || destinationCard.endsWith("D"))) ||
-          ((card.endsWith("H") || card.endsWith("D")) &&
-            (destinationCard.endsWith("C") || destinationCard.endsWith("S")))
-        ) ||
-        destinationCard.slice(0, destinationCard.length - 1) !=
-          cardRanks[cardRanks.indexOf(card.slice(0, card.length - 1)) + 1]
-      )
-        throw new PatienceRuleError(
-          card,
-          destinationCard,
-          destination.slice(0, destination.length - 3)
-        );
-    }
-  } else {
-    destinationCardParent =
-      this[destinationArray[0]][parseInt(destinationArray[1])];
-
-    if (destinationCardParent.length < 1) {
-      if (card.slice(0, card.length - 1) != "1")
-        throw new PatienceRuleError(
-          card,
-          "empty space",
-          destination.slice(0, destination.length - 3)
-        );
-    } else {
-      const destinationCard =
-        destinationCardParent[destinationCardParent.length - 1];
-
-      if (
-        !card.endsWith(destinationCard.slice(destinationCard.length - 1)) ||
-        destinationCard.slice(0, destinationCard.length - 1) !=
-          cardRanks[cardRanks.indexOf(card.slice(0, card.length - 1)) - 1]
-      )
-        throw new PatienceRuleError(
-          card,
-          destinationCard,
-          destination.slice(0, destination.length - 3)
-        );
-    }
+  if (destination.type === "tableau") {
+    return placeOnTableau(newState, [card], destination.column);
   }
 
-  const cardLocationParent =
-    this[cardLocationArray[0]][parseInt(cardLocationArray[1])];
-
-  if (cardLocationArray[1]) {
-    if (cardLocationParent.open) {
-      if (
-        destination.startsWith("foundations") &&
-        cardLocationParent.open[0] != card
-      )
-        throw new BottomToFoundationsError();
-      cardLocationParent.open
-        .splice(
-          cardLocationParent.open.indexOf(card),
-          cardLocationParent.open.length - cardLocationParent.open.indexOf(card)
-        )
-        .forEach((element) => destinationCardParent.push(element));
-
-      if (!cardLocationParent.open[0] && cardLocationParent.closed[0]) {
-        cardLocationParent.open.push(
-          this[cardLocationArray[0]][
-            parseInt(cardLocationArray[1])
-          ].closed.shift()
-        );
-      }
-    } else {
-      cardLocationParent
-        .splice(cardLocationParent.indexOf(card))
-        .forEach((element) => destinationCardParent.push(element));
-    }
-  } else {
-    if (talon[0] != card) throw new TopTalonError();
-    destinationCardParent.push(this.talon.splice(this.talon.indexOf(card)));
+  if (destination.type === "foundation") {
+    return placeToFoundation(newState, card, destination.column);
   }
 
-  return this;
+  throw Error("Invalid move");
+}
+
+export function isWinningState(state: GameState): boolean {
+  return state.foundations.every((foundation) => foundation.length === 13);
 }

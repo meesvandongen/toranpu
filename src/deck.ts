@@ -37,6 +37,26 @@ export enum Suit {
   hearts = "h",
 }
 
+export function rankToValue(rank: Rank): number {
+  switch (rank) {
+    case Rank.ace:
+      return 1;
+    case Rank.king:
+      return 13;
+    case Rank.queen:
+      return 12;
+    case Rank.jack:
+      return 11;
+    default:
+      return parseInt(rank, 10);
+  }
+}
+
+export function getCardValue(card: Card): number {
+  const rank = getRank(card);
+  return rankToValue(rank);
+}
+
 export const suits = [Suit.clubs, Suit.spades, Suit.diamonds, Suit.hearts];
 
 export type Card = `${Rank}${Suit}`;
@@ -57,8 +77,24 @@ export function draw(deck: Deck): [Deck, Card] {
   return [newDeck, card];
 }
 
+export function drawMultiple(deck: Deck, count: number): [Deck, Deck] {
+  const cards: Deck = [];
+
+  for (let i = 0; i < count; i++) {
+    const [newDeck, card] = draw(deck);
+    deck = newDeck;
+    cards.push(card);
+  }
+
+  return [deck, cards];
+}
+
 export function place(deck: Deck, card: Card): Deck {
   return [card, ...deck];
+}
+
+export function placeMultiple(deck: Deck, cards: Deck): Deck {
+  return [...cards, ...deck];
 }
 
 export function getRank(card: Card): Rank {
