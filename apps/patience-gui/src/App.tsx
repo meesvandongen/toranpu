@@ -39,45 +39,41 @@ function Cube() {
 function DraggableBox() {
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
-  // const [spring, api] = useSpring(() => ({
-  //   position: [0, 0, 0],
-  //   config: { mass: 1, friction: 40, tension: 800 },
-  // }));
+  const [spring, api] = useSpring(() => ({
+    position: [0, 0, 0],
+    config: { mass: 1, friction: 40, tension: 800 },
+  }));
 
   const position = useRef([0, 0, 0]);
   const startingPosition = useRef([0, 0, 0]);
 
-  const [ref, api] = useBox(() => ({
-    position: [0, 0, 1],
-  }));
+  // const [ref, api] = useBox(() => ({
+  //   position: [0, 0, 1],
+  // }));
 
-  useEffect(() => {
-    const unsubscribe = api.position.subscribe((v) => (position.current = v));
-    return unsubscribe;
-  }, []);
+  // useEffect(() => {
+  //   const unsubscribe = api.position.subscribe((v) => (position.current = v));
+  //   return unsubscribe;
+  // }, []);
 
   const bind = useGesture({
     onDragStart: () => {
-      startingPosition.current = position.current;
+      startingPosition.current = spring.position.get();
     },
-    onDrag: ({ movement: [x, y] }) => {
+    onDrag: ({ movement: [x, y], down }) => {
       const [x0, , y0] = startingPosition.current;
-      api.position.set(x0 + x / aspect, 1, y0 + y / aspect);
+      api.start({
+        config: { mass: down ? 1 : 4, tension: down ? 2000 : 800 },
+        position: [x0 + x / aspect, down ? 1 : 0, y0 + y / aspect],
+        immediate: down,
+      });
     },
-    onDragEnd: ({ movement: [x, y] }) => {
-      const [x0, , y0] = startingPosition.current;
-      api.position.set(x0 + x / aspect, 0, y0 + y / aspect);
-    },
-    // ({
-    //   config: { mass: down ? 1 : 4, tension: down ? 2000 : 800 },
-    //   position: down ? [x / aspect, 1, y / aspect] : [0, 0, 0],
-    //   immediate: down,
-    // })
+
   });
 
   return (
     <>
-      <AnimatedBox castShadow {...bind()} ref={ref}>
+      <AnimatedBox castShadow {...bind()} {...spring}>
         <meshStandardMaterial color={colors.blue[900]} />
       </AnimatedBox>
     </>
