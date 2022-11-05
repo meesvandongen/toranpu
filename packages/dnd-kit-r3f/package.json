@@ -1,0 +1,12 @@
+{
+  "name": "dnd-kit-r3f",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meesvandongen/dnd-kit-r3f.git"
+  },
+  "private": false,
+  "dependencies": {
+    "@dnd-kit/core": "^6.0.5"
+  }
+}
