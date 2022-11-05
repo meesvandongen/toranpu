@@ -46,17 +46,7 @@ function DraggableBox() {
     config: { mass: 1, friction: 40, tension: 800 },
   }));
 
-  const position = useRef([0, 0, 0]);
   const startingPosition = useRef([0, 0, 0]);
-
-  // const [ref, api] = useBox(() => ({
-  //   position: [0, 0, 1],
-  // }));
-
-  // useEffect(() => {
-  //   const unsubscribe = api.position.subscribe((v) => (position.current = v));
-  //   return unsubscribe;
-  // }, []);
 
   const bind = useGesture({
     onDragStart: () => {
