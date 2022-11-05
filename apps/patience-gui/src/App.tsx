@@ -1,7 +1,7 @@
 import { Box, softShadows } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import { useDrag, useGesture } from "@use-gesture/react";
-import { useSpring, a } from "@react-spring/three";
+import { useSpring, a, to } from "@react-spring/three";
 import colors from "tailwindcss/colors";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 import { useEffect, useRef } from "react";
@@ -40,7 +40,9 @@ function DraggableBox() {
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   const [spring, api] = useSpring(() => ({
-    position: [0, 0, 0],
+    x: 0,
+    y: 0,
+    z: 0,
     config: { mass: 1, friction: 40, tension: 800 },
   }));
 
@@ -58,22 +60,31 @@ function DraggableBox() {
 
   const bind = useGesture({
     onDragStart: () => {
-      startingPosition.current = spring.position.get();
+      startingPosition.current = [
+        spring.x.get(),
+        spring.y.get(),
+        spring.z.get(),
+      ];
     },
     onDrag: ({ movement: [x, y], down }) => {
       const [x0, , y0] = startingPosition.current;
       api.start({
-        config: { mass: down ? 1 : 4, tension: down ? 2000 : 800 },
-        position: [x0 + x / aspect, down ? 1 : 0, y0 + y / aspect],
-        immediate: down,
+        config: { mass: 4, tension: 800 },
+        x: x0 + x / aspect,
+        y: down ? 1 : 0,
+        z: y0 + y / aspect,
+        immediate: (n) => n !== "y",
       });
     },
-
   });
 
   return (
     <>
-      <AnimatedBox castShadow {...bind()} {...spring}>
+      <AnimatedBox
+        castShadow
+        {...bind()}
+        position={to([spring.x, spring.y, spring.z], (x, y, z) => [x, y, z])}
+      >
         <meshStandardMaterial color={colors.blue[900]} />
       </AnimatedBox>
     </>
