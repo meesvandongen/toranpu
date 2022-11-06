@@ -1,42 +1,48 @@
-import { Box, softShadows } from "@react-three/drei";
+import { Box, softShadows, Plane } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import { useDrag, useGesture } from "@use-gesture/react";
 import { useSpring, a, to } from "@react-spring/three";
 import colors from "tailwindcss/colors";
-import { Physics, usePlane, useBox } from "@react-three/cannon";
 import { useEffect, useRef } from "react";
-
-const AnimatedBox = a(Box);
+import {
+  Physics,
+  RigidBody,
+  Debug,
+  CuboidCollider,
+  InstancedRigidBodyApi,
+  RigidBodyApi,
+} from "@react-three/rapier";
 
 softShadows();
 
-function Plane() {
-  const [ref] = usePlane(() => ({
-    rotation: [-Math.PI / 2, 0, 0],
-    position: [0, -0.5, 0],
-  }));
+function Ground() {
   return (
-    <mesh receiveShadow ref={ref}>
-      <planeGeometry args={[1000, 1000]} />
-      <meshStandardMaterial color={colors.green[900]} />
-    </mesh>
+    <RigidBody
+      position={[0, -0.5, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
+      mass={0}
+      colliders="cuboid"
+    >
+      <Plane scale={[1000, 1000, 1]} receiveShadow>
+        <meshStandardMaterial color={colors.green[900]} />
+      </Plane>
+    </RigidBody>
   );
 }
 
 function Cube() {
-  const [ref] = useBox(() => ({
-    position: [1, 0, 1],
-    rotation: [1, 2, 3],
-  }));
   return (
-    <mesh ref={ref} castShadow>
-      <boxGeometry />
-      <meshStandardMaterial color={colors.yellow[900]} />
-    </mesh>
+    <RigidBody position={[1, 0, 1]} rotation={[1, 2, 3]} mass={0} sensor>
+      <Box castShadow>
+        <meshStandardMaterial color={colors.yellow[900]} />
+      </Box>
+    </RigidBody>
   );
 }
 
 function DraggableBox() {
+  const instancedApi = useRef<RigidBodyApi>();
+
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   const [spring, api] = useSpring(() => ({
@@ -44,39 +50,53 @@ function DraggableBox() {
     y: 0,
     z: 0,
     config: { mass: 1, friction: 40, tension: 800 },
+    immediate: (key) => key !== "y",
+    onChange: ({ value }) => {
+      instancedApi.current?.setTranslation({
+        x: value.x,
+        y: value.y,
+        z: value.z,
+      });
+    },
   }));
 
-  const startingPosition = useRef([0, 0, 0]);
+  const initialPosition = useRef([0, 0, 0]);
 
   const bind = useGesture({
     onDragStart: () => {
-      startingPosition.current = [
-        spring.x.get(),
-        spring.y.get(),
-        spring.z.get(),
-      ];
+      initialPosition.current = instancedApi.current?.translation();
     },
-    onDrag: ({ movement: [x, y], down }) => {
-      const [x0, , y0] = startingPosition.current;
-      api.start({
-        config: { mass: 4, tension: 800 },
-        x: x0 + x / aspect,
-        y: down ? 1 : 0,
-        z: y0 + y / aspect,
-        immediate: (n) => n !== "y",
-      });
+    onDrag: ({ movement: [x, z], down }) => {
+      const [x0, , z0] = initialPosition.current;
+      console.log(x0);
+
+      const nextX = x0 + x / aspect;
+      const nextY = down ? 1 : 0;
+      const nextZ = z0 + z / aspect;
+
+      api.start({ x: nextX, y: nextY, z: nextZ });
+
+      // instancedApi.current?.setTranslation({
+      //   x: nextX,
+      //   y: nextY,
+      //   z: nextZ,
+      // });
     },
   });
 
   return (
     <>
-      <AnimatedBox
-        castShadow
-        {...bind()}
-        position={to([spring.x, spring.y, spring.z], (x, y, z) => [x, y, z])}
+      <RigidBody
+        ref={instancedApi}
+        mass={0}
+        onIntersectionEnter={(e) => {
+          console.log(e);
+        }}
       >
-        <meshStandardMaterial color={colors.blue[900]} />
-      </AnimatedBox>
+        <Box castShadow {...bind()}>
+          <meshStandardMaterial color={colors.white} />
+        </Box>
+      </RigidBody>
     </>
   );
 }
@@ -108,7 +128,7 @@ function App() {
             shadow-camera-top={10}
             shadow-camera-bottom={-10}
           />
-          <Plane />
+          <Ground />
           <DraggableBox />
           <Cube />
         </Physics>
