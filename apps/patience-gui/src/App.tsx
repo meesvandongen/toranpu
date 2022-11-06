@@ -45,42 +45,20 @@ function DraggableBox() {
 
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
-  const [spring, api] = useSpring(() => ({
-    x: 0,
-    y: 0,
-    z: 0,
-    config: { mass: 1, friction: 40, tension: 800 },
-    immediate: (key) => key !== "y",
-    onChange: ({ value }) => {
-      instancedApi.current?.setTranslation({
-        x: value.x,
-        y: value.y,
-        z: value.z,
-      });
-    },
-  }));
-
-  const initialPosition = useRef([0, 0, 0]);
 
   const bind = useGesture({
-    onDragStart: () => {
-      initialPosition.current = instancedApi.current?.translation();
-    },
-    onDrag: ({ movement: [x, z], down }) => {
-      const [x0, , z0] = initialPosition.current;
-      console.log(x0);
+    onDrag: ({ delta: [x, z], down }) => {
+      const [x0, , z0] = instancedApi.current?.translation();
 
       const nextX = x0 + x / aspect;
       const nextY = down ? 1 : 0;
       const nextZ = z0 + z / aspect;
 
-      api.start({ x: nextX, y: nextY, z: nextZ });
-
-      // instancedApi.current?.setTranslation({
-      //   x: nextX,
-      //   y: nextY,
-      //   z: nextZ,
-      // });
+      instancedApi.current?.setTranslation({
+        x: nextX,
+        y: nextY,
+        z: nextZ,
+      });
     },
   });
 
