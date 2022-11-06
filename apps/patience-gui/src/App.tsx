@@ -41,18 +41,38 @@ function Cube() {
 }
 
 function DraggableBox() {
-  const instancedApi = useRef<RigidBodyApi>();
+  const instancedApi = useRef<RigidBodyApi>(null);
 
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
+  const [spring, api] = useSpring(() => ({
+    y: 0,
+    config: { mass: 1, friction: 40, tension: 800 },
+    onChange: ({ value }) => {
+      const [x, , z] = instancedApi.current?.translation();
+      instancedApi.current?.setTranslation({
+        x,
+        y: value.y,
+        z,
+      });
+    },
+  }));
+
+  const initialPosition = useRef([0, 0, 0]);
 
   const bind = useGesture({
-    onDrag: ({ delta: [x, z], down }) => {
-      const [x0, , z0] = instancedApi.current?.translation();
+    onDragStart: () => {
+      const [x, y, z] = instancedApi.current?.translation();
+      initialPosition.current = [x, y, z];
+    },
+    onDrag: ({ movement: [x, z], down }) => {
+      const [x0, , z0] = initialPosition.current;
 
       const nextX = x0 + x / aspect;
       const nextY = down ? 1 : 0;
       const nextZ = z0 + z / aspect;
+
+      api.start({ y: nextY });
 
       instancedApi.current?.setTranslation({
         x: nextX,
