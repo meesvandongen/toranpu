@@ -1,4 +1,4 @@
-export enum Rank {
+export const enum Rank {
   ace = "A",
   two = "2",
   three = "3",
@@ -30,11 +30,16 @@ export const ranks = [
   Rank.king,
 ];
 
-export enum Suit {
+export const enum Suit {
   clubs = "c",
   spades = "s",
   diamonds = "d",
   hearts = "h",
+}
+
+export const enum Color {
+  black = "black",
+  red = "red",
 }
 
 export function rankToValue(rank: Rank): number {
@@ -118,7 +123,27 @@ export function getSuit(card: Card): Suit {
 
 if (import.meta.vitest) {
   it("gets the suit of a card", () => {
-    expect(getSuit("As")).toEqual(Suit.spades);
-    expect(getSuit("2d")).toEqual(Suit.diamonds);
+    expect(getSuit("As")).toBe(Suit.spades);
+    expect(getSuit("2d")).toBe(Suit.diamonds);
   });
+}
+
+export function getColor(card: Card): Color {
+  const suit = getSuit(card);
+
+  return suit === Suit.clubs || suit === Suit.spades ? Color.black : Color.red;
+}
+
+if (import.meta.vitest) {
+  it("gets the color of a card", () => {
+    expect(getColor("As")).toBe(Color.black);
+    expect(getColor("2d")).toBe(Color.red);
+  });
+}
+
+export function compareRank(a: Card, b: Card): number {
+  const rankA = getRank(a);
+  const rankB = getRank(b);
+
+  return rankToValue(rankA) - rankToValue(rankB);
 }

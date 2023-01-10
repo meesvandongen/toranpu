@@ -4,8 +4,12 @@ import {
   Deck,
   draw,
   drawMultiple,
+  getCardValue,
+  getColor,
+  getRank,
   place,
   placeMultiple,
+  Rank,
   shuffle,
 } from "./deck";
 
@@ -224,6 +228,55 @@ if (import.meta.vitest) {
     placeOnTableau(state, ["2s", "As"], 0);
 
     expect(state.tableau[0].open).toEqual(["2s", "As"]);
+  });
+}
+
+/**
+ * Checks if the card may be placed on the tableau.
+ */
+export function getMayPlaceOnTableau(
+  state: GameState,
+  cards: Deck,
+  colIndex: number
+): boolean {
+  const tableau = state.tableau[colIndex];
+
+  const tableauTopCard = tableau.open[tableau.open.length - 1];
+  const tableauTopCardColor = getColor(tableauTopCard);
+  const tableauTopCardValue = getCardValue(tableauTopCard);
+
+  const topCard = cards[0];
+  const topCardRank = getRank(topCard);
+  const topCardColor = getColor(topCard);
+  const topCardValue = getCardValue(topCard);
+
+  if (tableauTopCard === undefined) {
+    if (topCardRank !== Rank.king) {
+      return false;
+    }
+    return true;
+  }
+
+  if (topCardValue !== tableauTopCardValue - 1) {
+    return false;
+  }
+
+  if (topCardColor === tableauTopCardColor) {
+    return false;
+  }
+
+  return true;
+}
+
+if (import.meta.vitest) {
+  it("checks if a card may be placed on the tableau", () => {
+    const state = empty();
+    state.tableau[0].open = ["Ks", "Qd"];
+
+    expect(getMayPlaceOnTableau(state, ["Js"], 0)).toBe(true);
+    expect(getMayPlaceOnTableau(state, ["Jc"], 0)).toBe(true);
+    expect(getMayPlaceOnTableau(state, ["Jd"], 0)).toBe(false);
+    expect(getMayPlaceOnTableau(state, ["Jh"], 0)).toBe(false);
   });
 }
 
