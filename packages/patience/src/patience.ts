@@ -203,13 +203,11 @@ if (import.meta.vitest) {
     const state: GameState = empty();
     state.tableau[0].open = ["2s", "As", "2c", "3c"];
     state.tableau[1].open = ["4c"];
-    console.dir(state, { depth: null });
     moveFromTableau(
       state,
       { type: "tableau", column: 0, index: 2 },
       { type: "tableau", column: 1 }
     );
-    console.dir(state, { depth: null });
 
     expect(state.tableau[0].open.length).toBe(2);
     expect(state.tableau[1].open).toEqual(["4c", "2c", "3c"]);
@@ -220,33 +218,58 @@ function placeOnTableau(state: GameState, cards: Deck, colIndex: number): void {
   placeMultiple(state.tableau[colIndex].open, cards);
 }
 
+if (import.meta.vitest) {
+  it("places multiple cards on the tableau", () => {
+    const state = empty();
+    placeOnTableau(state, ["2s", "As"], 0);
+
+    expect(state.tableau[0].open).toEqual(["2s", "As"]);
+  });
+}
+
 function placeOnFoundation(
   state: GameState,
   card: Card,
   colIndex: number
 ): void {
   const foundation = state.foundations[colIndex];
-
   place(foundation, card);
+}
+
+if (import.meta.vitest) {
+  it("places a card on the foundation", () => {
+    const state = empty();
+    placeOnFoundation(state, "2s", 0);
+
+    expect(state.foundations[0]).toEqual(["2s"]);
+  });
 }
 
 export function restoreStock(state: GameState): void {
   const cards = drawMultiple(state.discard, state.discard.length);
-  cards.reverse();
   placeMultiple(state.stock, cards);
 }
 
 if (import.meta.vitest) {
   it("restores the stock", () => {
-    const state = setupGame();
+    const state = empty();
+    state.stock = ["2s", "As", "2c"];
+
     drawFromStock(state);
-    expect(state.stock.length).toBe(23);
-    expect(state.discard.length).toBe(1);
+    expect(state.stock).toEqual(["As", "2c"]);
+    expect(state.discard).toEqual(["2s"]);
+
+    drawFromStock(state);
+    expect(state.stock).toEqual(["2c"]);
+    expect(state.discard).toEqual(["2s", "As"]);
+
+    drawFromStock(state);
+    expect(state.stock).toEqual([]);
+    expect(state.discard).toEqual(["2s", "As", "2c"]);
 
     restoreStock(state);
-
-    expect(state.stock.length).toBe(24);
-    expect(state.discard.length).toBe(0);
+    expect(state.stock).toEqual(["2s", "As", "2c"]);
+    expect(state.discard).toEqual([]);
   });
 }
 
@@ -266,6 +289,148 @@ export function moveFromStock(s: GameState, destination: Destination): void {
   throw Error("Invalid move");
 }
 
+if (import.meta.vitest) {
+  it("moves a card from the stock to the tableau", () => {
+    const state = setupGame();
+    moveFromStock(state, { type: "tableau", column: 0 });
+
+    expect(state.stock.length).toBe(23);
+    expect(state.tableau[0].open.length).toBe(2);
+  });
+
+  it("moves a card from the stock to the foundation", () => {
+    const state = setupGame();
+    moveFromStock(state, { type: "foundation", column: 0 });
+
+    expect(state.stock.length).toBe(23);
+    expect(state.foundations[0].length).toBe(1);
+  });
+}
+
 export function isWinningState(state: GameState): boolean {
   return state.foundations.every((foundation) => foundation.length === 13);
+}
+
+if (import.meta.vitest) {
+  it("checks if the game is won", () => {
+    const state = empty();
+    state.foundations = [
+      [
+        "As",
+        "2s",
+        "3s",
+        "4s",
+        "5s",
+        "6s",
+        "7s",
+        "8s",
+        "9s",
+        "Ts",
+        "Js",
+        "Qs",
+        "Ks",
+      ],
+      [
+        "Ah",
+        "2h",
+        "3h",
+        "4h",
+        "5h",
+        "6h",
+        "7h",
+        "8h",
+        "9h",
+        "Th",
+        "Jh",
+        "Qh",
+        "Kh",
+      ],
+      [
+        "Ad",
+        "2d",
+        "3d",
+        "4d",
+        "5d",
+        "6d",
+        "7d",
+        "8d",
+        "9d",
+        "Td",
+        "Jd",
+        "Qd",
+        "Kd",
+      ],
+      [
+        "Ac",
+        "2c",
+        "3c",
+        "4c",
+        "5c",
+        "6c",
+        "7c",
+        "8c",
+        "9c",
+        "Tc",
+        "Jc",
+        "Qc",
+        "Kc",
+      ],
+    ];
+
+    expect(isWinningState(state)).toBe(true);
+  });
+
+  it("checks if the game is not won", () => {
+    const state = empty();
+    state.foundations = [
+      [
+        "As",
+        "2s",
+        "3s",
+        "4s",
+        "5s",
+        "6s",
+        "7s",
+        "8s",
+        "9s",
+        "Ts",
+        "Js",
+        "Qs",
+        "Ks",
+      ],
+      [
+        "Ah",
+        "2h",
+        "3h",
+        "4h",
+        "5h",
+        "6h",
+        "7h",
+        "8h",
+        "9h",
+        "Th",
+        "Jh",
+        "Qh",
+        "Kh",
+      ],
+      [
+        "Ad",
+        "2d",
+        "3d",
+        "4d",
+        "5d",
+        "6d",
+        "7d",
+        "8d",
+        "9d",
+        "Td",
+        "Jd",
+        "Qd",
+        "Kd",
+      ],
+      ["Ac", "2c", "3c", "4c", "5c", "6c", "7c", "8c", "9c", "Tc", "Jc", "Qc"],
+    ];
+
+    expect(isWinningState(state)).toBe(false);
+  });
 }
