@@ -66,41 +66,59 @@ export function create(): Deck {
   return suits.flatMap((suit) => ranks.map((rank): Card => `${rank}${suit}`));
 }
 
-export function shuffle(deck: Deck): Deck {
-  return deck.slice().sort(() => Math.random() - 0.5);
+export function shuffle(deck: Deck): void {
+  deck.sort(() => Math.random() - 0.5);
 }
 
-export function draw(deck: Deck): [Deck, Card] {
-  const card = deck[0];
-  const newDeck = deck.slice(1);
+export function draw(deck: Deck): Card {
+  const [card] = deck.splice(0, 1);
 
-  return [newDeck, card];
+  return card;
 }
 
-export function drawMultiple(deck: Deck, count: number): [Deck, Deck] {
-  const cards: Deck = [];
+export function drawMultiple(deck: Deck, count: number): Deck {
+  const drawFromIndex = deck.length - count;
+  const cards = deck.splice(drawFromIndex, count);
 
-  for (let i = 0; i < count; i++) {
-    const [newDeck, card] = draw(deck);
-    deck = newDeck;
-    cards.push(card);
-  }
-
-  return [deck, cards];
+  return cards;
 }
 
-export function place(deck: Deck, card: Card): Deck {
-  return [card, ...deck];
+if (import.meta.vitest) {
+  it("draws multiple cards", () => {
+    const deck: Deck = ["As", "2s", "3s"];
+    const cards = drawMultiple(deck, 2);
+
+    expect(cards).toEqual(["2s", "3s"]);
+    expect(deck).toEqual(["As"]);
+  });
 }
 
-export function placeMultiple(deck: Deck, cards: Deck): Deck {
-  return [...cards, ...deck];
+export function place(deck: Deck, card: Card): void {
+  deck.push(card);
+}
+
+export function placeMultiple(deck: Deck, cards: Deck): void {
+  deck.push(...cards);
 }
 
 export function getRank(card: Card): Rank {
   return card[0] as Rank;
 }
 
+if (import.meta.vitest) {
+  it("gets the rank of a card", () => {
+    expect(getRank("As")).toEqual(Rank.ace);
+    expect(getRank("2s")).toEqual(Rank.two);
+  });
+}
+
 export function getSuit(card: Card): Suit {
   return card[1] as Suit;
+}
+
+if (import.meta.vitest) {
+  it("gets the suit of a card", () => {
+    expect(getSuit("As")).toEqual(Suit.spades);
+    expect(getSuit("2d")).toEqual(Suit.diamonds);
+  });
 }

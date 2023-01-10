@@ -5,5 +5,24 @@
     "type": "git",
     "url": "https://github.com/meesvandongen/patience.git"
   },
-  "private": false
+  "private": false,
+  "dependencies": {
+    "immer": "^9.0.17"
+  },
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest --coverage",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4",
+    "vite": "^3.1.0",
+    "vite-plugin-dts": "^1.7.1",
+    "vitest": "^0.27.0"
+  }
 }

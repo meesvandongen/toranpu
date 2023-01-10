@@ -4,61 +4,12 @@ import {
   Deck,
   draw,
   drawMultiple,
-  getRank,
-  getCardValue,
-  getSuit,
   place,
   placeMultiple,
-  Rank,
   shuffle,
 } from "./deck";
 
-export interface Column {
-  open: Deck;
-  closed: Deck;
-}
-
-export interface TableauSource {
-  type: "tableau";
-  column: number;
-  index: number;
-}
-
-export interface TableauDestination {
-  type: "tableau";
-  column: number;
-}
-
-export interface FoundationLocation {
-  type: "foundation";
-  column: number;
-}
-
-export interface StockLocation {
-  type: "stock";
-}
-
-interface DiscardSource {
-  type: "discard";
-}
-
-export type Source = TableauSource | DiscardSource;
-
-export type Destination =
-  | TableauDestination
-  | FoundationLocation
-  | StockLocation;
-
-export type Foundations = [Deck, Deck, Deck, Deck];
-
-export type Tableau = [Column, Column, Column, Column, Column, Column, Column];
-
-export interface GameState {
-  foundations: Foundations;
-  stock: Deck;
-  discard: Deck;
-  tableau: Tableau;
-}
+import type { GameState, TableauSource, Destination } from "./patience-types";
 
 function empty(): GameState {
   return {
@@ -77,202 +28,239 @@ function empty(): GameState {
   };
 }
 
+if (import.meta.vitest) {
+  it("generates an empty game state", () => {
+    const state = empty();
+
+    expect(state.foundations).toEqual([[], [], [], []]);
+    expect(state.stock).toEqual([]);
+    expect(state.discard).toEqual([]);
+    expect(state.tableau).toEqual([
+      { open: [], closed: [] },
+      { open: [], closed: [] },
+      { open: [], closed: [] },
+      { open: [], closed: [] },
+      { open: [], closed: [] },
+      { open: [], closed: [] },
+      { open: [], closed: [] },
+    ]);
+  });
+}
+
 export function setupGame(): GameState {
-  const layout = empty();
-  let deck = shuffle(create());
+  const game = empty();
+  const deck = create();
+  shuffle(deck);
 
   for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
-    let [newDeck, card] = draw(deck);
-    layout.tableau[columnIndex].open.push(card);
-    deck = newDeck;
+    const tableauColumn = game.tableau[columnIndex];
+    const card = draw(deck);
+    place(tableauColumn.open, card);
 
     for (let j = 0; j < columnIndex; j++) {
-      let [newDeck, card] = draw(deck);
-      // TODO remove push
-      layout.tableau[columnIndex].closed.push(card);
-      deck = newDeck;
+      const card = draw(deck);
+      place(tableauColumn.closed, card);
     }
   }
 
-  layout.stock = deck;
-
-  return layout;
+  game.stock = deck;
+  return game;
 }
 
-export function drawFromStock(state: GameState): GameState {
+if (import.meta.vitest) {
+  it("sets up a game", () => {
+    const state = setupGame();
+
+    expect(state.stock.length).toEqual(24);
+    expect(state.discard.length).toEqual(0);
+    expect(state.tableau.length).toEqual(7);
+
+    expect(state.foundations[0].length).toEqual(0);
+    expect(state.foundations[1].length).toEqual(0);
+    expect(state.foundations[2].length).toEqual(0);
+    expect(state.foundations[3].length).toEqual(0);
+
+    expect(state.tableau[0].open.length).toEqual(1);
+    expect(state.tableau[1].open.length).toEqual(1);
+    expect(state.tableau[2].open.length).toEqual(1);
+    expect(state.tableau[3].open.length).toEqual(1);
+    expect(state.tableau[4].open.length).toEqual(1);
+    expect(state.tableau[5].open.length).toEqual(1);
+    expect(state.tableau[6].open.length).toEqual(1);
+
+    expect(state.tableau[0].closed.length).toEqual(0);
+    expect(state.tableau[1].closed.length).toEqual(1);
+    expect(state.tableau[2].closed.length).toEqual(2);
+    expect(state.tableau[3].closed.length).toEqual(3);
+    expect(state.tableau[4].closed.length).toEqual(4);
+    expect(state.tableau[5].closed.length).toEqual(5);
+    expect(state.tableau[6].closed.length).toEqual(6);
+  });
+}
+
+export function drawFromStock(state: GameState): void {
   if (state.stock.length === 0) {
     throw new Error("There are no cards left in the stock");
   }
 
-  const [newStock, card] = draw(state.stock);
-  const newDiscard = place(state.discard, card);
+  const card = draw(state.stock);
+  place(state.discard, card);
+}
 
-  return {
-    ...state,
-    stock: newStock,
-    discard: newDiscard,
-  };
+if (import.meta.vitest) {
+  it("draws from the stock", () => {
+    const state = setupGame();
+    drawFromStock(state);
+
+    const currentTopCard = state.discard[state.discard.length - 1];
+
+    expect(state.stock.length).toEqual(23);
+    expect(state.discard.length).toEqual(1);
+
+    expect(state.discard[0]).toEqual(currentTopCard);
+  });
 }
 
 function drawTableauCards(
   state: GameState,
   columnIndex: number,
-  deckIndex: number
-): [GameState, Deck] {
+  cardIndex: number
+): Deck {
   let deckOpen = state.tableau[columnIndex].open;
   let deckClosed = state.tableau[columnIndex].closed;
 
-  const amountToDraw = deckOpen.length - deckIndex;
-  const [deck, drawnCards] = drawMultiple(deckOpen, amountToDraw);
-  deckOpen = deck;
+  const amountToDraw = deckOpen.length - cardIndex;
+  const cards = drawMultiple(deckOpen, amountToDraw);
 
-  if (deckOpen.length === 0) {
-    let [newColumnDeckClosed, drawnCard] = draw(deckClosed);
-    deckOpen = place(deckOpen, drawnCard);
-    deckClosed = newColumnDeckClosed;
+  if (deckOpen.length === 0 && deckClosed.length > 0) {
+    let drawnCard = draw(deckClosed);
+    place(deckOpen, drawnCard);
   }
 
-  return [
-    {
-      ...state,
-      tableau: state.tableau.map((column, _columnIndex) => {
-        if (columnIndex === _columnIndex) {
-          return {
-            open: deckOpen,
-            closed: deckClosed,
-          };
-        }
-        return column;
-      }) as Tableau,
-    },
-    drawnCards,
-  ];
+  return cards;
+}
+
+if (import.meta.vitest) {
+  it("draws cards from the tableau", () => {
+    const state = setupGame();
+    const cards = drawTableauCards(state, 0, 0);
+
+    expect(cards.length).toEqual(1);
+    expect(state.tableau[0].open.length).toEqual(0);
+    expect(state.tableau[0].closed.length).toEqual(0);
+  });
+
+  it("flips a card from the closed deck to the open deck", () => {
+    const state = setupGame();
+    const cards = drawTableauCards(state, 1, 0);
+
+    expect(cards.length).toEqual(1);
+    expect(state.tableau[1].open.length).toEqual(1);
+    expect(state.tableau[1].closed.length).toEqual(0);
+  });
 }
 
 export function moveFromTableau(
   state: GameState,
   source: TableauSource,
   destination: Destination
-): GameState {
-  const [newState, drawnCards] = drawTableauCards(
-    state,
-    source.column,
-    source.index
-  );
+): void {
+  const drawnCards = drawTableauCards(state, source.column, source.index);
 
   if (destination.type === "tableau") {
-    return placeOnTableau(newState, drawnCards, destination.column);
+    placeOnTableau(state, drawnCards, destination.column);
+    return;
   }
-
-  if (drawnCards.length !== 1) {
-    throw Error("Can only move one card to a foundation");
-  }
-  const card = drawnCards[0];
 
   if (destination.type === "foundation") {
-    return placeToFoundation(state, card, destination.column);
+    if (drawnCards.length !== 1) {
+      throw Error("Can only move one card to a foundation");
+    }
+    const card = drawnCards[0];
+    placeOnFoundation(state, card, destination.column);
+    return;
   }
 
   throw Error("invalid move");
 }
 
-function placeOnTableau(
-  state: GameState,
-  cards: Deck,
-  targetIndex: number
-): GameState {
-  const deck = placeMultiple(state.tableau[targetIndex].open, cards);
-  return {
-    ...state,
-    tableau: state.tableau.map((column, columnIndex) => {
-      if (columnIndex === targetIndex) {
-        return {
-          ...column,
-          open: deck,
-        };
-      }
-      return column;
-    }) as Tableau,
-  };
+if (import.meta.vitest) {
+  it("moves a card from the tableau to tableau", () => {
+    const state = setupGame();
+    moveFromTableau(
+      state,
+      { type: "tableau", column: 0, index: 0 },
+      { type: "tableau", column: 1 }
+    );
+
+    expect(state.tableau[0].open.length).toBe(0);
+    expect(state.tableau[0].closed.length).toBe(0);
+    expect(state.tableau[1].open.length).toBe(2);
+    expect(state.tableau[1].closed.length).toBe(1);
+  });
+
+  it("moves multiple cards from the tableau to tableau", () => {
+    const state: GameState = empty();
+    state.tableau[0].open = ["2s", "As", "2c", "3c"];
+    state.tableau[1].open = ["4c"];
+    console.dir(state, { depth: null });
+    moveFromTableau(
+      state,
+      { type: "tableau", column: 0, index: 2 },
+      { type: "tableau", column: 1 }
+    );
+    console.dir(state, { depth: null });
+
+    expect(state.tableau[0].open.length).toBe(2);
+    expect(state.tableau[1].open).toEqual(["4c", "2c", "3c"]);
+  });
 }
 
-function placeToFoundation(
+function placeOnTableau(state: GameState, cards: Deck, colIndex: number): void {
+  placeMultiple(state.tableau[colIndex].open, cards);
+}
+
+function placeOnFoundation(
   state: GameState,
   card: Card,
-  foundationColumn: number
-): GameState {
-  const foundation = state.foundations[foundationColumn];
-  const parentCard = foundation[foundation.length - 1];
+  colIndex: number
+): void {
+  const foundation = state.foundations[colIndex];
 
-  const cardSuit = getSuit(card);
-  const cardRank = getRank(card);
-  const cardValue = getCardValue(card);
-
-  if (!parentCard) {
-    if (cardRank === Rank.ace) {
-      return {
-        ...state,
-        foundations: state.foundations.map((foundation, index) => {
-          if (index === foundationColumn) {
-            return place(foundation, card);
-          }
-          return foundation;
-        }) as Foundations,
-      };
-    }
-    throw Error("Cannot place card on empty foundation");
-  }
-
-  const parentCardSuit = getSuit(parentCard);
-  const parentCardValue = getCardValue(parentCard);
-
-  if (cardSuit === parentCardSuit && cardValue === parentCardValue + 1) {
-    return {
-      ...state,
-      foundations: state.foundations.map((foundation, index) => {
-        if (index === foundationColumn) {
-          return place(foundation, card);
-        }
-        return foundation;
-      }) as Foundations,
-    };
-  }
-
-  throw Error("Invalid move");
+  place(foundation, card);
 }
 
-export function restoreStock(state: GameState): GameState {
-  if (state.stock.length > 0) {
-    throw Error("There are still cards in the stock");
-  }
-
-  const newStock = state.discard.slice(0, state.discard.length - 1);
-  const newDiscard = [];
-
-  return {
-    ...state,
-    stock: newStock,
-    discard: newDiscard,
-  };
+export function restoreStock(state: GameState): void {
+  const cards = drawMultiple(state.discard, state.discard.length);
+  cards.reverse();
+  placeMultiple(state.stock, cards);
 }
 
-export function moveFromStock(
-  state: GameState,
-  destination: Destination
-): GameState {
-  const [newStock, card] = draw(state.stock);
+if (import.meta.vitest) {
+  it("restores the stock", () => {
+    const state = setupGame();
+    drawFromStock(state);
+    expect(state.stock.length).toBe(23);
+    expect(state.discard.length).toBe(1);
 
-  const newState = {
-    ...state,
-    stock: newStock,
-  };
+    restoreStock(state);
+
+    expect(state.stock.length).toBe(24);
+    expect(state.discard.length).toBe(0);
+  });
+}
+
+export function moveFromStock(s: GameState, destination: Destination): void {
+  const card = draw(s.stock);
 
   if (destination.type === "tableau") {
-    return placeOnTableau(newState, [card], destination.column);
+    placeOnTableau(s, [card], destination.column);
+    return;
   }
 
   if (destination.type === "foundation") {
-    return placeToFoundation(newState, card, destination.column);
+    placeOnFoundation(s, card, destination.column);
+    return;
   }
 
   throw Error("Invalid move");
