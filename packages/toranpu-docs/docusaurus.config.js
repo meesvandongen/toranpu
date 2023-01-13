@@ -11,7 +11,7 @@ const config = {
   baseUrl: "/toranpu",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/logo_toranpu.png",
+  favicon: "img/favicon_toranpu.png",
   organizationName: "meesvandongen",
   projectName: "toranpu",
   i18n: {
