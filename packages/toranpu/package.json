@@ -1,9 +1,9 @@
 {
-  "name": "patience",
+  "name": "toranpu",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meesvandongen/patience.git"
+    "url": "https://github.com/meesvandongen/toranpu.git"
   },
   "private": false,
   "dependencies": {},

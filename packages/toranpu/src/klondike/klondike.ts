@@ -16,7 +16,7 @@ import {
   shuffleDeck,
 } from "../deck";
 
-import type { GameState, TableauSource, Destination } from "./patience.types";
+import type { GameState, TableauSource, Destination } from "./klondike.types";
 
 function empty(): GameState {
   return {
@@ -55,7 +55,7 @@ if (import.meta.vitest) {
 }
 
 /**
- * Setup a game of patience.
+ * Setup a game of Klondike.
  */
 export function setupGame(seed?: string): GameState {
   const game = empty();
