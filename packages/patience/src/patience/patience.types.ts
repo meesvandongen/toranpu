@@ -1,4 +1,4 @@
-import type { Deck } from "./deck";
+import type { Deck } from "../deck";
 
 export interface TableauSource {
   type: "tableau";
@@ -16,20 +16,13 @@ export interface FoundationLocation {
   column: number;
 }
 
-export interface StockLocation {
-  type: "stock";
-}
-
 export interface DiscardSource {
   type: "discard";
 }
 
 export type Source = TableauSource | DiscardSource;
 
-export type Destination =
-  | TableauDestination
-  | FoundationLocation
-  | StockLocation;
+export type Destination = TableauDestination | FoundationLocation;
 
 /**
  * The foundations are the four piles at the top of the game. They are
