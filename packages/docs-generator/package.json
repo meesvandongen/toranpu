@@ -1,0 +1,26 @@
+{
+  "name": "docs-generator",
+  "version": "1.0.0",
+  "private": false,
+  "source": "src/index.ts",
+  "module": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "parcel build",
+    "dev": "parcel watch",
+    "docs": "docs-generator"
+  },
+  "dependencies": {
+    "@structured-types/api": "^3.46.12",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/yargs": "^17.0.20",
+    "parcel": "^2.8.3"
+  },
+  "bin": "./index.ts",
+  "docs": {
+    "path": "docs"
+  }
+}

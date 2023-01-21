@@ -28,6 +28,7 @@ const config = {
           editUrl:
             "https://github.com/meesvandongen/toranpu/tree/main/packages/toranpu-docs/",
           routeBasePath: "/",
+          path: "../toranpu/docs",
         },
         blog: false,
         theme: {
@@ -54,10 +55,6 @@ const config = {
             position: "right",
           },
         ],
-      },
-      footer: {
-        style: "dark",
-        copyright: `Copyright © ${new Date().getFullYear()} Mees van Dongen, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
