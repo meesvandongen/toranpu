@@ -14,12 +14,11 @@ import {
 
 const argv = yargs(hideBin(process.argv))
   .options({
-    src: { type: "string", default: ".", alias: "s" },
+    dir: { type: "string", default: ".", alias: "s" },
   })
   .parseSync();
 
-// Get the package.json in the src folder
-const packagePath = path.join(argv.src, "package.json");
+const packagePath = path.join(argv.dir, "package.json");
 
 if (!fs.existsSync(packagePath)) {
   console.error("No package.json found in src folder");
@@ -28,8 +27,6 @@ if (!fs.existsSync(packagePath)) {
 
 const packageJsonRealPath = fs.realpathSync(packagePath);
 const packageJson = JSON.parse(fs.readFileSync(packageJsonRealPath, "utf8"));
-
-console.log(packageJson);
 
 const packageName = packageJson.name;
 globalThis.packageName = packageName;
@@ -46,14 +43,17 @@ if (!dest) {
   process.exit(1);
 }
 
+if (typeof dest !== "string") {
+  console.error("Docs folder must be a string");
+  process.exit(1);
+}
+
 const src = packageJson.source;
 
 if (!src) {
   console.error("No source file specified in package.json");
   process.exit(1);
 }
-
-console.log(argv);
 
 const docObject = parseFiles([src]);
 const allProps = getAllProps(docObject);
@@ -71,6 +71,8 @@ const mdPerCategory = categories.map((category) => {
   return { category, md };
 });
 
+console.dir(mdPerCategory, { depth: null });
+
 // Clear the current dist folder
 // check if the folder exists
 if (fs.existsSync(dest)) {
@@ -80,11 +82,17 @@ if (fs.existsSync(dest)) {
 fs.mkdirSync(dest, { recursive: true });
 
 mdPerCategory.forEach(({ category, md }) => {
-  fs.writeFileSync(`${dest}/${category}.md`, md);
+  const categoryMdPath = path.join(dest, `${category}.md`);
+  fs.writeFileSync(categoryMdPath, md);
+  console.log(`Wrote ${categoryMdPath}`);
 });
 
-// Copy the README.md, and add a sidebar position
-const readme = fs.readFileSync("./readme.md", "utf8");
-const readmeWithSidebar = `---\nsidebar_position: 1\n---\n${readme}`;
+const readmeFilePath = path.join(argv.dir, "readme.md");
 
-fs.writeFileSync(`${dest}/index.md`, readmeWithSidebar);
+if (fs.existsSync(readmeFilePath)) {
+  const readme = fs.readFileSync(readmeFilePath, "utf8");
+  const readmeWithSidebar = `---\nsidebar_position: 1\n---\n${readme}`;
+  const readmeDestPath = path.join(dest, "index.md");
+  fs.writeFileSync(readmeDestPath, readmeWithSidebar);
+  console.log(`Wrote ${readmeDestPath}`);
+}

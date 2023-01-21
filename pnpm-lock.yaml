@@ -83,12 +83,10 @@ importers:
       '@structured-types/api': ^3.46.12
       '@types/node': ^18.11.18
       '@types/yargs': ^17.0.20
-      cosmiconfig: ^8.0.0
       parcel: ^2.8.3
       yargs: ^17.6.2
     dependencies:
       '@structured-types/api': 3.46.12
-      cosmiconfig: 8.0.0
       yargs: 17.6.2
     devDependencies:
       '@types/node': 18.11.18
@@ -5786,16 +5784,6 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
-
-  /cosmiconfig/8.0.0:
-    resolution: {integrity: sha512-da1EafcpH6b/TD8vDRaWV7xFINlHlF6zKsGwS1TsuVJTZRkquaS5HTMq7uq6h31619QjbsYl21gVDOm32KM1vQ==}
-    engines: {node: '>=14'}
-    dependencies:
-      import-fresh: 3.3.0
-      js-yaml: 4.1.0
-      parse-json: 5.2.0
-      path-type: 4.0.0
-    dev: false
 
   /cross-fetch/3.1.5:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}

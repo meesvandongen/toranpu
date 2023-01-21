@@ -524,6 +524,8 @@ export function getCanMoveFromStock(
 }
 
 /**
+ * Checks if the game is won.
+ *
  * @returns true if the game is won, false otherwise.
  */
 export function getIsWinningState(state: GameState): boolean {

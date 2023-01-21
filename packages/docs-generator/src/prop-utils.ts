@@ -43,12 +43,14 @@ export function validateFunctionProp(functionItem: FunctionProp) {
 }
 
 export function validateFunctionProps(functionProps: FunctionProp[]) {
-  const validationErrors = functionProps
-    .map(validateFunctionProp)
-    .filter(Boolean);
+  const validationProps = functionProps.filter(validateFunctionProp);
 
-  if (validationErrors.length) {
-    console.error(validationErrors);
+  validationProps.forEach((props) => {
+    console.error(validateFunctionProp(props));
+    console.dir(props, { depth: null });
+  });
+
+  if (validationProps.length) {
     process.exit(1);
   }
 }

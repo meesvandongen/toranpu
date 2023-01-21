@@ -83,6 +83,11 @@ export function placeCards(deck: Deck, cards: Deck): void {
 }
 
 /**
+ * Get the rank of a card
+ *
+ * @category Card
+ *
+ * @param card The card to get the rank of
  * @returns The rank of a card
  */
 export function getRank(card: Card): Rank {
@@ -97,6 +102,11 @@ export function getSuit(card: Card): Suit {
 }
 
 /**
+ * Get the color of a card
+ *
+ * @category Card
+ *
+ * @param card The card to get the color of
  * @returns The color of a card
  */
 export function getColor(card: Card): Color {
