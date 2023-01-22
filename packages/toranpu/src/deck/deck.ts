@@ -53,7 +53,18 @@ export function shuffleDeck(
   deck.sort(() => rng.nextInt(0, 2) - 1);
 }
 
-export function getCard(deck: Deck): Card {
+/**
+ * Get card which will be drawn next
+ *
+ * @category Deck
+ *
+ * @param deck A deck of cards
+ * @returns A card from the top of the deck or null if deck is empty
+ */
+export function getCard(deck: Deck): Card | null {
+  if (deck.length === 0) {
+    return null;
+  }
   return deck[deck.length - 1];
 }
 

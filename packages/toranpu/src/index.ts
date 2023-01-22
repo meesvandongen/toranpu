@@ -1,3 +1,9 @@
-export type { Card, Deck, Rank, Suit, Color } from "./deck";
-export { suits, ranks, getColor, getRank, getSuit } from "./deck";
+// Types
+export type { Card, Deck } from "./deck";
+// Enums
+export { Rank, Suit, Color } from "./deck";
+// Functions
+export { suits, ranks, getColor, getRank, getSuit, getCard } from "./deck";
+
+// All
 export * from "./klondike";
