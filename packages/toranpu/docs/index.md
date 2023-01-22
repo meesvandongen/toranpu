@@ -3,9 +3,9 @@ sidebar_position: 1
 ---
 # Toranpu
 
-<center>
+<p align="center">
 <img src="https://raw.githubusercontent.com/meesvandongen/toranpu/main/packages/toranpu-docs/static/img/logo_toranpu.png" alt="toranpu" width="400px" />
-</center>
+</p>
 <br />
 <br />
 <br />
