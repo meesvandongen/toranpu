@@ -12,7 +12,7 @@
   "scripts": {
     "build:test": "vite-node ./src/card-images.tsx"
   },
-  "private": false,
+  "private": true,
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
