@@ -14,7 +14,7 @@
     "build": "vite build",
     "test": "vitest --coverage",
     "coverage": "vitest run --coverage",
-    "docs": "docs-generator"
+    "docs": "npx @mvd/tsmd"
   },
   "devDependencies": {
     "@structured-types/api": "^3.46.12",
@@ -24,7 +24,7 @@
     "vite": "^3.1.0",
     "vite-plugin-dts": "^1.7.1",
     "vitest": "^0.27.0",
-    "docs-generator": "*"
+    "@mvd/tsmd": "latest"
   },
   "docs": "./docs"
 }
