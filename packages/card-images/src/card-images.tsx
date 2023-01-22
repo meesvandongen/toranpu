@@ -10,7 +10,7 @@ const svg = await satori(<div style={{ color: "black" }}>hello, world</div>, {
       name: "Roboto",
       // Use `fs` (Node.js only) or `fetch` to read the font as Buffer/ArrayBuffer and provide `data` here.
       data: await fs.readFile(
-        "./node_modules/@fontsource/roboto/files/roboto-all-500-normal.woff"
+        "./node_modules/@fontsource/roboto/files/roboto-all-500-normal.woff",
       ),
       weight: 400,
       style: "normal",

@@ -7,8 +7,7 @@
   "type": "module",
   "scripts": {
     "build": "parcel build",
-    "dev": "parcel watch",
-    "docs": "docs-generator"
+    "dev": "parcel watch"
   },
   "dependencies": {
     "@structured-types/api": "^3.46.12",

@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite-node ./src/card-images.tsx"
+    "build:test": "vite-node ./src/card-images.tsx"
   },
   "private": false,
   "publishConfig": {
