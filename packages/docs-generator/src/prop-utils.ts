@@ -1,4 +1,9 @@
-import { FunctionProp, PropType, PropTypes } from "@structured-types/api";
+import {
+  FunctionProp,
+  PropKind,
+  PropType,
+  PropTypes,
+} from "@structured-types/api";
 import { exists } from "./utils";
 
 export function getAllProps(docObject: PropTypes): PropType[] {
@@ -12,47 +17,13 @@ export function sortProps(a: PropType, b: PropType) {
   const nameA = a.name ?? "";
   const nameB = b.name ?? "";
 
-  if (nameA ?? "" < nameB ?? "") {
+  if (nameA < nameB) {
     return -1;
   }
   if (nameA > nameB) {
     return 1;
   }
   return 0;
-}
-
-export function validateFunctionProp(functionItem: FunctionProp) {
-  if (!functionItem.parameters) {
-    return `Item ${functionItem.name} has no parameters`;
-  }
-  if (!functionItem.parameters.some((param) => param.description)) {
-    return `Item ${functionItem.name} has no parameter description`;
-  }
-  if (!functionItem.returns) {
-    return `Item ${functionItem.name} has no return type`;
-  }
-  if (!functionItem.returns.description) {
-    return `Item ${functionItem.name} has no return description`;
-  }
-  if (!functionItem.tags) {
-    return `Item ${functionItem.name} has no tags`;
-  }
-  if (!functionItem.tags.some((tag) => tag.tag === "category")) {
-    return `Item ${functionItem.name} has no category`;
-  }
-}
-
-export function validateFunctionProps(functionProps: FunctionProp[]) {
-  const validationProps = functionProps.filter(validateFunctionProp);
-
-  validationProps.forEach((props) => {
-    console.error(validateFunctionProp(props));
-    console.dir(props, { depth: null });
-  });
-
-  if (validationProps.length) {
-    process.exit(1);
-  }
 }
 
 export function findAllCategories(props: PropType[]) {

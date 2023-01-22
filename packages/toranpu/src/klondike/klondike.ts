@@ -55,7 +55,12 @@ if (import.meta.vitest) {
 }
 
 /**
- * Setup a game of Klondike.
+ * Setup a game of Klondike
+ *
+ * @category Klondike
+ *
+ * @param seed The seed to use for shuffling the deck
+ * @returns The game state
  */
 export function setupGame(seed?: string): GameState {
   const game = empty();
@@ -121,6 +126,10 @@ if (import.meta.vitest) {
 /**
  * Draws a single card from the stock and places it in the discard pile. If the
  * stock is empty, the discard pile is restored to the stock.
+ *
+ * @category Klondike
+ *
+ * @param state The game state
  */
 export function drawFromStock(state: GameState): void {
   if (state.stock.length === 0) {
@@ -158,17 +167,26 @@ if (import.meta.vitest) {
 }
 
 /**
+ * Gets a list of cards from the tableau. Does not remove the cards from the
+ * tableau.
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param columnIndex The index of the column to get cards from
+ * @param deckIndex The starting index of the deck to get cards from
+ *
  * @returns A list of cards from the tableau.
  */
 export function getTableauCards(
   state: GameState,
   columnIndex: number,
-  cardIndex: number,
+  deckIndex: number,
 ): Deck {
   let deckOpen = state.tableau[columnIndex].open;
 
-  const amountToDraw = deckOpen.length - cardIndex;
-  const cards = getCards(deckOpen, amountToDraw);
+  const amount = deckOpen.length - deckIndex;
+  const cards = getCards(deckOpen, amount);
 
   return cards;
 }
@@ -223,7 +241,13 @@ if (import.meta.vitest) {
 }
 
 /**
- * Moves a card from the tableau to the foundation or another tableau column
+ * Moves a card from the tableau to the foundation or another tableau column.
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param source The source of the card
+ * @param destination The destination of the card
  */
 export function moveFromTableau(
   state: GameState,
@@ -276,13 +300,22 @@ if (import.meta.vitest) {
 }
 
 /**
- * Checks if a card can be moved from the tableau to the foundation or another tableau column
+ * Checks if cards can be moved from the tableau to the foundation or another
+ * tableau column.
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param source The source of the cards
+ * @param destination The destination of the cards
+ *
+ * @returns `true` if the cards can be moved, `false` otherwise.
  */
 export function getCanMoveFromTableau(
   state: GameState,
   source: TableauSource,
   destination: Destination,
-) {
+): boolean {
   const cards = getTableauCards(state, source.column, source.index);
 
   if (destination.type === "tableau") {
@@ -448,6 +481,11 @@ if (import.meta.vitest) {
 
 /**
  * Move a card from the stock to the tableau or foundation.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ * @param destination The destination to move the card to.
  */
 export function moveFromStock(
   state: GameState,
@@ -511,20 +549,31 @@ if (import.meta.vitest) {
 
 /**
  * Checks if a card can be moved from the stock to the tableau or foundation.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ * @param destination The destination to move the card to.
+ *
+ * @returns `true` if the move is valid, `false` otherwise.
  */
 export function getCanMoveFromStock(
-  s: GameState,
+  state: GameState,
   destination: Destination,
 ): boolean {
   if (destination.type === "tableau") {
-    return getCanPlaceOnTableau(s, s.stock, destination.column);
+    return getCanPlaceOnTableau(state, state.stock, destination.column);
   }
 
-  return getCanPlaceOnFoundation(s, s.stock[0], destination.column);
+  return getCanPlaceOnFoundation(state, state.stock[0], destination.column);
 }
 
 /**
  * Checks if the game is won.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
  *
  * @returns true if the game is won, false otherwise.
  */

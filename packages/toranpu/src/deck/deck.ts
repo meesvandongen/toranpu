@@ -95,6 +95,11 @@ export function getRank(card: Card): Rank {
 }
 
 /**
+ * Get the suit of a card
+ *
+ * @category Card
+ *
+ * @param card The card to get the suit of
  * @returns The suit of a card
  */
 export function getSuit(card: Card): Suit {

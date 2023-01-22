@@ -3,13 +3,13 @@ import fs from "fs";
 import path from "path";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { combineFunctionProps } from "./function-render";
+import { combineFunctionProps } from "./function/function-render";
+import { validateFunctionProps } from "./function/function-validation";
 import {
   findAllCategories,
   getAllProps,
   hasCategory,
   sortProps,
-  validateFunctionProps,
 } from "./prop-utils";
 
 const argv = yargs(hideBin(process.argv))
@@ -70,8 +70,6 @@ const mdPerCategory = categories.map((category) => {
   const md = combineFunctionProps(items);
   return { category, md };
 });
-
-console.dir(mdPerCategory, { depth: null });
 
 // Clear the current dist folder
 // check if the folder exists

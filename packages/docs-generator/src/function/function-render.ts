@@ -2,28 +2,28 @@ import { FunctionProp, PropKind } from "@structured-types/api";
 
 function functionPropToMd(functionProp: FunctionProp) {
   return `## \`${functionProp.name}\`
-  
-  ${functionProp.description}
-  
-  ${remarks(functionProp)}
-  
-  ${generalExample(functionProp)}
-  
-  ${parameters(functionProp)}
-  
-  ${returns(functionProp)}
-  
-  ${examples(functionProp)}`;
+
+${functionProp.description}
+
+${remarks(functionProp)}
+
+${generalExample(functionProp)}
+
+${parameters(functionProp)}
+
+${returns(functionProp)}
+
+${examples(functionProp)}`;
 }
 
 function generalExample(funtionProp: FunctionProp) {
   return `\`\`\`ts
-  import { ${funtionProp.name} } from "${globalThis.packageName}";
-  
-  ${funtionProp.name}(${funtionProp
+import { ${funtionProp.name} } from "${globalThis.packageName}";
+
+${funtionProp.name}(${funtionProp
     .parameters!.map((param) => param.name)
     .join(", ")})
-  \`\`\``;
+\`\`\``;
 }
 
 function parameters(functionProp: FunctionProp) {
@@ -32,16 +32,14 @@ function parameters(functionProp: FunctionProp) {
     return "";
   }
   return `### Arguments
-  
-  ${params
-    .map(
-      (param) =>
-        `- \`${param.name}\` (*${PropKind[param.kind!]}*): ${
-          param.description
-        }`,
-    )
-    .join("\n")}
-  `;
+
+${params
+  .map(
+    (param) =>
+      `- \`${param.name}\` (*${PropKind[param.kind!]}*): ${param.description}`,
+  )
+  .join("\n")}
+`;
 }
 
 function returns(functionProp: FunctionProp) {
@@ -50,8 +48,8 @@ function returns(functionProp: FunctionProp) {
     return "";
   }
   return `### Returns
-  
-  (*${PropKind[returns.kind!]}*) ${returns.description}`;
+
+(*${PropKind[returns.kind!]}*) ${returns.description}`;
 }
 
 function remarks(functionProp: FunctionProp) {
@@ -61,13 +59,13 @@ function remarks(functionProp: FunctionProp) {
     return "";
   }
   return `<details><summary>More Info</summary>
-  <p>
-  
-  ${remarkTags.map((tag) => tag.content).join("\n\n")}
-  
-  </p>
-  </details>
-  `;
+<p>
+
+${remarkTags.map((tag) => tag.content).join("\n\n")}
+
+</p>
+</details>
+`;
 }
 
 function examples(functionProp: FunctionProp) {
@@ -76,8 +74,8 @@ function examples(functionProp: FunctionProp) {
     return "";
   }
   return `### Examples
-  
-  ${exampleTags.map((tag) => tag.content).join("\n\n")}`;
+
+${exampleTags.map((tag) => tag.content).join("\n\n")}`;
 }
 
 export function combineFunctionProps(functionProps: FunctionProp[]) {
