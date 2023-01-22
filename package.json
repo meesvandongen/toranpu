@@ -5,7 +5,9 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "docs": "turbo run docs",
+    "publish-packages": "turbo run docs build lint test && changeset version && changeset publish"
   },
   "repository": {
     "type": "git",
