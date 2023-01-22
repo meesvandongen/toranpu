@@ -23,7 +23,7 @@ function CardButton({
     <button
       {...props}
       className={clsx(
-        "flex aspect-[62/88] w-32 flex-col rounded-xl duration-100 bg-gray-50 border border-gray-300 shadow hover:scale-110 hover:shadow-2xl transform transition-all",
+        "flex aspect-[62/88] w-32 transform flex-col rounded-xl border border-gray-300 bg-gray-50 shadow transition-all duration-100 hover:scale-110 hover:shadow-2xl",
         color === "black" && "text-black",
         color === "red" && "text-red-500",
       )}
@@ -187,8 +187,8 @@ function Tableau() {
 
 function App() {
   return (
-    <div className="flex justify-center h-screen items-center">
-      <div className="grid grid-cols-7 grid-rows-[auto,auto] gap-4 gap-y-16 p-4 items-start">
+    <div className="flex h-screen items-center justify-center">
+      <div className="grid grid-cols-7 grid-rows-[auto,auto] items-start gap-4 gap-y-16 p-4">
         <Stock />
         <Discard />
         <div />
