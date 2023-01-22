@@ -17,3 +17,7 @@ Currently, one game is supported:
 ```bash
 npm install toranpu
 ```
+
+## Docs and API
+
+[https://meesvandongen.github.io/toranpu/](https://meesvandongen.github.io/toranpu/)
