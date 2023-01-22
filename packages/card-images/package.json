@@ -13,10 +13,6 @@
     "build:test": "vite-node ./src/card-images.tsx"
   },
   "private": true,
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
