@@ -6,6 +6,10 @@ export interface TableauSource {
   index: number;
 }
 
+export interface DiscardSource {
+  type: "discard";
+}
+
 export interface TableauDestination {
   type: "tableau";
   column: number;
@@ -14,10 +18,6 @@ export interface TableauDestination {
 export interface FoundationLocation {
   type: "foundation";
   column: number;
-}
-
-export interface DiscardSource {
-  type: "discard";
 }
 
 export type Source = TableauSource | DiscardSource;

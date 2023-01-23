@@ -1,36 +1,45 @@
 import clsx from "clsx";
-import { ComponentProps } from "react";
+import { ComponentProps, useEffect } from "react";
 import {
   Card,
+  Destination,
   drawFromStock,
+  getCanMoveFromSource,
   getCard,
   getColor,
   getRank,
+  getSourceCards,
   getSuit,
+  moveFromSource,
 } from "toranpu";
+import { subscribe } from "valtio";
 import { suitUnicode } from "./cardToUnicode";
-import { useGameState } from "./state";
+import { gameStateProxy, useGameState, useHand } from "./state";
 
-function CardButton({
+function OpenCard({
   card,
   ...props
 }: ComponentProps<"button"> & { card: Card }) {
+  const disabled = props.disabled;
   const rank = getRank(card);
   const suit = getSuit(card);
   const color = getColor(card);
+
+  const rankStr = rank === "T" ? "10" : rank;
 
   return (
     <button
       {...props}
       className={clsx(
-        "flex aspect-[62/88] w-32 transform flex-col rounded-xl border border-gray-300 bg-gray-50 shadow transition-all duration-100 hover:scale-110 hover:shadow-2xl",
+        "flex aspect-[62/88] w-32 transform flex-col rounded-xl border border-gray-300 bg-gray-50 shadow transition-transform duration-100",
         color === "black" && "text-black",
         color === "red" && "text-red-500",
+        disabled ? "" : "hover:scale-110 hover:shadow-2xl active:scale-105",
       )}
     >
       {/* top-section */}
       <div className={"flex w-full items-center px-2 py-0.5"}>
-        <span className="text-xl font-bold">{rank}</span>
+        <span className="text-xl font-bold">{rankStr}</span>
         <span className="grow"></span>
         <span className="text-2xl">{suitUnicode[suit]}</span>
       </div>
@@ -42,15 +51,41 @@ function CardButton({
       <div className={"flex w-full items-center px-2 py-0.5"}>
         <span className="text-2xl">{suitUnicode[suit]}</span>
         <span className="grow"></span>
-        <span className="text-xl font-bold">{rank}</span>
+        <span className="text-xl font-bold">{rankStr}</span>
       </div>
     </button>
   );
 }
 
-function EmptySpot() {
+function EmptySpot({ ...props }: ComponentProps<"button">) {
   return (
-    <div className="aspect-[62/88] w-32 rounded-xl border-2 border-green-700" />
+    <button
+      {...props}
+      className={clsx(
+        "aspect-[62/88] w-32 rounded-xl border-2 border-green-700",
+        props.disabled ? "" : "hover:border-green-500",
+      )}
+    />
+  );
+}
+
+export function ClosedCard({ ...props }: ComponentProps<"button">) {
+  return (
+    <button
+      {...props}
+      className={clsx(
+        "flex aspect-[62/88] w-32 content-center items-center justify-center rounded-xl border-8 border-gray-50 bg-gray-600 transition-transform duration-100",
+        props.disabled
+          ? ""
+          : "hover:scale-110 hover:shadow-2xl active:scale-105",
+      )}
+    >
+      <img
+        src="https://raw.githubusercontent.com/meesvandongen/toranpu/main/packages/toranpu-docs/static/img/logo_toranpu.png"
+        alt=""
+        className="w-12"
+      />
+    </button>
   );
 }
 
@@ -62,19 +97,16 @@ function Stock() {
 
   if (!card) {
     return (
-      <button
+      <EmptySpot
         onClick={() => {
           drawFromStock(gameState);
         }}
-      >
-        <EmptySpot />
-      </button>
+      />
     );
   }
 
   return (
-    <CardButton
-      card={card}
+    <ClosedCard
       onClick={() => {
         drawFromStock(gameState);
       }}
@@ -84,6 +116,7 @@ function Stock() {
 
 function Discard() {
   const gameState = useGameState();
+  const hand = useHand();
   const discard = gameState.discard;
 
   const card = getCard(discard);
@@ -92,7 +125,16 @@ function Discard() {
     return <EmptySpot />;
   }
 
-  return <CardButton card={card} />;
+  return (
+    <OpenCard
+      card={card}
+      onClick={() => {
+        hand.source = {
+          type: "discard",
+        };
+      }}
+    />
+  );
 }
 
 interface FoundationsProps {}
@@ -114,28 +156,34 @@ interface FoundationProps {
 }
 function Foundation({ index }: FoundationProps) {
   const gameState = useGameState();
+  const hand = useHand();
 
   const cards = gameState.foundations[index];
 
-  if (cards.length === 0) {
-    return <EmptySpot />;
+  function onClick() {
+    if (!hand.source) {
+      return;
+    }
+    moveFromSource(gameState, hand.source, {
+      type: "foundation",
+      column: index,
+    });
   }
 
-  return (
-    <Stack>
-      <CardButtons cards={cards} />
-    </Stack>
-  );
-}
+  const canMove =
+    !!hand.source &&
+    getCanMoveFromSource(gameState, hand.source, {
+      type: "foundation",
+      column: index,
+    });
 
-function CardButtons({ cards }: { cards: Card[] }) {
-  return (
-    <>
-      {cards.map((card, i) => (
-        <CardButton card={card} key={i} />
-      ))}
-    </>
-  );
+  const card = getCard(cards);
+
+  if (!card) {
+    return <EmptySpot onClick={onClick} disabled={!canMove} />;
+  }
+
+  return <OpenCard card={card} onClick={onClick} disabled={!canMove} />;
 }
 
 interface StacksProps {
@@ -146,7 +194,7 @@ function Stack({ children, horizontal = false }: StacksProps) {
   return (
     <div
       className={clsx(
-        "flex",
+        "flex transition-none",
         horizontal ? "-space-x-[6.3rem] " : "flex-col -space-y-[9.5rem]",
       )}
     >
@@ -160,13 +208,54 @@ interface TableauColumnProps {
 }
 function TableauColumn({ index }: TableauColumnProps) {
   const gameState = useGameState();
+  const hand = useHand();
 
   const column = gameState.tableau[index];
 
+  const destination: Destination = {
+    type: "tableau",
+    column: index,
+  };
+
+  if (column.open.length === 0 && column.closed.length === 0) {
+    return (
+      <EmptySpot
+        onClick={() => {
+          if (
+            hand.source &&
+            getCanMoveFromSource(gameState, hand.source, destination)
+          ) {
+            return moveFromSource(gameState, hand.source, destination);
+          }
+        }}
+      />
+    );
+  }
+
   return (
     <Stack>
-      <CardButtons cards={column.closed} />
-      <CardButtons cards={column.open} />
+      {column.closed.map((card, i) => (
+        <ClosedCard disabled key={card} />
+      ))}
+      {column.open.map((card, i) => (
+        <OpenCard
+          card={card}
+          key={card}
+          onClick={() => {
+            if (
+              hand.source &&
+              getCanMoveFromSource(gameState, hand.source, destination)
+            ) {
+              return moveFromSource(gameState, hand.source, destination);
+            }
+            hand.source = {
+              type: "tableau",
+              column: index,
+              index: i,
+            };
+          }}
+        />
+      ))}
     </Stack>
   );
 }
@@ -185,9 +274,40 @@ function Tableau() {
   );
 }
 
+function Hand() {
+  const gameState = useGameState();
+  const hand = useHand();
+
+  useEffect(
+    () =>
+      subscribe(gameStateProxy, () => {
+        hand.source = null;
+      }),
+    [],
+  );
+
+  if (!hand.source) {
+    return null;
+  }
+
+  const cards = getSourceCards(gameState, hand.source);
+
+  return (
+    <div className="absolute bottom-0 overflow-hidden">
+      <div className="relative -bottom-36">
+        <Stack>
+          {cards.map((card, i) => (
+            <OpenCard card={card} key={card} disabled />
+          ))}
+        </Stack>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-start justify-center">
       <div className="grid grid-cols-7 grid-rows-[auto,auto] items-start gap-4 gap-y-16 p-4">
         <Stock />
         <Discard />
@@ -195,6 +315,7 @@ function App() {
         <Foundations />
         <Tableau />
       </div>
+      <Hand />
     </div>
   );
 }
