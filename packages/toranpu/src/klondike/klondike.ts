@@ -428,6 +428,16 @@ if (import.meta.vitest) {
   });
 }
 
+/**
+ * Checks if cards can be placed on the tableau
+ * 
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param cards The cards to place
+ * @param colIndex The index of the tableau column
+ * @returns `true` if the cards can be placed, `false` otherwise
+ */
 export function getCanPlaceOnTableau(
   state: GameState,
   cards: Deck,

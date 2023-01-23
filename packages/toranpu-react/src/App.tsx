@@ -63,7 +63,9 @@ function EmptySpot({ ...props }: ComponentProps<"button">) {
       {...props}
       className={clsx(
         "aspect-[62/88] w-32 rounded-xl border-2 border-green-700",
-        props.disabled ? "" : "hover:border-green-500",
+        props.disabled
+          ? ""
+          : "transition-colors duration-100 hover:border-green-500",
       )}
     />
   );
@@ -74,18 +76,13 @@ export function ClosedCard({ ...props }: ComponentProps<"button">) {
     <button
       {...props}
       className={clsx(
-        "flex aspect-[62/88] w-32 content-center items-center justify-center rounded-xl border-8 border-gray-50 bg-gray-600 transition-transform duration-100",
+        "flex aspect-[62/88] w-32 content-center items-center justify-center rounded-xl border border-slate-700 shadow transition-[transform,shadow] duration-100",
+        "bg-gradient-to-br from-slate-700 to-slate-800",
         props.disabled
           ? ""
           : "hover:scale-110 hover:shadow-2xl active:scale-105",
       )}
-    >
-      <img
-        src="https://raw.githubusercontent.com/meesvandongen/toranpu/main/packages/toranpu-docs/static/img/logo_toranpu.png"
-        alt=""
-        className="w-12"
-      />
-    </button>
+    ></button>
   );
 }
 
@@ -98,6 +95,7 @@ function Stock() {
   if (!card) {
     return (
       <EmptySpot
+        disabled={stock.length === 0}
         onClick={() => {
           drawFromStock(gameState);
         }}
@@ -122,7 +120,7 @@ function Discard() {
   const card = getCard(discard);
 
   if (!card) {
-    return <EmptySpot />;
+    return <EmptySpot disabled />;
   }
 
   return (
@@ -220,6 +218,12 @@ function TableauColumn({ index }: TableauColumnProps) {
   if (column.open.length === 0 && column.closed.length === 0) {
     return (
       <EmptySpot
+        disabled={
+          !(
+            hand.source &&
+            getCanMoveFromSource(gameState, hand.source, destination)
+          )
+        }
         onClick={() => {
           if (
             hand.source &&
@@ -305,6 +309,22 @@ function Hand() {
   );
 }
 
+// function UndoRedo() {
+//   const { undo, canUndo } = useUndoState();
+
+//   return (
+//     <button
+//       disabled={!canUndo()}
+//       className="absolute right-0 bottom-0 m-8 flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 text-5xl"
+//       onClick={() => {
+//         undo();
+//       }}
+//     >
+//       ⎌
+//     </button>
+//   );
+// }
+
 function App() {
   return (
     <div className="flex h-screen items-start justify-center">
@@ -316,6 +336,7 @@ function App() {
         <Tableau />
       </div>
       <Hand />
+      {/* <UndoRedo /> */}
     </div>
   );
 }
