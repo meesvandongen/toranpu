@@ -14,7 +14,13 @@ import {
 } from "toranpu";
 import { subscribe } from "valtio";
 import { suitUnicode } from "./cardToUnicode";
-import { gameStateProxy, useGameState, useHand } from "./state";
+import {
+  GameStateProvider,
+  HandProvider,
+  useGameState,
+  useGameStateProxy,
+  useHand,
+} from "./state";
 
 function OpenCard({
   card,
@@ -88,16 +94,17 @@ export function ClosedCard({ ...props }: ComponentProps<"button">) {
 
 function Stock() {
   const gameState = useGameState();
-  const stock = gameState.stock;
+  const stock = gameState.value.stock;
+  const discard = gameState.value.discard;
 
   const card = getCard(stock);
 
   if (!card) {
     return (
       <EmptySpot
-        disabled={stock.length === 0}
+        disabled={stock.length === 0 && discard.length === 0}
         onClick={() => {
-          drawFromStock(gameState);
+          drawFromStock(gameState.value);
         }}
       />
     );
@@ -106,7 +113,7 @@ function Stock() {
   return (
     <ClosedCard
       onClick={() => {
-        drawFromStock(gameState);
+        drawFromStock(gameState.value);
       }}
     />
   );
@@ -115,7 +122,7 @@ function Stock() {
 function Discard() {
   const gameState = useGameState();
   const hand = useHand();
-  const discard = gameState.discard;
+  const discard = gameState.value.discard;
 
   const card = getCard(discard);
 
@@ -139,7 +146,7 @@ interface FoundationsProps {}
 function Foundations({}: FoundationsProps) {
   const gameState = useGameState();
 
-  const foundations = gameState.foundations;
+  const foundations = gameState.value.foundations;
 
   return (
     <>
@@ -156,13 +163,13 @@ function Foundation({ index }: FoundationProps) {
   const gameState = useGameState();
   const hand = useHand();
 
-  const cards = gameState.foundations[index];
+  const cards = gameState.value.foundations[index];
 
   function onClick() {
     if (!hand.source) {
       return;
     }
-    moveFromSource(gameState, hand.source, {
+    moveFromSource(gameState.value, hand.source, {
       type: "foundation",
       column: index,
     });
@@ -170,7 +177,7 @@ function Foundation({ index }: FoundationProps) {
 
   const canMove =
     !!hand.source &&
-    getCanMoveFromSource(gameState, hand.source, {
+    getCanMoveFromSource(gameState.value, hand.source, {
       type: "foundation",
       column: index,
     });
@@ -208,7 +215,7 @@ function TableauColumn({ index }: TableauColumnProps) {
   const gameState = useGameState();
   const hand = useHand();
 
-  const column = gameState.tableau[index];
+  const column = gameState.value.tableau[index];
 
   const destination: Destination = {
     type: "tableau",
@@ -221,15 +228,15 @@ function TableauColumn({ index }: TableauColumnProps) {
         disabled={
           !(
             hand.source &&
-            getCanMoveFromSource(gameState, hand.source, destination)
+            getCanMoveFromSource(gameState.value, hand.source, destination)
           )
         }
         onClick={() => {
           if (
             hand.source &&
-            getCanMoveFromSource(gameState, hand.source, destination)
+            getCanMoveFromSource(gameState.value, hand.source, destination)
           ) {
-            return moveFromSource(gameState, hand.source, destination);
+            return moveFromSource(gameState.value, hand.source, destination);
           }
         }}
       />
@@ -248,9 +255,9 @@ function TableauColumn({ index }: TableauColumnProps) {
           onClick={() => {
             if (
               hand.source &&
-              getCanMoveFromSource(gameState, hand.source, destination)
+              getCanMoveFromSource(gameState.value, hand.source, destination)
             ) {
-              return moveFromSource(gameState, hand.source, destination);
+              return moveFromSource(gameState.value, hand.source, destination);
             }
             hand.source = {
               type: "tableau",
@@ -267,7 +274,7 @@ function TableauColumn({ index }: TableauColumnProps) {
 function Tableau() {
   const gameState = useGameState();
 
-  const tableau = gameState.tableau;
+  const tableau = gameState.value.tableau;
 
   return (
     <>
@@ -281,12 +288,17 @@ function Tableau() {
 function Hand() {
   const gameState = useGameState();
   const hand = useHand();
+  const gameStateProxy = useGameStateProxy();
 
   useEffect(
     () =>
-      subscribe(gameStateProxy, () => {
-        hand.source = null;
-      }),
+      subscribe(
+        gameStateProxy,
+        () => {
+          hand.source = null;
+        },
+        true,
+      ),
     [],
   );
 
@@ -294,7 +306,7 @@ function Hand() {
     return null;
   }
 
-  const cards = getSourceCards(gameState, hand.source);
+  const cards = getSourceCards(gameState.value, hand.source);
 
   return (
     <div className="absolute bottom-0 overflow-hidden">
@@ -309,35 +321,48 @@ function Hand() {
   );
 }
 
-// function UndoRedo() {
-//   const { undo, canUndo } = useUndoState();
+function UndoRedo() {
+  const gameState = useGameState();
 
-//   return (
-//     <button
-//       disabled={!canUndo()}
-//       className="absolute right-0 bottom-0 m-8 flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 text-5xl"
-//       onClick={() => {
-//         undo();
-//       }}
-//     >
-//       ⎌
-//     </button>
-//   );
-// }
+  gameState.value;
+
+  const disabled = !gameState.canUndo();
+
+  return (
+    <button
+      disabled={disabled}
+      className={clsx(
+        "absolute right-0 bottom-0 m-8 flex h-16 w-16 items-center justify-center rounded-full border border-gray-500 bg-gray-200 text-5xl shadow",
+        disabled
+          ? "opacity-50"
+          : "transition-transform duration-100 hover:scale-105 active:scale-95",
+      )}
+      onClick={() => {
+        gameState.undo();
+      }}
+    >
+      <span className="-mt-2">⎌</span>
+    </button>
+  );
+}
 
 function App() {
   return (
-    <div className="flex h-screen items-start justify-center">
-      <div className="grid grid-cols-7 grid-rows-[auto,auto] items-start gap-4 gap-y-16 p-4">
-        <Stock />
-        <Discard />
-        <div />
-        <Foundations />
-        <Tableau />
-      </div>
-      <Hand />
-      {/* <UndoRedo /> */}
-    </div>
+    <HandProvider>
+      <GameStateProvider>
+        <div className="flex h-screen items-start justify-center">
+          <div className="grid grid-cols-7 grid-rows-[auto,auto] items-start gap-4 gap-y-16 p-4">
+            <Stock />
+            <Discard />
+            <div />
+            <Foundations />
+            <Tableau />
+          </div>
+          <Hand />
+          <UndoRedo />
+        </div>
+      </GameStateProvider>
+    </HandProvider>
   );
 }
 
