@@ -2,14 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-.card-bg {
-  background-color: #e5e5f7;
-  opacity: 0.8;
-  background-image: linear-gradient(135deg, #444cf7 25%, transparent 25%),
-    linear-gradient(225deg, #444cf7 25%, transparent 25%),
-    linear-gradient(45deg, #444cf7 25%, transparent 25%),
-    linear-gradient(315deg, #444cf7 25%, #e5e5f7 25%);
-  background-position: 10px 0, 10px 0, 0 0, 0 0;
-  background-size: 10px 10px;
-  background-repeat: repeat;
+:where(.toranpu-react *) {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+}
+
+:where(.toranpu-react) {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: sans-serif;
+}
+
+:where(.toranpu-react button) {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.toranpu-react button),
+:where(.toranpu-react select) {
+  text-transform: none;
+}
+
+:where(.toranpu-react button),
+:where(.toranpu-react [type="button"]),
+:where(.toranpu-react [type="reset"]),
+:where(.toranpu-react [type="submit"]) {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+:where(.toranpu-react *:-moz-focusring) {
+  outline: auto;
+}
+
+:where(.toranpu-react:-moz-ui-invalid) {
+  box-shadow: none;
+}
+
+:where(.toranpu-react button),
+:where(.toranpu-react [role="button"]) {
+  cursor: pointer;
+}
+
+:where(.toranpu-react *:disabled) {
+  cursor: default;
 }

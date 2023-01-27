@@ -3,6 +3,37 @@ import { GameState, getIsWinningState, setupGame, Source } from "toranpu";
 import { proxy, subscribe } from "valtio";
 import { proxyWithHistory, useProxy } from "valtio/utils";
 
+export type Hand = { source: Source | null };
+const HandContext = React.createContext<Hand | null>(null);
+
+interface HandProviderProps {
+  children?: React.ReactNode;
+}
+export function HandProvider({ children }: HandProviderProps) {
+  const [handProxy] = React.useState<Hand>(() =>
+    proxy({
+      source: null,
+    }),
+  );
+
+  return (
+    <HandContext.Provider value={handProxy}>{children}</HandContext.Provider>
+  );
+}
+
+export function useHandContext() {
+  const hand = React.useContext(HandContext);
+  if (!hand) {
+    throw new Error("useHand must be used within a HandProvider");
+  }
+  return hand;
+}
+
+export function useHandState() {
+  const handProxy = useHandContext();
+  return useProxy(handProxy);
+}
+
 type GameStateContextType = ReturnType<typeof proxyWithHistory<GameState>>;
 const GameStateContext = React.createContext<GameStateContextType | null>(null);
 
@@ -35,7 +66,7 @@ export function GameStateProvider({
   );
 }
 
-export function useGameStateProxy() {
+export function useGameStateContext() {
   const gameStateProxy = React.useContext(GameStateContext);
   if (!gameStateProxy) {
     throw new Error(
@@ -46,38 +77,18 @@ export function useGameStateProxy() {
 }
 
 export function useGameState() {
-  const gameStateProxy = useGameStateProxy();
-
+  const gameStateProxy = useGameStateContext();
   return useProxy(gameStateProxy);
 }
 
-export type Hand = { source: Source | null };
-const HandContext = React.createContext<Hand | null>(null);
-
-interface HandProviderProps {
-  children?: React.ReactNode;
+interface ToranpuProviderProps {
+  seed?: string;
+  children: React.ReactNode;
 }
-export function HandProvider({ children }: HandProviderProps) {
-  const [handProxy] = React.useState<Hand>(() =>
-    proxy({
-      source: null,
-    }),
-  );
-
+export function ToranpuProvider({ children, seed }: ToranpuProviderProps) {
   return (
-    <HandContext.Provider value={handProxy}>{children}</HandContext.Provider>
+    <GameStateProvider seed={seed}>
+      <HandProvider>{children}</HandProvider>
+    </GameStateProvider>
   );
-}
-
-export function useHandProxy() {
-  const hand = React.useContext(HandContext);
-  if (!hand) {
-    throw new Error("useHand must be used within a HandProvider");
-  }
-  return hand;
-}
-
-export function useHand() {
-  const handProxy = useHandProxy();
-  return useProxy(handProxy);
 }
