@@ -430,7 +430,7 @@ if (import.meta.vitest) {
 
 /**
  * Checks if cards can be placed on the tableau
- * 
+ *
  * @category Klondike
  *
  * @param state The game state
@@ -909,5 +909,149 @@ if (import.meta.vitest) {
     ];
 
     expect(getIsWinningState(state)).toBe(false);
+  });
+}
+
+export function solveNeutral(state: GameState): void {
+  while (solveNeutralStep(state)) {
+    // Empty.
+  }
+}
+
+if (import.meta.vitest) {
+  // TODO: Add tests.
+}
+
+/**
+ * Moves a neutral card form the tableau to the foundation, if possible.
+ *
+ * A neutral card is a card that does not impact the ability of the player to
+ * win the game. For example, an Ace is always neutral, as it is the lowest
+ * card; no card can be placed on top of it in the tableau. Similarly, a nine is
+ * neutral if an eight of the opposite color is already on the foundation.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ *
+ * @returns `true` if a neutral card was moved, `false` otherwise.
+ */
+export function solveNeutralStep(state: GameState): boolean {
+  for (
+    let tableauColumnIndex = 0;
+    tableauColumnIndex < state.tableau.length;
+    tableauColumnIndex++
+  ) {
+    const tableauColumn = state.tableau[tableauColumnIndex];
+    const tableauCard = getCard(tableauColumn.open);
+
+    if (tableauCard === null) {
+      continue;
+    }
+
+    if (getIsNeutralCard(state, tableauCard)) {
+      const tableauCardColor = getColor(tableauCard);
+      const tableauCardRank = getRank(tableauCard);
+
+      const foundationColumnIndex = state.foundations.findIndex(
+        (foundation) => {
+          const foundationCard = getCard(foundation);
+          if (foundationCard === null) {
+            if (tableauCardRank === Rank.ace) {
+              return true;
+            }
+            return false;
+          }
+          const foundationCardColor = getColor(foundationCard);
+          return foundationCardColor === tableauCardColor;
+        },
+      );
+
+      moveFromTableau(
+        state,
+        {
+          type: "tableau",
+          index: tableauColumn.open.length - 1,
+          column: tableauColumnIndex,
+        },
+        {
+          type: "foundation",
+          column: foundationColumnIndex,
+        },
+      );
+      return true;
+    }
+  }
+
+  return false;
+}
+
+if (import.meta.vitest) {
+  // TODO: Add tests.
+}
+
+export function getIsNeutralCard(state: GameState, card: Card): boolean {
+  if (getRank(card) === Rank.ace) {
+    return true;
+  }
+
+  const cardValue = getCardValue(card);
+  const cardColor = getColor(card);
+
+  const everyFoundationIsNeutral = state.foundations.every((foundation) => {
+    const foundationCard = getCard(foundation);
+    if (foundationCard === null) {
+      return false;
+    }
+
+    const foundationCardColor = getColor(foundationCard);
+    if (foundationCardColor === cardColor) {
+      return true;
+    }
+    const foundationCardValue = getCardValue(foundationCard);
+    return foundationCardValue >= cardValue - 1;
+  });
+
+  return everyFoundationIsNeutral;
+}
+
+if (import.meta.vitest) {
+  it("checks if a card is neutral", () => {
+    const state = empty();
+    state.foundations = [["As"], ["Ah"], ["Ad"], ["Ac"]];
+
+    expect(getIsNeutralCard(state, "2s")).toBe(true);
+  });
+
+  it("checks if a card is not neutral", () => {
+    const state = empty();
+    state.foundations = [
+      ["As", "2s", "3s"],
+      ["Ac", "2c", "3c"],
+      ["Ah", "2h"],
+      ["Ad", "2d"],
+    ];
+
+    expect(getIsNeutralCard(state, "4s")).toBe(false);
+  });
+
+  it("returns true for a color-inbalanced foundation", () => {
+    const state = empty();
+    state.foundations = [
+      ["As", "2s", "3s"],
+      ["Ac", "2c", "3c"],
+      ["Ah", "2h"],
+      ["Ad", "2d"],
+    ];
+
+    expect(getIsNeutralCard(state, "3h")).toBe(true);
+    expect(getIsNeutralCard(state, "3d")).toBe(true);
+  });
+
+  it("also works if the foundations are empty", () => {
+    const state = empty();
+
+    expect(getIsNeutralCard(state, "2s")).toBe(false);
+    expect(getIsNeutralCard(state, "As")).toBe(true);
   });
 }

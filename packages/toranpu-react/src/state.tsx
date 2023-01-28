@@ -9,6 +9,7 @@ import { GameState, getIsWinningState, setupGame, Source } from "toranpu";
 import { proxy, subscribe } from "valtio";
 import { useProxy } from "valtio/utils";
 import { proxyWithHistory } from "./proxy-with-history-storage";
+import { useEvent } from "./utils";
 
 export type Hand = { source: Source | null };
 const HandContext = createContext<Hand | null>(null);
@@ -54,6 +55,8 @@ export function GameStateProvider({
   children,
   onWin = () => {},
 }: GameStateProviderProps) {
+  const _onWin = useEvent(onWin);
+
   const [gameStateProxy] = useState<GameStateContextType>(() => {
     const storedState = localStorage.getItem("toranpu-state");
     if (storedState) {
@@ -67,11 +70,11 @@ export function GameStateProvider({
 
   useEffect(() => {
     if (getIsWinningState(gameStateProxy.value)) {
-      onWin();
+      _onWin();
     }
     const sub = subscribe(gameStateProxy, () => {
       if (getIsWinningState(gameStateProxy.value)) {
-        onWin();
+        _onWin();
       }
       localStorage.setItem(
         "toranpu-state",
@@ -84,7 +87,7 @@ export function GameStateProvider({
     });
 
     return sub;
-  });
+  }, [_onWin, gameStateProxy, seed]);
 
   return (
     <GameStateContext.Provider value={gameStateProxy}>

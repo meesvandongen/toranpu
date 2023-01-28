@@ -9,7 +9,9 @@ export default function Index() {
       <div style={{ background: "#166534" }}>
         <Toranpu
           onWin={() => {
-            alert("You win!");
+            setTimeout(() => {
+              alert("You win!");
+            }, 1);
           }}
         />
       </div>
