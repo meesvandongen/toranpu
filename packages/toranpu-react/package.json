@@ -9,7 +9,7 @@
   "css": "./dist/index.css",
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "parcel build",
+    "build": "rimraf dist && parcel build",
     "docs": "npx @mvd/tsmd"
   },
   "dependencies": {
