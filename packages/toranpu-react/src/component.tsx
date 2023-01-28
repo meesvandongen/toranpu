@@ -23,12 +23,15 @@ function OpenCard({
 
   return (
     <button
+      type="button"
       {...props}
       className={clsx(
-        "preflight-button flex aspect-[62/88] w-32 transform flex-col rounded-xl border border-gray-300 bg-gray-50 shadow transition-transform duration-100",
+        "flex aspect-[62/88] w-32 transform flex-col rounded-xl border border-gray-300 bg-gray-50 shadow ",
         color === "black" && "text-black",
         color === "red" && "text-red-500",
-        disabled ? "" : "hover:scale-110 hover:shadow-2xl active:scale-105",
+        disabled
+          ? ""
+          : "transition-transform duration-100 hover:scale-110 hover:shadow-2xl active:scale-105",
       )}
     >
       {/* top-section */}
@@ -54,9 +57,10 @@ function OpenCard({
 function EmptySpot({ ...props }: ComponentProps<"button">) {
   return (
     <button
+      type="button"
       {...props}
       className={clsx(
-        "preflight-button aspect-[62/88] w-32 rounded-xl border-2 border-green-700",
+        "aspect-[62/88] w-32 rounded-xl border-2 border-green-700",
         props.disabled
           ? ""
           : "transition-colors duration-100 hover:border-green-500",
@@ -68,9 +72,10 @@ function EmptySpot({ ...props }: ComponentProps<"button">) {
 function ClosedCard({ ...props }: ComponentProps<"button">) {
   return (
     <button
+      type="button"
       {...props}
       className={clsx(
-        "preflight-button flex aspect-[62/88] w-32 content-center items-center justify-center rounded-xl border border-slate-700 shadow transition-[transform,shadow] duration-100",
+        "flex aspect-[62/88] w-32 content-center items-center justify-center rounded-xl border border-slate-700 shadow transition-[transform,shadow] duration-100",
         "bg-gradient-to-br from-slate-700 to-slate-800",
         props.disabled
           ? ""
@@ -197,16 +202,17 @@ function Undo() {
 
   return (
     <button
+      type="button"
       disabled={!canUndo}
       className={clsx(
-        "preflight-button absolute right-0 bottom-0 m-8 flex h-16 w-16 items-center justify-center rounded-full border border-gray-500 bg-gray-200 text-5xl shadow",
+        "w-full rounded border border-gray-600 bg-gray-700 p-1 text-xl text-gray-100",
         canUndo
-          ? "transition-transform duration-100 hover:scale-105 active:scale-95"
+          ? "transition-transform duration-100 hover:scale-110 hover:shadow-2xl active:scale-105"
           : "opacity-50",
       )}
       onClick={undo}
     >
-      <span className="-mt-2">⎌</span>
+      <span className="-ml-2">◀</span>
     </button>
   );
 }
@@ -221,12 +227,13 @@ export function Toranpu({ seed }: ToranpuProps) {
         <div className="grid grid-cols-7 grid-rows-[auto,auto] items-start gap-4 gap-y-16 p-4">
           <Stock />
           <Discard />
-          <div />
+          <div className="p-1">
+            <Undo />
+          </div>
           <Foundations />
           <Tableau />
         </div>
         <Hand />
-        <Undo />
       </div>
     </ToranpuProvider>
   );

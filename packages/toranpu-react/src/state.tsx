@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { GameState, getIsWinningState, setupGame, Source } from "toranpu";
 import { proxy, subscribe } from "valtio";
-import { proxyWithHistory, useProxy } from "valtio/utils";
+import { useProxy } from "valtio/utils";
+import { proxyWithHistory } from "./proxy-with-history-storage";
 
 export type Hand = { source: Source | null };
-const HandContext = React.createContext<Hand | null>(null);
+const HandContext = createContext<Hand | null>(null);
 
 interface HandProviderProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 export function HandProvider({ children }: HandProviderProps) {
-  const [handProxy] = React.useState<Hand>(() =>
+  const [handProxy] = useState<Hand>(() =>
     proxy({
       source: null,
     }),
@@ -22,7 +29,7 @@ export function HandProvider({ children }: HandProviderProps) {
 }
 
 export function useHandContext() {
-  const hand = React.useContext(HandContext);
+  const hand = useContext(HandContext);
   if (!hand) {
     throw new Error("useHand must be used within a HandProvider");
   }
@@ -35,11 +42,11 @@ export function useHandState() {
 }
 
 type GameStateContextType = ReturnType<typeof proxyWithHistory<GameState>>;
-const GameStateContext = React.createContext<GameStateContextType | null>(null);
+const GameStateContext = createContext<GameStateContextType | null>(null);
 
 interface GameStateProviderProps {
   seed?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   onWin?: () => void;
 }
 export function GameStateProvider({
@@ -47,15 +54,30 @@ export function GameStateProvider({
   children,
   onWin = () => {},
 }: GameStateProviderProps) {
-  const [gameStateProxy] = React.useState<GameStateContextType>(() =>
-    proxyWithHistory(setupGame(seed)),
-  );
+  const [gameStateProxy] = useState<GameStateContextType>(() => {
+    const storedState = localStorage.getItem("toranpu-state");
+    if (storedState) {
+      const parsedState = JSON.parse(storedState);
+      if (parsedState.seed === seed) {
+        return proxyWithHistory(parsedState.gameState, parsedState.history);
+      }
+    }
+    return proxyWithHistory(setupGame(seed));
+  });
 
   useEffect(() =>
     subscribe(gameStateProxy, () => {
       if (getIsWinningState(gameStateProxy.value)) {
         onWin();
       }
+      localStorage.setItem(
+        "toranpu-state",
+        JSON.stringify({
+          seed,
+          gameState: gameStateProxy.value,
+          history: gameStateProxy.history,
+        }),
+      );
     }),
   );
 
@@ -67,7 +89,7 @@ export function GameStateProvider({
 }
 
 export function useGameStateContext() {
-  const gameStateProxy = React.useContext(GameStateContext);
+  const gameStateProxy = useContext(GameStateContext);
   if (!gameStateProxy) {
     throw new Error(
       "useGameStateProxy must be used within a GameStateProvider",
@@ -83,7 +105,7 @@ export function useGameState() {
 
 interface ToranpuProviderProps {
   seed?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 export function ToranpuProvider({ children, seed }: ToranpuProviderProps) {
   return (

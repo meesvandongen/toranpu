@@ -122,6 +122,7 @@ importers:
       prettier-plugin-tailwindcss: ^0.2.1
       react: ^17.0.2
       react-dom: ^17.0.2
+      rimraf: ^4.1.2
       tailwindcss: ^3.2.4
       toranpu: workspace:*
       typescript: ^4.9.3
@@ -140,6 +141,7 @@ importers:
       prettier-plugin-tailwindcss: 0.2.1_prettier@2.8.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      rimraf: 4.1.2
       tailwindcss: 3.2.4_postcss@8.4.21
       typescript: 4.9.4
 
@@ -10809,6 +10811,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+
+  /rimraf/4.1.2:
+    resolution: {integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /rollup/2.78.1:
     resolution: {integrity: sha512-VeeCgtGi4P+o9hIg+xz4qQpRl6R401LWEXBmxYKOV4zlF82lyhgh2hTZnheFUbANE8l2A41F458iwj2vEYaXJg==}

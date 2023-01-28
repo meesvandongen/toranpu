@@ -5,7 +5,7 @@ import Layout from "@theme/Layout";
 
 export default function Index() {
   return (
-    <Layout title="Hello" description="Hello React Page">
+    <Layout title="Demo" description="Toranpu Demo">
       <div style={{ background: "#166534" }}>
         <Toranpu />
       </div>
