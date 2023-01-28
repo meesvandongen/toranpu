@@ -219,10 +219,11 @@ function Undo() {
 
 interface ToranpuProps {
   seed?: string;
+  onWin?: () => void;
 }
-export function Toranpu({ seed }: ToranpuProps) {
+export function Toranpu({ seed, onWin }: ToranpuProps) {
   return (
-    <ToranpuProvider seed={seed}>
+    <ToranpuProvider seed={seed} onWin={onWin}>
       <div className="toranpu-react flex h-screen items-start justify-center">
         <div className="grid grid-cols-7 grid-rows-[auto,auto] items-start gap-4 gap-y-16 p-4">
           <Stock />

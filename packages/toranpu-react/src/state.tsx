@@ -65,8 +65,11 @@ export function GameStateProvider({
     return proxyWithHistory(setupGame(seed));
   });
 
-  useEffect(() =>
-    subscribe(gameStateProxy, () => {
+  useEffect(() => {
+    if (getIsWinningState(gameStateProxy.value)) {
+      onWin();
+    }
+    const sub = subscribe(gameStateProxy, () => {
       if (getIsWinningState(gameStateProxy.value)) {
         onWin();
       }
@@ -78,8 +81,10 @@ export function GameStateProvider({
           history: gameStateProxy.history,
         }),
       );
-    }),
-  );
+    });
+
+    return sub;
+  });
 
   return (
     <GameStateContext.Provider value={gameStateProxy}>
@@ -106,10 +111,15 @@ export function useGameState() {
 interface ToranpuProviderProps {
   seed?: string;
   children: ReactNode;
+  onWin?: () => void;
 }
-export function ToranpuProvider({ children, seed }: ToranpuProviderProps) {
+export function ToranpuProvider({
+  children,
+  seed,
+  onWin,
+}: ToranpuProviderProps) {
   return (
-    <GameStateProvider seed={seed}>
+    <GameStateProvider seed={seed} onWin={onWin}>
       <HandProvider>{children}</HandProvider>
     </GameStateProvider>
   );

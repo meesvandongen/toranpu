@@ -7,7 +7,11 @@ export default function Index() {
   return (
     <Layout title="Demo" description="Toranpu Demo">
       <div style={{ background: "#166534" }}>
-        <Toranpu />
+        <Toranpu
+          onWin={() => {
+            alert("You win!");
+          }}
+        />
       </div>
     </Layout>
   );
