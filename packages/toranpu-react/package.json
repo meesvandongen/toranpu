@@ -26,7 +26,7 @@
       "source": "./src/tailwind.css"
     },
     "module": {
-      "source": "./src/state.tsx"
+      "source": "./src/index.ts"
     },
     "types": {
       "source": "./src/index.ts"
