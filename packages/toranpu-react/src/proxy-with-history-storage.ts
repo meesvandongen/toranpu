@@ -7,7 +7,7 @@ type Snapshots<T> = Snapshot<T>[];
 const isObject = (x: unknown): x is object =>
   typeof x === "object" && x !== null;
 
-const deepClone = <T,>(obj: T): T => {
+const deepClone = <T>(obj: T): T => {
   if (!isObject(obj)) {
     return obj;
   }
@@ -28,16 +28,18 @@ export interface History<V> {
 
 export function proxyWithHistory<V>(
   initialValue: V,
-  initialHistory: History<V> = {
-    wip: undefined as SnapshotOrUndefined<V>,
-    snapshots: [] as Snapshots<V>,
-    index: -1,
-  },
+  initialHistory?: History<V>,
   skipSubscribe = false,
 ) {
   const proxyObject = proxy({
     value: initialValue,
-    history: ref(initialHistory),
+    history: initialHistory
+      ? ref(initialHistory)
+      : ref({
+          wip: undefined as SnapshotOrUndefined<V>,
+          snapshots: [] as Snapshots<V>,
+          index: -1,
+        }),
     canUndo: () => proxyObject.history.index > 0,
     undo: () => {
       if (proxyObject.canUndo()) {
