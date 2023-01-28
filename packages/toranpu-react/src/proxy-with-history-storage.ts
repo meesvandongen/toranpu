@@ -20,7 +20,7 @@ const deepClone = <T,>(obj: T): T => {
   return baseObject;
 };
 
-interface History<V> {
+export interface History<V> {
   wip: SnapshotOrUndefined<V>;
   snapshots: Snapshots<V>;
   index: number;
