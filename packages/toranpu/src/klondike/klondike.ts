@@ -5,6 +5,7 @@ import {
   Deck,
   drawCard,
   drawCards,
+  getCard,
   getCards,
   getCardValue,
   getColor,
@@ -16,7 +17,12 @@ import {
   shuffleDeck,
 } from "../deck";
 
-import type { GameState, TableauSource, Destination } from "./klondike.types";
+import type {
+  GameState,
+  TableauSource,
+  Destination,
+  Source,
+} from "./klondike.types";
 
 function empty(): GameState {
   return {
@@ -297,6 +303,36 @@ if (import.meta.vitest) {
     expect(state.tableau[0].open.length).toBe(2);
     expect(state.tableau[1].open).toEqual(["9d", "8s", "7h"]);
   });
+
+  it("does not move a card from the tableau to tableau if the move is invalid", () => {
+    const state: GameState = empty();
+    state.tableau[0].open = ["Th"];
+    state.tableau[1].open = ["8c"];
+
+    moveFromTableau(
+      state,
+      { type: "tableau", column: 0, index: 0 },
+      { type: "tableau", column: 1 },
+    );
+
+    expect(state.tableau[0].open.length).toBe(1);
+    expect(state.tableau[1].open.length).toBe(1);
+  });
+
+  it("moves a card from the tableau to a foundation", () => {
+    const state: GameState = empty();
+    state.tableau[0].open = ["2c"];
+    state.foundations[0] = ["Ac"];
+
+    moveFromTableau(
+      state,
+      { type: "tableau", column: 0, index: 0 },
+      { type: "foundation", column: 0 },
+    );
+
+    expect(state.tableau[0].open.length).toBe(0);
+    expect(state.foundations[0]).toEqual(["Ac", "2c"]);
+  });
 }
 
 /**
@@ -322,14 +358,61 @@ export function getCanMoveFromTableau(
     return getCanPlaceOnTableau(state, cards, destination.column);
   }
 
-  if (destination.type === "foundation") {
-    if (cards.length !== 1) {
-      return false;
-    }
-    return getCanPlaceOnFoundation(state, cards[0], destination.column);
+  if (cards.length !== 1) {
+    return false;
   }
+  return getCanPlaceOnFoundation(state, cards[0], destination.column);
+}
 
-  return false;
+if (import.meta.vitest) {
+  it("returns false if we try to move multiple cards to the foundation", () => {
+    const state: GameState = empty();
+    state.tableau[0].open = ["2c", "3c"];
+    state.foundations[0] = ["Ac"];
+
+    expect(
+      getCanMoveFromTableau(
+        state,
+        { type: "tableau", column: 0, index: 0 },
+        { type: "foundation", column: 0 },
+      ),
+    ).toBe(false);
+  });
+}
+
+/**
+ * Get cards from a source
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param source The source of the cards
+ *
+ * @returns The cards from the source
+ */
+export function getSourceCards(state: GameState, source: Source): Deck {
+  if (source.type === "tableau") {
+    return getTableauCards(state, source.column, source.index);
+  }
+  return getCards(state.discard, 1);
+}
+
+if (import.meta.vitest) {
+  it("gets cards from the tableau", () => {
+    const state: GameState = empty();
+    state.tableau[0].open = ["2c", "3c"];
+
+    expect(
+      getSourceCards(state, { type: "tableau", column: 0, index: 1 }),
+    ).toEqual(["3c"]);
+  });
+
+  it("gets cards from the discard", () => {
+    const state: GameState = empty();
+    state.discard = ["2c", "3c"];
+
+    expect(getSourceCards(state, { type: "discard" })).toEqual(["3c"]);
+  });
 }
 
 function placeOnTableau(state: GameState, cards: Deck, colIndex: number): void {
@@ -345,34 +428,47 @@ if (import.meta.vitest) {
   });
 }
 
-function getCanPlaceOnTableau(
+/**
+ * Checks if cards can be placed on the tableau
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param cards The cards to place
+ * @param colIndex The index of the tableau column
+ * @returns `true` if the cards can be placed, `false` otherwise
+ */
+export function getCanPlaceOnTableau(
   state: GameState,
   cards: Deck,
   colIndex: number,
 ): boolean {
   const tableau = state.tableau[colIndex];
 
-  const tableauTopCard = tableau.open[tableau.open.length - 1];
-  const tableauTopCardColor = getColor(tableauTopCard);
-  const tableauTopCardValue = getCardValue(tableauTopCard);
+  const tableauTopCard = tableau.open[tableau.open.length - 1] as
+    | Card
+    | undefined;
 
-  const topCard = cards[0];
-  const topCardRank = getRank(topCard);
-  const topCardColor = getColor(topCard);
-  const topCardValue = getCardValue(topCard);
+  const bottomCard = cards[0];
+  const bottomCardRank = getRank(bottomCard);
+  const bottomCardColor = getColor(bottomCard);
+  const bottomCardValue = getCardValue(bottomCard);
 
   if (tableauTopCard === undefined) {
-    if (topCardRank !== Rank.king) {
+    if (bottomCardRank !== Rank.king) {
       return false;
     }
     return true;
   }
 
-  if (topCardValue !== tableauTopCardValue - 1) {
+  const tableauTopCardColor = getColor(tableauTopCard);
+  const tableauTopCardValue = getCardValue(tableauTopCard);
+
+  if (bottomCardValue !== tableauTopCardValue - 1) {
     return false;
   }
 
-  if (topCardColor === tableauTopCardColor) {
+  if (bottomCardColor === tableauTopCardColor) {
     return false;
   }
 
@@ -388,6 +484,13 @@ if (import.meta.vitest) {
     expect(getCanPlaceOnTableau(state, ["Jc"], 0)).toBe(true);
     expect(getCanPlaceOnTableau(state, ["Jd"], 0)).toBe(false);
     expect(getCanPlaceOnTableau(state, ["Jh"], 0)).toBe(false);
+  });
+
+  it("can only place a king on an empty tableau", () => {
+    const state = empty();
+
+    expect(getCanPlaceOnTableau(state, ["Qs"], 0)).toBe(false);
+    expect(getCanPlaceOnTableau(state, ["Ks"], 0)).toBe(true);
   });
 }
 
@@ -487,15 +590,15 @@ if (import.meta.vitest) {
  * @param state The game state.
  * @param destination The destination to move the card to.
  */
-export function moveFromStock(
+export function moveFromDiscard(
   state: GameState,
   destination: Destination,
 ): void {
-  if (!getCanMoveFromStock(state, destination)) {
+  if (!getCanMoveFromDiscard(state, destination)) {
     return;
   }
 
-  const card = drawCard(state.stock);
+  const card = drawCard(state.discard);
 
   if (destination.type === "tableau") {
     placeOnTableau(state, [card], destination.column);
@@ -506,49 +609,49 @@ export function moveFromStock(
 }
 
 if (import.meta.vitest) {
-  it("moves a card from the stock to the tableau", () => {
+  it("moves a card from the discard to the tableau", () => {
     const state = empty();
-    state.stock = ["Js"];
+    state.discard = ["Js"];
     state.tableau[0].open = ["Ks", "Qd"];
-    moveFromStock(state, { type: "tableau", column: 0 });
+    moveFromDiscard(state, { type: "tableau", column: 0 });
 
-    expect(state.stock.length).toBe(0);
+    expect(state.discard.length).toBe(0);
     expect(state.tableau[0].open.length).toBe(3);
   });
 
-  it("moves a card from the stock to the foundation", () => {
+  it("moves a card from the discard to the foundation", () => {
     const state = empty();
-    state.stock = ["2s"];
+    state.discard = ["2s"];
     state.foundations[0] = ["As"];
-    moveFromStock(state, { type: "foundation", column: 0 });
+    moveFromDiscard(state, { type: "foundation", column: 0 });
 
-    expect(state.stock.length).toBe(0);
+    expect(state.discard.length).toBe(0);
     expect(state.foundations[0].length).toBe(2);
   });
 
-  it("does not move a card from the stock to the tableau if the move is not valid", () => {
+  it("does not move a card from the discard to the tableau if the move is not valid", () => {
     const state = empty();
-    state.stock = ["Js"];
+    state.discard = ["Js"];
     state.tableau[0].open = ["Kd", "Qs"];
-    moveFromStock(state, { type: "tableau", column: 0 });
+    moveFromDiscard(state, { type: "tableau", column: 0 });
 
-    expect(state.stock.length).toBe(1);
+    expect(state.discard.length).toBe(1);
     expect(state.tableau[0].open.length).toBe(2);
   });
 
-  it("does not move a card from the stock to the foundation if the move is not valid", () => {
+  it("does not move a card from the discard to the foundation if the move is not valid", () => {
     const state = empty();
-    state.stock = ["2s"];
+    state.discard = ["2s"];
     state.foundations[0] = [];
-    moveFromStock(state, { type: "foundation", column: 0 });
+    moveFromDiscard(state, { type: "foundation", column: 0 });
 
-    expect(state.stock.length).toBe(1);
+    expect(state.discard.length).toBe(1);
     expect(state.foundations[0].length).toBe(0);
   });
 }
 
 /**
- * Checks if a card can be moved from the stock to the tableau or foundation.
+ * Checks if a card can be moved from the discard to the tableau or foundation.
  *
  * @category Klondike
  *
@@ -557,15 +660,119 @@ if (import.meta.vitest) {
  *
  * @returns `true` if the move is valid, `false` otherwise.
  */
-export function getCanMoveFromStock(
+export function getCanMoveFromDiscard(
   state: GameState,
   destination: Destination,
 ): boolean {
-  if (destination.type === "tableau") {
-    return getCanPlaceOnTableau(state, state.stock, destination.column);
+  const card = getCard(state.discard);
+
+  if (card === null) {
+    return false;
   }
 
-  return getCanPlaceOnFoundation(state, state.stock[0], destination.column);
+  if (destination.type === "tableau") {
+    return getCanPlaceOnTableau(state, [card], destination.column);
+  }
+
+  return getCanPlaceOnFoundation(state, card, destination.column);
+}
+
+if (import.meta.vitest) {
+  it("checks if a card can be moved from the discard to the tableau", () => {
+    const state = empty();
+    state.discard = ["Js"];
+    state.tableau[0].open = ["Ks", "Qd"];
+
+    expect(getCanMoveFromDiscard(state, { type: "tableau", column: 0 })).toBe(
+      true,
+    );
+  });
+
+  it("checks if a card can be moved from the discard to the foundation", () => {
+    const state = empty();
+    state.discard = ["2s"];
+    state.foundations[0] = ["As"];
+
+    expect(
+      getCanMoveFromDiscard(state, { type: "foundation", column: 0 }),
+    ).toBe(true);
+  });
+
+  it("checks if a card can be moved from the discard to the tableau if the move is not valid", () => {
+    const state = empty();
+    state.discard = ["Js"];
+    state.tableau[0].open = ["Kd", "Qs"];
+
+    expect(getCanMoveFromDiscard(state, { type: "tableau", column: 0 })).toBe(
+      false,
+    );
+  });
+
+  it("checks if a card can be moved from the discard to the foundation if the move is not valid", () => {
+    const state = empty();
+    state.discard = ["2s"];
+    state.foundations[0] = [];
+
+    expect(
+      getCanMoveFromDiscard(state, { type: "foundation", column: 0 }),
+    ).toBe(false);
+  });
+
+  it("checks if a card can be moved from the discard to the tableau if the discard is empty", () => {
+    const state = empty();
+    state.tableau[0].open = ["Ks", "Qd"];
+
+    expect(getCanMoveFromDiscard(state, { type: "tableau", column: 0 })).toBe(
+      false,
+    );
+  });
+}
+
+/**
+ * Checks if a card can be moved from a source to a destination.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ * @param source The source to move the card from.
+ * @param destination The destination to move the card to.
+ *
+ * @returns `true` if the move is valid, `false` otherwise.
+ */
+export function getCanMoveFromSource(
+  state: GameState,
+  source: Source,
+  destination: Destination,
+): boolean {
+  if (source.type === "discard") {
+    return getCanMoveFromDiscard(state, destination);
+  }
+  return getCanMoveFromTableau(state, source, destination);
+}
+
+/**
+ * Moves a card from a source to a destination.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ * @param source The source to move the card from.
+ * @param destination The destination to move the card to.
+ */
+export function moveFromSource(
+  state: GameState,
+  source: Source,
+  destination: Destination,
+) {
+  if (!getCanMoveFromSource(state, source, destination)) {
+    return;
+  }
+
+  if (source.type === "discard") {
+    return moveFromDiscard(state, destination);
+  }
+
+  return moveFromTableau(state, source, destination);
 }
 
 /**
@@ -702,5 +909,306 @@ if (import.meta.vitest) {
     ];
 
     expect(getIsWinningState(state)).toBe(false);
+  });
+}
+
+/**
+ * Recursively moves neutral cards from the tableau to the foundation.
+ *
+ * A neutral card is a card that does not impact the ability of the player to
+ * win the game. For example, an Ace is always neutral, as it is the lowest
+ * card; no card can be placed on top of it in the tableau. Similarly, a nine is
+ * neutral if an eight of the opposite color is already on the foundation.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ */
+export function solveNeutral(state: GameState): void {
+  while (solveNeutralStep(state)) {
+    // Empty.
+  }
+}
+
+if (import.meta.vitest) {
+  // TODO: Add tests.
+}
+
+/**
+ * Moves a neutral card form the tableau to the foundation, if possible. See
+ * {@link solveNeutral} for more information.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ *
+ * @returns `true` if a neutral card was moved, `false` otherwise.
+ */
+export function solveNeutralStep(state: GameState): boolean {
+  for (
+    let tableauColumnIndex = 0;
+    tableauColumnIndex < state.tableau.length;
+    tableauColumnIndex++
+  ) {
+    const tableauColumn = state.tableau[tableauColumnIndex];
+    const tableauCard = getCard(tableauColumn.open);
+
+    if (tableauCard === null) {
+      continue;
+    }
+
+    if (getIsNeutralCard(state, tableauCard)) {
+      const tableauCardSuit = getSuit(tableauCard);
+      const tableauCardRank = getRank(tableauCard);
+
+      const foundationColumnIndex = state.foundations.findIndex(
+        (foundation) => {
+          const foundationCard = getCard(foundation);
+          if (foundationCard === null) {
+            return tableauCardRank === Rank.ace;
+          }
+          const foundationCardSuit = getSuit(foundationCard);
+          return foundationCardSuit === tableauCardSuit;
+        },
+      );
+
+      const source: Source = {
+        type: "tableau",
+        index: tableauColumn.open.length - 1,
+        column: tableauColumnIndex,
+      };
+
+      const destination: Destination = {
+        type: "foundation",
+        column: foundationColumnIndex,
+      };
+
+      if (getCanMoveFromTableau(state, source, destination)) {
+        moveFromTableau(state, source, destination);
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+if (import.meta.vitest) {
+  it("solves an ace", () => {
+    const state = empty();
+    state.tableau[0].open = ["As"];
+    state.foundations = [[], [], [], []];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As"]);
+  });
+
+  it("solves a three when all foundations are twos", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad", "2d"],
+      ["Ac", "2c"],
+      ["Ah", "2h"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As", "2s", "3s"]);
+  });
+
+  it("does not solve a three when all foundations are aces", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [["As"], ["Ad"], ["Ac"], ["Ah"]];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual(["3s"]);
+    expect(state.foundations[0]).toEqual(["As"]);
+  });
+
+  it("solves a three when all other foundations are fours", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad", "2d", "3d", "4d"],
+      ["Ac", "2c", "3c", "4c"],
+      ["Ah", "2h", "3h", "4h"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As", "2s", "3s"]);
+  });
+
+  it("solves a three when all other foundations of the opposite color are fours", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad", "2d", "3d", "4d"],
+      ["Ac"],
+      ["Ah", "2h", "3h", "4h"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As", "2s", "3s"]);
+  });
+
+  it("does not solve a three when all other foundations of the opposite color are aces", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad"],
+      ["Ac", "2c", "3c", "4c"],
+      ["Ah"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual(["3s"]);
+    expect(state.foundations[0]).toEqual(["As", "2s"]);
+  });
+
+  it("works with multiple cards in the tableau", () => {
+    const state = empty();
+    state.tableau[0].open = ["2d", "Ac"];
+    state.foundations[0] = ["As"];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual(["2d"]);
+    expect(state.foundations[0]).toEqual(["As"]);
+    expect(state.foundations[1]).toEqual(["Ac"]);
+  });
+
+  it("returns false if no neutral card was moved", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    const result = solveNeutralStep(state);
+
+    expect(result).toBe(false);
+  });
+
+  it("returns true if a neutral card was moved", () => {
+    const state = empty();
+    state.tableau[0].open = ["As"];
+    const result = solveNeutralStep(state);
+
+    expect(result).toBe(true);
+  });
+
+  it("only allows valid moves, if multiple of the same suit are neutral", () => {
+    const state = empty();
+
+    state.foundations = [
+      ["As", "2s", "3s"],
+      ["Ac"],
+      ["Ah", "2h", "3h", "4h", "5h"],
+      ["Ad", "2d"],
+    ];
+
+    state.tableau[0].open = ["3c"];
+    state.tableau[1].open = ["2c"];
+
+    const result = solveNeutralStep(state);
+
+    expect(result).toBe(true);
+    expect(state.tableau[0].open).toEqual(["3c"]);
+    expect(state.tableau[1].open).toEqual([]);
+    expect(state.foundations[1]).toEqual(["Ac", "2c"]);
+  });
+}
+
+/**
+ * Checks if a card is neutral. See {@link solveNeutral} for more information
+ * about neutral cards.
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param card The card for which to check if it is neutral
+ * @returns `true` if the card is neutral, `false` otherwise
+ */
+export function getIsNeutralCard(state: GameState, card: Card): boolean {
+  if (getRank(card) === Rank.ace) {
+    return true;
+  }
+
+  const cardValue = getCardValue(card);
+  const cardColor = getColor(card);
+
+  const everyFoundationIsNeutral = state.foundations.every((foundation) => {
+    const foundationCard = getCard(foundation);
+    if (foundationCard === null) {
+      return false;
+    }
+
+    const foundationCardColor = getColor(foundationCard);
+    if (foundationCardColor === cardColor) {
+      return true;
+    }
+    const foundationCardValue = getCardValue(foundationCard);
+    return foundationCardValue >= cardValue - 1;
+  });
+
+  return everyFoundationIsNeutral;
+}
+
+if (import.meta.vitest) {
+  it("checks if a card is neutral", () => {
+    const state = empty();
+    state.foundations = [["As"], ["Ah"], ["Ad"], ["Ac"]];
+
+    expect(getIsNeutralCard(state, "2s")).toBe(true);
+  });
+
+  it("checks if a card is not neutral", () => {
+    const state = empty();
+    state.foundations = [
+      ["As", "2s", "3s"],
+      ["Ac", "2c", "3c"],
+      ["Ah", "2h"],
+      ["Ad", "2d"],
+    ];
+
+    expect(getIsNeutralCard(state, "4s")).toBe(false);
+  });
+
+  it("returns true for a color-inbalanced foundation", () => {
+    const state = empty();
+    state.foundations = [
+      ["As", "2s", "3s"],
+      ["Ac", "2c", "3c"],
+      ["Ah", "2h"],
+      ["Ad", "2d"],
+    ];
+
+    expect(getIsNeutralCard(state, "3h")).toBe(true);
+    expect(getIsNeutralCard(state, "3d")).toBe(true);
+  });
+
+  it("also works if the foundations are empty", () => {
+    const state = empty();
+
+    expect(getIsNeutralCard(state, "2s")).toBe(false);
+    expect(getIsNeutralCard(state, "As")).toBe(true);
+  });
+
+  it("works for 2 same-colored aces in the foundation, but a different-colored two in the tableau", () => {
+    const state = empty();
+    state.foundations = [["As"], ["Ac"], [], []];
+
+    expect(getIsNeutralCard(state, "2d")).toBe(false);
   });
 }

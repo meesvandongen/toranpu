@@ -1,32 +1,10 @@
 import React from "react";
-import {
-  drawFromStock,
-  getCanMoveFromStock,
-  getCanMoveFromTableau,
-  getColor,
-  getIsWinningState,
-  getRank,
-  getSuit,
-  getTableauCards,
-  moveFromStock,
-  moveFromTableau,
-  setupGame,
-} from "toranpu";
+import { Toranpu } from "toranpu-react";
 
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
+  Toranpu,
   ...React,
-  drawFromStock,
-  getCanMoveFromStock,
-  getCanMoveFromTableau,
-  getColor,
-  getIsWinningState,
-  getRank,
-  getSuit,
-  getTableauCards,
-  moveFromStock,
-  moveFromTableau,
-  setupGame,
 };
 export default ReactLiveScope;

@@ -50,6 +50,18 @@ const config = {
         },
         items: [
           {
+            to: "/",
+            label: "Docs",
+            position: "left",
+          },
+          {
+            href: "/demo",
+            label: "Demo",
+            position: "left",
+            
+          },
+
+          {
             href: "https://github.com/meesvandongen/toranpu.git",
             label: "GitHub",
             position: "right",

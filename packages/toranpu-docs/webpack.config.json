@@ -1,0 +1,1170 @@
+{
+  "mode": "development",
+  "name": "client",
+  "cache": {
+    "type": "filesystem",
+    "name": "client-development-en",
+    "version": "2.2.0-6f04e123d1f37fe507d936dc8ca73c8c",
+    "buildDependencies": {
+      "config": [
+        "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/webpack/base.js",
+        "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/webpack/client.js",
+        "/Users/meesvandongen/personal/patience/packages/toranpu-docs/docusaurus.config.js"
+      ]
+    }
+  },
+  "output": {
+    "pathinfo": false,
+    "path": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/build",
+    "filename": "[name].js",
+    "chunkFilename": "[name].js",
+    "publicPath": "/toranpu/",
+    "hashFunction": "xxhash64"
+  },
+  "performance": {
+    "hints": false
+  },
+  "devtool": "eval-cheap-module-source-map",
+  "resolve": {
+    "unsafeCache": false,
+    "extensions": [
+      ".wasm",
+      ".mjs",
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx",
+      ".json"
+    ],
+    "symlinks": false,
+    "roots": [
+      "/Users/meesvandongen/personal/patience/packages/toranpu-docs/static",
+      "/Users/meesvandongen/personal/patience/packages/toranpu-docs",
+      "/Users/meesvandongen/personal/patience/packages/toranpu-docs"
+    ],
+    "alias": {
+      "@site": "/Users/meesvandongen/personal/patience/packages/toranpu-docs",
+      "@generated": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/.docusaurus",
+      "@docusaurus/BrowserOnly.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/BrowserOnly.d.ts",
+      "@docusaurus/BrowserOnly": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/BrowserOnly.js",
+      "@docusaurus/ComponentCreator.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/ComponentCreator.d.ts",
+      "@docusaurus/ComponentCreator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/ComponentCreator.js",
+      "@docusaurus/ErrorBoundary.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/ErrorBoundary.d.ts",
+      "@docusaurus/ErrorBoundary": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/ErrorBoundary.js",
+      "@docusaurus/ExecutionEnvironment.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/ExecutionEnvironment.d.ts",
+      "@docusaurus/ExecutionEnvironment": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/ExecutionEnvironment.js",
+      "@docusaurus/Head.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Head.d.ts",
+      "@docusaurus/Head": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Head.js",
+      "@docusaurus/Interpolate.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Interpolate.d.ts",
+      "@docusaurus/Interpolate": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Interpolate.js",
+      "@docusaurus/Link.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Link.d.ts",
+      "@docusaurus/Link": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Link.js",
+      "@docusaurus/Noop.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Noop.d.ts",
+      "@docusaurus/Noop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Noop.js",
+      "@docusaurus/Translate.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Translate.d.ts",
+      "@docusaurus/Translate": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/Translate.js",
+      "@docusaurus/constants.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/constants.d.ts",
+      "@docusaurus/constants": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/constants.js",
+      "@docusaurus/isInternalUrl.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/isInternalUrl.d.ts",
+      "@docusaurus/isInternalUrl": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/isInternalUrl.js",
+      "@docusaurus/renderRoutes.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/renderRoutes.d.ts",
+      "@docusaurus/renderRoutes": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/renderRoutes.js",
+      "@docusaurus/router.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/router.d.ts",
+      "@docusaurus/router": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/router.js",
+      "@docusaurus/useBaseUrl.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useBaseUrl.d.ts",
+      "@docusaurus/useBaseUrl": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useBaseUrl.js",
+      "@docusaurus/useDocusaurusContext.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useDocusaurusContext.d.ts",
+      "@docusaurus/useDocusaurusContext": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useDocusaurusContext.js",
+      "@docusaurus/useGlobalData.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useGlobalData.d.ts",
+      "@docusaurus/useGlobalData": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useGlobalData.js",
+      "@docusaurus/useIsBrowser.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useIsBrowser.d.ts",
+      "@docusaurus/useIsBrowser": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useIsBrowser.js",
+      "@docusaurus/useRouteContext.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useRouteContext.d.ts",
+      "@docusaurus/useRouteContext": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/exports/useRouteContext.js",
+      "@theme-init/CodeBlock/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/index.d.ts",
+      "@theme-init/CodeBlock": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/index.js",
+      "@theme-init/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Layout/index.d.ts",
+      "@theme-init/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Layout/index.js",
+      "@theme-init/NotFound": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/NotFound/index.js",
+      "@theme-init/SiteMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/SiteMetadata/index.d.ts",
+      "@theme-init/SiteMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/SiteMetadata/index.js",
+      "@theme-original/Admonition/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Admonition/index.d.ts",
+      "@theme-original/Admonition": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Admonition/index.js",
+      "@theme-original/AnnouncementBar/CloseButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/CloseButton/index.d.ts",
+      "@theme-original/AnnouncementBar/CloseButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/CloseButton/index.js",
+      "@theme-original/AnnouncementBar/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/Content/index.d.ts",
+      "@theme-original/AnnouncementBar/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/Content/index.js",
+      "@theme-original/AnnouncementBar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/index.d.ts",
+      "@theme-original/AnnouncementBar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/index.js",
+      "@theme-original/BackToTopButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BackToTopButton/index.d.ts",
+      "@theme-original/BackToTopButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BackToTopButton/index.js",
+      "@theme-original/BlogArchivePage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogArchivePage/index.d.ts",
+      "@theme-original/BlogArchivePage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogArchivePage/index.js",
+      "@theme-original/BlogLayout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogLayout/index.d.ts",
+      "@theme-original/BlogLayout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogLayout/index.js",
+      "@theme-original/BlogListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPage/index.d.ts",
+      "@theme-original/BlogListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPage/index.js",
+      "@theme-original/BlogListPaginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPaginator/index.d.ts",
+      "@theme-original/BlogListPaginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPaginator/index.js",
+      "@theme-original/BlogPostItem/Container/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Container/index.d.ts",
+      "@theme-original/BlogPostItem/Container": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Container/index.js",
+      "@theme-original/BlogPostItem/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Content/index.d.ts",
+      "@theme-original/BlogPostItem/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Content/index.js",
+      "@theme-original/BlogPostItem/Footer/ReadMoreLink/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/ReadMoreLink/index.d.ts",
+      "@theme-original/BlogPostItem/Footer/ReadMoreLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/ReadMoreLink/index.js",
+      "@theme-original/BlogPostItem/Footer/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/index.d.ts",
+      "@theme-original/BlogPostItem/Footer": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/index.js",
+      "@theme-original/BlogPostItem/Header/Author/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Author/index.d.ts",
+      "@theme-original/BlogPostItem/Header/Author": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Author/index.js",
+      "@theme-original/BlogPostItem/Header/Authors/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Authors/index.d.ts",
+      "@theme-original/BlogPostItem/Header/Authors": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Authors/index.js",
+      "@theme-original/BlogPostItem/Header/Info/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Info/index.d.ts",
+      "@theme-original/BlogPostItem/Header/Info": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Info/index.js",
+      "@theme-original/BlogPostItem/Header/Title/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Title/index.d.ts",
+      "@theme-original/BlogPostItem/Header/Title": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Title/index.js",
+      "@theme-original/BlogPostItem/Header/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/index.d.ts",
+      "@theme-original/BlogPostItem/Header": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/index.js",
+      "@theme-original/BlogPostItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/index.d.ts",
+      "@theme-original/BlogPostItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/index.js",
+      "@theme-original/BlogPostItems/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItems/index.d.ts",
+      "@theme-original/BlogPostItems": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItems/index.js",
+      "@theme-original/BlogPostPage/Metadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/Metadata/index.d.ts",
+      "@theme-original/BlogPostPage/Metadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/Metadata/index.js",
+      "@theme-original/BlogPostPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/index.d.ts",
+      "@theme-original/BlogPostPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/index.js",
+      "@theme-original/BlogPostPaginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPaginator/index.d.ts",
+      "@theme-original/BlogPostPaginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPaginator/index.js",
+      "@theme-original/BlogSidebar/Desktop/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Desktop/index.d.ts",
+      "@theme-original/BlogSidebar/Desktop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Desktop/index.js",
+      "@theme-original/BlogSidebar/Mobile/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Mobile/index.d.ts",
+      "@theme-original/BlogSidebar/Mobile": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Mobile/index.js",
+      "@theme-original/BlogSidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/index.d.ts",
+      "@theme-original/BlogSidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/index.js",
+      "@theme-original/BlogTagsListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsListPage/index.d.ts",
+      "@theme-original/BlogTagsListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsListPage/index.js",
+      "@theme-original/BlogTagsPostsPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsPostsPage/index.d.ts",
+      "@theme-original/BlogTagsPostsPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsPostsPage/index.js",
+      "@theme-original/CodeBlock/Container/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Container/index.d.ts",
+      "@theme-original/CodeBlock/Container": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Container/index.js",
+      "@theme-original/CodeBlock/Content/Element": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/Element.js",
+      "@theme-original/CodeBlock/Content/Element.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/Element.d.ts",
+      "@theme-original/CodeBlock/Content/String": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/String.js",
+      "@theme-original/CodeBlock/Content/String.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/String.d.ts",
+      "@theme-original/CodeBlock/CopyButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/CopyButton/index.d.ts",
+      "@theme-original/CodeBlock/CopyButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/CopyButton/index.js",
+      "@theme-original/CodeBlock/Line/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Line/index.d.ts",
+      "@theme-original/CodeBlock/Line": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Line/index.js",
+      "@theme-original/CodeBlock/WordWrapButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/WordWrapButton/index.d.ts",
+      "@theme-original/CodeBlock/WordWrapButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/WordWrapButton/index.js",
+      "@theme-original/CodeBlock/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/CodeBlock/index.d.ts",
+      "@theme-original/CodeBlock": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/CodeBlock/index.js",
+      "@theme-original/ColorModeToggle/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ColorModeToggle/index.d.ts",
+      "@theme-original/ColorModeToggle": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ColorModeToggle/index.js",
+      "@theme-original/DebugConfig/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugConfig/index.d.ts",
+      "@theme-original/DebugConfig": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugConfig/index.js",
+      "@theme-original/DebugContent/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugContent/index.d.ts",
+      "@theme-original/DebugContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugContent/index.js",
+      "@theme-original/DebugGlobalData/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugGlobalData/index.d.ts",
+      "@theme-original/DebugGlobalData": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugGlobalData/index.js",
+      "@theme-original/DebugJsonView/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugJsonView/index.d.ts",
+      "@theme-original/DebugJsonView": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugJsonView/index.js",
+      "@theme-original/DebugLayout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugLayout/index.d.ts",
+      "@theme-original/DebugLayout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugLayout/index.js",
+      "@theme-original/DebugRegistry/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRegistry/index.d.ts",
+      "@theme-original/DebugRegistry": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRegistry/index.js",
+      "@theme-original/DebugRoutes/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRoutes/index.d.ts",
+      "@theme-original/DebugRoutes": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRoutes/index.js",
+      "@theme-original/DebugSiteMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugSiteMetadata/index.d.ts",
+      "@theme-original/DebugSiteMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugSiteMetadata/index.js",
+      "@theme-original/Details/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Details/index.d.ts",
+      "@theme-original/Details": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Details/index.js",
+      "@theme-original/DocBreadcrumbs/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocBreadcrumbs/index.d.ts",
+      "@theme-original/DocBreadcrumbs": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocBreadcrumbs/index.js",
+      "@theme-original/DocCard/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCard/index.d.ts",
+      "@theme-original/DocCard": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCard/index.js",
+      "@theme-original/DocCardList/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCardList/index.d.ts",
+      "@theme-original/DocCardList": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCardList/index.js",
+      "@theme-original/DocCategoryGeneratedIndexPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCategoryGeneratedIndexPage/index.d.ts",
+      "@theme-original/DocCategoryGeneratedIndexPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCategoryGeneratedIndexPage/index.js",
+      "@theme-original/DocItem/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Content/index.d.ts",
+      "@theme-original/DocItem/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Content/index.js",
+      "@theme-original/DocItem/Footer/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Footer/index.d.ts",
+      "@theme-original/DocItem/Footer": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Footer/index.js",
+      "@theme-original/DocItem/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Layout/index.d.ts",
+      "@theme-original/DocItem/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Layout/index.js",
+      "@theme-original/DocItem/Metadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Metadata/index.d.ts",
+      "@theme-original/DocItem/Metadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Metadata/index.js",
+      "@theme-original/DocItem/Paginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Paginator/index.d.ts",
+      "@theme-original/DocItem/Paginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Paginator/index.js",
+      "@theme-original/DocItem/TOC/Desktop/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Desktop/index.d.ts",
+      "@theme-original/DocItem/TOC/Desktop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Desktop/index.js",
+      "@theme-original/DocItem/TOC/Mobile/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Mobile/index.d.ts",
+      "@theme-original/DocItem/TOC/Mobile": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Mobile/index.js",
+      "@theme-original/DocItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/index.d.ts",
+      "@theme-original/DocItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/index.js",
+      "@theme-original/DocPage/Layout/Main/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Main/index.d.ts",
+      "@theme-original/DocPage/Layout/Main": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Main/index.js",
+      "@theme-original/DocPage/Layout/Sidebar/ExpandButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/ExpandButton/index.d.ts",
+      "@theme-original/DocPage/Layout/Sidebar/ExpandButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/ExpandButton/index.js",
+      "@theme-original/DocPage/Layout/Sidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/index.d.ts",
+      "@theme-original/DocPage/Layout/Sidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/index.js",
+      "@theme-original/DocPage/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/index.d.ts",
+      "@theme-original/DocPage/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/index.js",
+      "@theme-original/DocPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/index.d.ts",
+      "@theme-original/DocPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/index.js",
+      "@theme-original/DocPaginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPaginator/index.d.ts",
+      "@theme-original/DocPaginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPaginator/index.js",
+      "@theme-original/DocSidebar/Desktop/CollapseButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/CollapseButton/index.d.ts",
+      "@theme-original/DocSidebar/Desktop/CollapseButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/CollapseButton/index.js",
+      "@theme-original/DocSidebar/Desktop/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/Content/index.d.ts",
+      "@theme-original/DocSidebar/Desktop/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/Content/index.js",
+      "@theme-original/DocSidebar/Desktop/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/index.d.ts",
+      "@theme-original/DocSidebar/Desktop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/index.js",
+      "@theme-original/DocSidebar/Mobile/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Mobile/index.d.ts",
+      "@theme-original/DocSidebar/Mobile": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Mobile/index.js",
+      "@theme-original/DocSidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/index.d.ts",
+      "@theme-original/DocSidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/index.js",
+      "@theme-original/DocSidebarItem/Category/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Category/index.d.ts",
+      "@theme-original/DocSidebarItem/Category": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Category/index.js",
+      "@theme-original/DocSidebarItem/Html/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Html/index.d.ts",
+      "@theme-original/DocSidebarItem/Html": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Html/index.js",
+      "@theme-original/DocSidebarItem/Link/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Link/index.d.ts",
+      "@theme-original/DocSidebarItem/Link": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Link/index.js",
+      "@theme-original/DocSidebarItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/index.d.ts",
+      "@theme-original/DocSidebarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/index.js",
+      "@theme-original/DocSidebarItems/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItems/index.d.ts",
+      "@theme-original/DocSidebarItems": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItems/index.js",
+      "@theme-original/DocTagDocListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagDocListPage/index.d.ts",
+      "@theme-original/DocTagDocListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagDocListPage/index.js",
+      "@theme-original/DocTagsListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagsListPage/index.d.ts",
+      "@theme-original/DocTagsListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagsListPage/index.js",
+      "@theme-original/DocVersionBadge/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBadge/index.d.ts",
+      "@theme-original/DocVersionBadge": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBadge/index.js",
+      "@theme-original/DocVersionBanner/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBanner/index.d.ts",
+      "@theme-original/DocVersionBanner": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBanner/index.js",
+      "@theme-original/EditThisPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/EditThisPage/index.d.ts",
+      "@theme-original/EditThisPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/EditThisPage/index.js",
+      "@theme-original/Error/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Error/index.d.ts",
+      "@theme-original/Error": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Error/index.js",
+      "@theme-original/ErrorPageContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ErrorPageContent.js",
+      "@theme-original/ErrorPageContent.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ErrorPageContent.d.ts",
+      "@theme-original/Footer/Copyright/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Copyright/index.d.ts",
+      "@theme-original/Footer/Copyright": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Copyright/index.js",
+      "@theme-original/Footer/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Layout/index.d.ts",
+      "@theme-original/Footer/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Layout/index.js",
+      "@theme-original/Footer/LinkItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/LinkItem/index.d.ts",
+      "@theme-original/Footer/LinkItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/LinkItem/index.js",
+      "@theme-original/Footer/Links/MultiColumn/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/MultiColumn/index.d.ts",
+      "@theme-original/Footer/Links/MultiColumn": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/MultiColumn/index.js",
+      "@theme-original/Footer/Links/Simple/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/Simple/index.d.ts",
+      "@theme-original/Footer/Links/Simple": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/Simple/index.js",
+      "@theme-original/Footer/Links/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/index.d.ts",
+      "@theme-original/Footer/Links": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/index.js",
+      "@theme-original/Footer/Logo/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Logo/index.d.ts",
+      "@theme-original/Footer/Logo": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Logo/index.js",
+      "@theme-original/Footer/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/index.d.ts",
+      "@theme-original/Footer": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/index.js",
+      "@theme-original/Heading/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Heading/index.d.ts",
+      "@theme-original/Heading": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Heading/index.js",
+      "@theme-original/Icon/Arrow/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Arrow/index.d.ts",
+      "@theme-original/Icon/Arrow": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Arrow/index.js",
+      "@theme-original/Icon/Close/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Close/index.d.ts",
+      "@theme-original/Icon/Close": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Close/index.js",
+      "@theme-original/Icon/DarkMode/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/DarkMode/index.d.ts",
+      "@theme-original/Icon/DarkMode": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/DarkMode/index.js",
+      "@theme-original/Icon/Edit/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Edit/index.d.ts",
+      "@theme-original/Icon/Edit": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Edit/index.js",
+      "@theme-original/Icon/ExternalLink/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/ExternalLink/index.d.ts",
+      "@theme-original/Icon/ExternalLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/ExternalLink/index.js",
+      "@theme-original/Icon/Home/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Home/index.d.ts",
+      "@theme-original/Icon/Home": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Home/index.js",
+      "@theme-original/Icon/Language/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Language/index.d.ts",
+      "@theme-original/Icon/Language": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Language/index.js",
+      "@theme-original/Icon/LightMode/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/LightMode/index.d.ts",
+      "@theme-original/Icon/LightMode": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/LightMode/index.js",
+      "@theme-original/Icon/Menu/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Menu/index.d.ts",
+      "@theme-original/Icon/Menu": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Menu/index.js",
+      "@theme-original/LastUpdated/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/LastUpdated/index.d.ts",
+      "@theme-original/LastUpdated": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/LastUpdated/index.js",
+      "@theme-original/Layout/Provider/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/Provider/index.d.ts",
+      "@theme-original/Layout/Provider": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/Provider/index.js",
+      "@theme-original/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/index.d.ts",
+      "@theme-original/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/index.js",
+      "@theme-original/Loading/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Loading/index.d.ts",
+      "@theme-original/Loading": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Loading/index.js",
+      "@theme-original/Logo/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Logo/index.d.ts",
+      "@theme-original/Logo": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Logo/index.js",
+      "@theme-original/MDXComponents/A": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/A.js",
+      "@theme-original/MDXComponents/A.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/A.d.ts",
+      "@theme-original/MDXComponents/Code": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Code.js",
+      "@theme-original/MDXComponents/Code.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Code.d.ts",
+      "@theme-original/MDXComponents/Details": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Details.js",
+      "@theme-original/MDXComponents/Details.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Details.d.ts",
+      "@theme-original/MDXComponents/Head": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Head.js",
+      "@theme-original/MDXComponents/Head.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Head.d.ts",
+      "@theme-original/MDXComponents/Heading": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Heading.js",
+      "@theme-original/MDXComponents/Heading.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Heading.d.ts",
+      "@theme-original/MDXComponents/Img/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Img/index.d.ts",
+      "@theme-original/MDXComponents/Img": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Img/index.js",
+      "@theme-original/MDXComponents/Pre": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Pre.js",
+      "@theme-original/MDXComponents/Pre.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Pre.d.ts",
+      "@theme-original/MDXComponents/Ul/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Ul/index.d.ts",
+      "@theme-original/MDXComponents/Ul": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Ul/index.js",
+      "@theme-original/MDXComponents/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/index.d.ts",
+      "@theme-original/MDXComponents": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/index.js",
+      "@theme-original/MDXContent/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXContent/index.d.ts",
+      "@theme-original/MDXContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXContent/index.js",
+      "@theme-original/MDXPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXPage/index.d.ts",
+      "@theme-original/MDXPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXPage/index.js",
+      "@theme-original/Mermaid": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Mermaid.js",
+      "@theme-original/Mermaid.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Mermaid.d.ts",
+      "@theme-original/Navbar/ColorModeToggle/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/ColorModeToggle/index.d.ts",
+      "@theme-original/Navbar/ColorModeToggle": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/ColorModeToggle/index.js",
+      "@theme-original/Navbar/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Content/index.d.ts",
+      "@theme-original/Navbar/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Content/index.js",
+      "@theme-original/Navbar/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Layout/index.d.ts",
+      "@theme-original/Navbar/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Layout/index.js",
+      "@theme-original/Navbar/Logo/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Logo/index.d.ts",
+      "@theme-original/Navbar/Logo": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Logo/index.js",
+      "@theme-original/Navbar/MobileSidebar/Header/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Header/index.d.ts",
+      "@theme-original/Navbar/MobileSidebar/Header": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Header/index.js",
+      "@theme-original/Navbar/MobileSidebar/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Layout/index.d.ts",
+      "@theme-original/Navbar/MobileSidebar/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Layout/index.js",
+      "@theme-original/Navbar/MobileSidebar/PrimaryMenu/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/PrimaryMenu/index.d.ts",
+      "@theme-original/Navbar/MobileSidebar/PrimaryMenu": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/PrimaryMenu/index.js",
+      "@theme-original/Navbar/MobileSidebar/SecondaryMenu/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/SecondaryMenu/index.d.ts",
+      "@theme-original/Navbar/MobileSidebar/SecondaryMenu": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/SecondaryMenu/index.js",
+      "@theme-original/Navbar/MobileSidebar/Toggle/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Toggle/index.d.ts",
+      "@theme-original/Navbar/MobileSidebar/Toggle": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Toggle/index.js",
+      "@theme-original/Navbar/MobileSidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/index.d.ts",
+      "@theme-original/Navbar/MobileSidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/index.js",
+      "@theme-original/Navbar/Search/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Search/index.d.ts",
+      "@theme-original/Navbar/Search": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Search/index.js",
+      "@theme-original/Navbar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/index.d.ts",
+      "@theme-original/Navbar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/index.js",
+      "@theme-original/NavbarItem/ComponentTypes": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/ComponentTypes.js",
+      "@theme-original/NavbarItem/ComponentTypes.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/ComponentTypes.d.ts",
+      "@theme-original/NavbarItem/DefaultNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DefaultNavbarItem.js",
+      "@theme-original/NavbarItem/DefaultNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DefaultNavbarItem.d.ts",
+      "@theme-original/NavbarItem/DocNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocNavbarItem.js",
+      "@theme-original/NavbarItem/DocNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocNavbarItem.d.ts",
+      "@theme-original/NavbarItem/DocSidebarNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocSidebarNavbarItem.js",
+      "@theme-original/NavbarItem/DocSidebarNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocSidebarNavbarItem.d.ts",
+      "@theme-original/NavbarItem/DocsVersionDropdownNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionDropdownNavbarItem.js",
+      "@theme-original/NavbarItem/DocsVersionDropdownNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionDropdownNavbarItem.d.ts",
+      "@theme-original/NavbarItem/DocsVersionNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionNavbarItem.js",
+      "@theme-original/NavbarItem/DocsVersionNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionNavbarItem.d.ts",
+      "@theme-original/NavbarItem/DropdownNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DropdownNavbarItem.js",
+      "@theme-original/NavbarItem/DropdownNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DropdownNavbarItem.d.ts",
+      "@theme-original/NavbarItem/HtmlNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/HtmlNavbarItem.js",
+      "@theme-original/NavbarItem/HtmlNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/HtmlNavbarItem.d.ts",
+      "@theme-original/NavbarItem/LocaleDropdownNavbarItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.d.ts",
+      "@theme-original/NavbarItem/LocaleDropdownNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js",
+      "@theme-original/NavbarItem/NavbarNavLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/NavbarNavLink.js",
+      "@theme-original/NavbarItem/NavbarNavLink.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/NavbarNavLink.d.ts",
+      "@theme-original/NavbarItem/SearchNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/SearchNavbarItem.js",
+      "@theme-original/NavbarItem/SearchNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/SearchNavbarItem.d.ts",
+      "@theme-original/NavbarItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/index.d.ts",
+      "@theme-original/NavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/index.js",
+      "@theme-original/NotFound": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NotFound.js",
+      "@theme-original/NotFound.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NotFound.d.ts",
+      "@theme-original/NotFound/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/NotFound/index.d.ts",
+      "@theme-original/PaginatorNavLink/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/PaginatorNavLink/index.d.ts",
+      "@theme-original/PaginatorNavLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/PaginatorNavLink/index.js",
+      "@theme-original/Playground/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/Playground/index.d.ts",
+      "@theme-original/Playground": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/Playground/index.js",
+      "@theme-original/ReactLiveScope/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/ReactLiveScope/index.d.ts",
+      "@theme-original/ReactLiveScope": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/ReactLiveScope/index.js",
+      "@theme-original/Root/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Root/index.d.ts",
+      "@theme-original/Root": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Root/index.js",
+      "@theme-original/SearchBar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchBar.js",
+      "@theme-original/SearchBar.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchBar.d.ts",
+      "@theme-original/SearchMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchMetadata/index.d.ts",
+      "@theme-original/SearchMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchMetadata/index.js",
+      "@theme-original/SiteMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SiteMetadata/index.d.ts",
+      "@theme-original/SiteMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SiteMetadata/index.js",
+      "@theme-original/SkipToContent/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SkipToContent/index.d.ts",
+      "@theme-original/SkipToContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SkipToContent/index.js",
+      "@theme-original/TOC/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOC/index.d.ts",
+      "@theme-original/TOC": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOC/index.js",
+      "@theme-original/TOCCollapsible/CollapseButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/CollapseButton/index.d.ts",
+      "@theme-original/TOCCollapsible/CollapseButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/CollapseButton/index.js",
+      "@theme-original/TOCCollapsible/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/index.d.ts",
+      "@theme-original/TOCCollapsible": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/index.js",
+      "@theme-original/TOCInline/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCInline/index.d.ts",
+      "@theme-original/TOCInline": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCInline/index.js",
+      "@theme-original/TOCItems/Tree": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/Tree.js",
+      "@theme-original/TOCItems/Tree.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/Tree.d.ts",
+      "@theme-original/TOCItems/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/index.d.ts",
+      "@theme-original/TOCItems": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/index.js",
+      "@theme-original/TabItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TabItem/index.d.ts",
+      "@theme-original/TabItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TabItem/index.js",
+      "@theme-original/Tabs/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tabs/index.d.ts",
+      "@theme-original/Tabs": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tabs/index.js",
+      "@theme-original/Tag/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tag/index.d.ts",
+      "@theme-original/Tag": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tag/index.js",
+      "@theme-original/TagsListByLetter/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListByLetter/index.d.ts",
+      "@theme-original/TagsListByLetter": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListByLetter/index.js",
+      "@theme-original/TagsListInline/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListInline/index.d.ts",
+      "@theme-original/TagsListInline": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListInline/index.js",
+      "@theme-original/ThemedImage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ThemedImage/index.d.ts",
+      "@theme-original/ThemedImage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ThemedImage/index.js",
+      "@theme-original/prism-include-languages": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/prism-include-languages.js",
+      "@theme-original/prism-include-languages.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/prism-include-languages.d.ts",
+      "@theme/Admonition/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Admonition/index.d.ts",
+      "@theme/Admonition": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Admonition/index.js",
+      "@theme/AnnouncementBar/CloseButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/CloseButton/index.d.ts",
+      "@theme/AnnouncementBar/CloseButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/CloseButton/index.js",
+      "@theme/AnnouncementBar/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/Content/index.d.ts",
+      "@theme/AnnouncementBar/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/Content/index.js",
+      "@theme/AnnouncementBar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/index.d.ts",
+      "@theme/AnnouncementBar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/AnnouncementBar/index.js",
+      "@theme/BackToTopButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BackToTopButton/index.d.ts",
+      "@theme/BackToTopButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BackToTopButton/index.js",
+      "@theme/BlogArchivePage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogArchivePage/index.d.ts",
+      "@theme/BlogArchivePage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogArchivePage/index.js",
+      "@theme/BlogLayout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogLayout/index.d.ts",
+      "@theme/BlogLayout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogLayout/index.js",
+      "@theme/BlogListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPage/index.d.ts",
+      "@theme/BlogListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPage/index.js",
+      "@theme/BlogListPaginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPaginator/index.d.ts",
+      "@theme/BlogListPaginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogListPaginator/index.js",
+      "@theme/BlogPostItem/Container/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Container/index.d.ts",
+      "@theme/BlogPostItem/Container": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Container/index.js",
+      "@theme/BlogPostItem/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Content/index.d.ts",
+      "@theme/BlogPostItem/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Content/index.js",
+      "@theme/BlogPostItem/Footer/ReadMoreLink/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/ReadMoreLink/index.d.ts",
+      "@theme/BlogPostItem/Footer/ReadMoreLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/ReadMoreLink/index.js",
+      "@theme/BlogPostItem/Footer/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/index.d.ts",
+      "@theme/BlogPostItem/Footer": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Footer/index.js",
+      "@theme/BlogPostItem/Header/Author/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Author/index.d.ts",
+      "@theme/BlogPostItem/Header/Author": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Author/index.js",
+      "@theme/BlogPostItem/Header/Authors/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Authors/index.d.ts",
+      "@theme/BlogPostItem/Header/Authors": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Authors/index.js",
+      "@theme/BlogPostItem/Header/Info/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Info/index.d.ts",
+      "@theme/BlogPostItem/Header/Info": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Info/index.js",
+      "@theme/BlogPostItem/Header/Title/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Title/index.d.ts",
+      "@theme/BlogPostItem/Header/Title": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/Title/index.js",
+      "@theme/BlogPostItem/Header/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/index.d.ts",
+      "@theme/BlogPostItem/Header": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/Header/index.js",
+      "@theme/BlogPostItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/index.d.ts",
+      "@theme/BlogPostItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItem/index.js",
+      "@theme/BlogPostItems/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItems/index.d.ts",
+      "@theme/BlogPostItems": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostItems/index.js",
+      "@theme/BlogPostPage/Metadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/Metadata/index.d.ts",
+      "@theme/BlogPostPage/Metadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/Metadata/index.js",
+      "@theme/BlogPostPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/index.d.ts",
+      "@theme/BlogPostPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPage/index.js",
+      "@theme/BlogPostPaginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPaginator/index.d.ts",
+      "@theme/BlogPostPaginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogPostPaginator/index.js",
+      "@theme/BlogSidebar/Desktop/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Desktop/index.d.ts",
+      "@theme/BlogSidebar/Desktop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Desktop/index.js",
+      "@theme/BlogSidebar/Mobile/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Mobile/index.d.ts",
+      "@theme/BlogSidebar/Mobile": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/Mobile/index.js",
+      "@theme/BlogSidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/index.d.ts",
+      "@theme/BlogSidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogSidebar/index.js",
+      "@theme/BlogTagsListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsListPage/index.d.ts",
+      "@theme/BlogTagsListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsListPage/index.js",
+      "@theme/BlogTagsPostsPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsPostsPage/index.d.ts",
+      "@theme/BlogTagsPostsPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/BlogTagsPostsPage/index.js",
+      "@theme/CodeBlock/Container/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Container/index.d.ts",
+      "@theme/CodeBlock/Container": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Container/index.js",
+      "@theme/CodeBlock/Content/Element": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/Element.js",
+      "@theme/CodeBlock/Content/Element.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/Element.d.ts",
+      "@theme/CodeBlock/Content/String": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/String.js",
+      "@theme/CodeBlock/Content/String.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Content/String.d.ts",
+      "@theme/CodeBlock/CopyButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/CopyButton/index.d.ts",
+      "@theme/CodeBlock/CopyButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/CopyButton/index.js",
+      "@theme/CodeBlock/Line/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Line/index.d.ts",
+      "@theme/CodeBlock/Line": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/Line/index.js",
+      "@theme/CodeBlock/WordWrapButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/WordWrapButton/index.d.ts",
+      "@theme/CodeBlock/WordWrapButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/CodeBlock/WordWrapButton/index.js",
+      "@theme/CodeBlock/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/CodeBlock/index.d.ts",
+      "@theme/CodeBlock": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/CodeBlock/index.js",
+      "@theme/ColorModeToggle/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ColorModeToggle/index.d.ts",
+      "@theme/ColorModeToggle": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ColorModeToggle/index.js",
+      "@theme/DebugConfig/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugConfig/index.d.ts",
+      "@theme/DebugConfig": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugConfig/index.js",
+      "@theme/DebugContent/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugContent/index.d.ts",
+      "@theme/DebugContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugContent/index.js",
+      "@theme/DebugGlobalData/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugGlobalData/index.d.ts",
+      "@theme/DebugGlobalData": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugGlobalData/index.js",
+      "@theme/DebugJsonView/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugJsonView/index.d.ts",
+      "@theme/DebugJsonView": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugJsonView/index.js",
+      "@theme/DebugLayout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugLayout/index.d.ts",
+      "@theme/DebugLayout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugLayout/index.js",
+      "@theme/DebugRegistry/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRegistry/index.d.ts",
+      "@theme/DebugRegistry": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRegistry/index.js",
+      "@theme/DebugRoutes/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRoutes/index.d.ts",
+      "@theme/DebugRoutes": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugRoutes/index.js",
+      "@theme/DebugSiteMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugSiteMetadata/index.d.ts",
+      "@theme/DebugSiteMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-debug@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-debug/lib/theme/DebugSiteMetadata/index.js",
+      "@theme/Details/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Details/index.d.ts",
+      "@theme/Details": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Details/index.js",
+      "@theme/DocBreadcrumbs/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocBreadcrumbs/index.d.ts",
+      "@theme/DocBreadcrumbs": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocBreadcrumbs/index.js",
+      "@theme/DocCard/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCard/index.d.ts",
+      "@theme/DocCard": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCard/index.js",
+      "@theme/DocCardList/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCardList/index.d.ts",
+      "@theme/DocCardList": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCardList/index.js",
+      "@theme/DocCategoryGeneratedIndexPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCategoryGeneratedIndexPage/index.d.ts",
+      "@theme/DocCategoryGeneratedIndexPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocCategoryGeneratedIndexPage/index.js",
+      "@theme/DocItem/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Content/index.d.ts",
+      "@theme/DocItem/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Content/index.js",
+      "@theme/DocItem/Footer/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Footer/index.d.ts",
+      "@theme/DocItem/Footer": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Footer/index.js",
+      "@theme/DocItem/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Layout/index.d.ts",
+      "@theme/DocItem/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Layout/index.js",
+      "@theme/DocItem/Metadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Metadata/index.d.ts",
+      "@theme/DocItem/Metadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Metadata/index.js",
+      "@theme/DocItem/Paginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Paginator/index.d.ts",
+      "@theme/DocItem/Paginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/Paginator/index.js",
+      "@theme/DocItem/TOC/Desktop/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Desktop/index.d.ts",
+      "@theme/DocItem/TOC/Desktop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Desktop/index.js",
+      "@theme/DocItem/TOC/Mobile/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Mobile/index.d.ts",
+      "@theme/DocItem/TOC/Mobile": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/TOC/Mobile/index.js",
+      "@theme/DocItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/index.d.ts",
+      "@theme/DocItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocItem/index.js",
+      "@theme/DocPage/Layout/Main/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Main/index.d.ts",
+      "@theme/DocPage/Layout/Main": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Main/index.js",
+      "@theme/DocPage/Layout/Sidebar/ExpandButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/ExpandButton/index.d.ts",
+      "@theme/DocPage/Layout/Sidebar/ExpandButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/ExpandButton/index.js",
+      "@theme/DocPage/Layout/Sidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/index.d.ts",
+      "@theme/DocPage/Layout/Sidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/Sidebar/index.js",
+      "@theme/DocPage/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/index.d.ts",
+      "@theme/DocPage/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/Layout/index.js",
+      "@theme/DocPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/index.d.ts",
+      "@theme/DocPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPage/index.js",
+      "@theme/DocPaginator/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPaginator/index.d.ts",
+      "@theme/DocPaginator": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocPaginator/index.js",
+      "@theme/DocSidebar/Desktop/CollapseButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/CollapseButton/index.d.ts",
+      "@theme/DocSidebar/Desktop/CollapseButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/CollapseButton/index.js",
+      "@theme/DocSidebar/Desktop/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/Content/index.d.ts",
+      "@theme/DocSidebar/Desktop/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/Content/index.js",
+      "@theme/DocSidebar/Desktop/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/index.d.ts",
+      "@theme/DocSidebar/Desktop": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Desktop/index.js",
+      "@theme/DocSidebar/Mobile/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Mobile/index.d.ts",
+      "@theme/DocSidebar/Mobile": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/Mobile/index.js",
+      "@theme/DocSidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/index.d.ts",
+      "@theme/DocSidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebar/index.js",
+      "@theme/DocSidebarItem/Category/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Category/index.d.ts",
+      "@theme/DocSidebarItem/Category": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Category/index.js",
+      "@theme/DocSidebarItem/Html/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Html/index.d.ts",
+      "@theme/DocSidebarItem/Html": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Html/index.js",
+      "@theme/DocSidebarItem/Link/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Link/index.d.ts",
+      "@theme/DocSidebarItem/Link": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/Link/index.js",
+      "@theme/DocSidebarItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/index.d.ts",
+      "@theme/DocSidebarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItem/index.js",
+      "@theme/DocSidebarItems/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItems/index.d.ts",
+      "@theme/DocSidebarItems": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocSidebarItems/index.js",
+      "@theme/DocTagDocListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagDocListPage/index.d.ts",
+      "@theme/DocTagDocListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagDocListPage/index.js",
+      "@theme/DocTagsListPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagsListPage/index.d.ts",
+      "@theme/DocTagsListPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocTagsListPage/index.js",
+      "@theme/DocVersionBadge/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBadge/index.d.ts",
+      "@theme/DocVersionBadge": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBadge/index.js",
+      "@theme/DocVersionBanner/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBanner/index.d.ts",
+      "@theme/DocVersionBanner": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/DocVersionBanner/index.js",
+      "@theme/EditThisPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/EditThisPage/index.d.ts",
+      "@theme/EditThisPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/EditThisPage/index.js",
+      "@theme/Error/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Error/index.d.ts",
+      "@theme/Error": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Error/index.js",
+      "@theme/ErrorPageContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ErrorPageContent.js",
+      "@theme/ErrorPageContent.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ErrorPageContent.d.ts",
+      "@theme/Footer/Copyright/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Copyright/index.d.ts",
+      "@theme/Footer/Copyright": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Copyright/index.js",
+      "@theme/Footer/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Layout/index.d.ts",
+      "@theme/Footer/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Layout/index.js",
+      "@theme/Footer/LinkItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/LinkItem/index.d.ts",
+      "@theme/Footer/LinkItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/LinkItem/index.js",
+      "@theme/Footer/Links/MultiColumn/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/MultiColumn/index.d.ts",
+      "@theme/Footer/Links/MultiColumn": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/MultiColumn/index.js",
+      "@theme/Footer/Links/Simple/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/Simple/index.d.ts",
+      "@theme/Footer/Links/Simple": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/Simple/index.js",
+      "@theme/Footer/Links/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/index.d.ts",
+      "@theme/Footer/Links": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Links/index.js",
+      "@theme/Footer/Logo/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Logo/index.d.ts",
+      "@theme/Footer/Logo": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/Logo/index.js",
+      "@theme/Footer/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/index.d.ts",
+      "@theme/Footer": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Footer/index.js",
+      "@theme/Heading/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Heading/index.d.ts",
+      "@theme/Heading": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Heading/index.js",
+      "@theme/Icon/Arrow/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Arrow/index.d.ts",
+      "@theme/Icon/Arrow": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Arrow/index.js",
+      "@theme/Icon/Close/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Close/index.d.ts",
+      "@theme/Icon/Close": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Close/index.js",
+      "@theme/Icon/DarkMode/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/DarkMode/index.d.ts",
+      "@theme/Icon/DarkMode": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/DarkMode/index.js",
+      "@theme/Icon/Edit/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Edit/index.d.ts",
+      "@theme/Icon/Edit": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Edit/index.js",
+      "@theme/Icon/ExternalLink/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/ExternalLink/index.d.ts",
+      "@theme/Icon/ExternalLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/ExternalLink/index.js",
+      "@theme/Icon/Home/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Home/index.d.ts",
+      "@theme/Icon/Home": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Home/index.js",
+      "@theme/Icon/Language/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Language/index.d.ts",
+      "@theme/Icon/Language": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Language/index.js",
+      "@theme/Icon/LightMode/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/LightMode/index.d.ts",
+      "@theme/Icon/LightMode": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/LightMode/index.js",
+      "@theme/Icon/Menu/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Menu/index.d.ts",
+      "@theme/Icon/Menu": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Icon/Menu/index.js",
+      "@theme/LastUpdated/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/LastUpdated/index.d.ts",
+      "@theme/LastUpdated": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/LastUpdated/index.js",
+      "@theme/Layout/Provider/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/Provider/index.d.ts",
+      "@theme/Layout/Provider": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/Provider/index.js",
+      "@theme/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/index.d.ts",
+      "@theme/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Layout/index.js",
+      "@theme/Loading/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Loading/index.d.ts",
+      "@theme/Loading": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Loading/index.js",
+      "@theme/Logo/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Logo/index.d.ts",
+      "@theme/Logo": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Logo/index.js",
+      "@theme/MDXComponents/A": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/A.js",
+      "@theme/MDXComponents/A.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/A.d.ts",
+      "@theme/MDXComponents/Code": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Code.js",
+      "@theme/MDXComponents/Code.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Code.d.ts",
+      "@theme/MDXComponents/Details": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Details.js",
+      "@theme/MDXComponents/Details.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Details.d.ts",
+      "@theme/MDXComponents/Head": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Head.js",
+      "@theme/MDXComponents/Head.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Head.d.ts",
+      "@theme/MDXComponents/Heading": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Heading.js",
+      "@theme/MDXComponents/Heading.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Heading.d.ts",
+      "@theme/MDXComponents/Img/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Img/index.d.ts",
+      "@theme/MDXComponents/Img": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Img/index.js",
+      "@theme/MDXComponents/Pre": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Pre.js",
+      "@theme/MDXComponents/Pre.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Pre.d.ts",
+      "@theme/MDXComponents/Ul/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Ul/index.d.ts",
+      "@theme/MDXComponents/Ul": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/Ul/index.js",
+      "@theme/MDXComponents/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/index.d.ts",
+      "@theme/MDXComponents": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXComponents/index.js",
+      "@theme/MDXContent/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXContent/index.d.ts",
+      "@theme/MDXContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXContent/index.js",
+      "@theme/MDXPage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXPage/index.d.ts",
+      "@theme/MDXPage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/MDXPage/index.js",
+      "@theme/Mermaid": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Mermaid.js",
+      "@theme/Mermaid.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Mermaid.d.ts",
+      "@theme/Navbar/ColorModeToggle/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/ColorModeToggle/index.d.ts",
+      "@theme/Navbar/ColorModeToggle": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/ColorModeToggle/index.js",
+      "@theme/Navbar/Content/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Content/index.d.ts",
+      "@theme/Navbar/Content": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Content/index.js",
+      "@theme/Navbar/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Layout/index.d.ts",
+      "@theme/Navbar/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Layout/index.js",
+      "@theme/Navbar/Logo/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Logo/index.d.ts",
+      "@theme/Navbar/Logo": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Logo/index.js",
+      "@theme/Navbar/MobileSidebar/Header/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Header/index.d.ts",
+      "@theme/Navbar/MobileSidebar/Header": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Header/index.js",
+      "@theme/Navbar/MobileSidebar/Layout/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Layout/index.d.ts",
+      "@theme/Navbar/MobileSidebar/Layout": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Layout/index.js",
+      "@theme/Navbar/MobileSidebar/PrimaryMenu/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/PrimaryMenu/index.d.ts",
+      "@theme/Navbar/MobileSidebar/PrimaryMenu": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/PrimaryMenu/index.js",
+      "@theme/Navbar/MobileSidebar/SecondaryMenu/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/SecondaryMenu/index.d.ts",
+      "@theme/Navbar/MobileSidebar/SecondaryMenu": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/SecondaryMenu/index.js",
+      "@theme/Navbar/MobileSidebar/Toggle/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Toggle/index.d.ts",
+      "@theme/Navbar/MobileSidebar/Toggle": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/Toggle/index.js",
+      "@theme/Navbar/MobileSidebar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/index.d.ts",
+      "@theme/Navbar/MobileSidebar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/MobileSidebar/index.js",
+      "@theme/Navbar/Search/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Search/index.d.ts",
+      "@theme/Navbar/Search": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/Search/index.js",
+      "@theme/Navbar/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/index.d.ts",
+      "@theme/Navbar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Navbar/index.js",
+      "@theme/NavbarItem/ComponentTypes": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/ComponentTypes.js",
+      "@theme/NavbarItem/ComponentTypes.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/ComponentTypes.d.ts",
+      "@theme/NavbarItem/DefaultNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DefaultNavbarItem.js",
+      "@theme/NavbarItem/DefaultNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DefaultNavbarItem.d.ts",
+      "@theme/NavbarItem/DocNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocNavbarItem.js",
+      "@theme/NavbarItem/DocNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocNavbarItem.d.ts",
+      "@theme/NavbarItem/DocSidebarNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocSidebarNavbarItem.js",
+      "@theme/NavbarItem/DocSidebarNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocSidebarNavbarItem.d.ts",
+      "@theme/NavbarItem/DocsVersionDropdownNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionDropdownNavbarItem.js",
+      "@theme/NavbarItem/DocsVersionDropdownNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionDropdownNavbarItem.d.ts",
+      "@theme/NavbarItem/DocsVersionNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionNavbarItem.js",
+      "@theme/NavbarItem/DocsVersionNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DocsVersionNavbarItem.d.ts",
+      "@theme/NavbarItem/DropdownNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DropdownNavbarItem.js",
+      "@theme/NavbarItem/DropdownNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/DropdownNavbarItem.d.ts",
+      "@theme/NavbarItem/HtmlNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/HtmlNavbarItem.js",
+      "@theme/NavbarItem/HtmlNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/HtmlNavbarItem.d.ts",
+      "@theme/NavbarItem/LocaleDropdownNavbarItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.d.ts",
+      "@theme/NavbarItem/LocaleDropdownNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js",
+      "@theme/NavbarItem/NavbarNavLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/NavbarNavLink.js",
+      "@theme/NavbarItem/NavbarNavLink.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/NavbarNavLink.d.ts",
+      "@theme/NavbarItem/SearchNavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/SearchNavbarItem.js",
+      "@theme/NavbarItem/SearchNavbarItem.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/SearchNavbarItem.d.ts",
+      "@theme/NavbarItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/index.d.ts",
+      "@theme/NavbarItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/index.js",
+      "@theme/NotFound/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/NotFound/index.d.ts",
+      "@theme/NotFound": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NotFound.js",
+      "@theme/NotFound.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/NotFound.d.ts",
+      "@theme/PaginatorNavLink/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/PaginatorNavLink/index.d.ts",
+      "@theme/PaginatorNavLink": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/PaginatorNavLink/index.js",
+      "@theme/Playground/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/Playground/index.d.ts",
+      "@theme/Playground": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/Playground/index.js",
+      "@theme/ReactLiveScope/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/theme/ReactLiveScope/index.d.ts",
+      "@theme/ReactLiveScope": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/src/theme/ReactLiveScope/index.js",
+      "@theme/Root/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Root/index.d.ts",
+      "@theme/Root": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/theme-fallback/Root/index.js",
+      "@theme/SearchBar": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchBar.js",
+      "@theme/SearchBar.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchBar.d.ts",
+      "@theme/SearchMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchMetadata/index.d.ts",
+      "@theme/SearchMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SearchMetadata/index.js",
+      "@theme/SiteMetadata/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SiteMetadata/index.d.ts",
+      "@theme/SiteMetadata": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SiteMetadata/index.js",
+      "@theme/SkipToContent/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SkipToContent/index.d.ts",
+      "@theme/SkipToContent": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/SkipToContent/index.js",
+      "@theme/TOC/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOC/index.d.ts",
+      "@theme/TOC": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOC/index.js",
+      "@theme/TOCCollapsible/CollapseButton/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/CollapseButton/index.d.ts",
+      "@theme/TOCCollapsible/CollapseButton": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/CollapseButton/index.js",
+      "@theme/TOCCollapsible/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/index.d.ts",
+      "@theme/TOCCollapsible": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCCollapsible/index.js",
+      "@theme/TOCInline/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCInline/index.d.ts",
+      "@theme/TOCInline": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCInline/index.js",
+      "@theme/TOCItems/Tree": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/Tree.js",
+      "@theme/TOCItems/Tree.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/Tree.d.ts",
+      "@theme/TOCItems/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/index.d.ts",
+      "@theme/TOCItems": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TOCItems/index.js",
+      "@theme/TabItem/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TabItem/index.d.ts",
+      "@theme/TabItem": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TabItem/index.js",
+      "@theme/Tabs/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tabs/index.d.ts",
+      "@theme/Tabs": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tabs/index.js",
+      "@theme/Tag/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tag/index.d.ts",
+      "@theme/Tag": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/Tag/index.js",
+      "@theme/TagsListByLetter/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListByLetter/index.d.ts",
+      "@theme/TagsListByLetter": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListByLetter/index.js",
+      "@theme/TagsListInline/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListInline/index.d.ts",
+      "@theme/TagsListInline": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/TagsListInline/index.js",
+      "@theme/ThemedImage/index.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ThemedImage/index.d.ts",
+      "@theme/ThemedImage": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/ThemedImage/index.js",
+      "@theme/prism-include-languages": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/prism-include-languages.js",
+      "@theme/prism-include-languages.d": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-classic@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/theme-classic/lib/theme/prism-include-languages.d.ts",
+      "~docs": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/.docusaurus/docusaurus-plugin-content-docs",
+      "~pages": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/.docusaurus/docusaurus-plugin-content-pages",
+      "~debug": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/.docusaurus/docusaurus-plugin-debug",
+      "buble": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+theme-live-codeblock@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/theme-live-codeblock/lib/custom-buble.js"
+    },
+    "modules": [
+      "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/node_modules",
+      "node_modules",
+      "/Users/meesvandongen/personal/patience/packages/toranpu-docs/node_modules"
+    ]
+  },
+  "resolveLoader": {
+    "modules": [
+      "node_modules",
+      "/Users/meesvandongen/personal/patience/packages/toranpu-docs/node_modules"
+    ]
+  },
+  "optimization": {
+    "removeAvailableModules": false,
+    "minimize": false,
+    "splitChunks": {
+      "name": false,
+      "cacheGroups": {
+        "default": false,
+        "common": {
+          "name": "common",
+          "minChunks": 6,
+          "priority": 40
+        },
+        "styles": {
+          "name": "styles",
+          "type": "css/mini-extract",
+          "chunks": "all",
+          "enforce": true,
+          "priority": 50
+        }
+      }
+    },
+    "runtimeChunk": true
+  },
+  "module": {
+    "rules": [
+      {
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/url-loader@4.1.1_p5dl6emkcwslbw72e37w4ug7em/node_modules/url-loader/dist/cjs.js",
+            "options": {
+              "limit": 10000,
+              "name": "assets/images/[name]-[contenthash].[ext]",
+              "fallback": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/file-loader@6.2.0_webpack@5.75.0/node_modules/file-loader/dist/cjs.js"
+            }
+          }
+        ],
+        "test": "/\\.(?:ico|jpe?g|png|gif|webp|avif)(?:\\?.*)?$/i"
+      },
+      {
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/url-loader@4.1.1_p5dl6emkcwslbw72e37w4ug7em/node_modules/url-loader/dist/cjs.js",
+            "options": {
+              "limit": 10000,
+              "name": "assets/fonts/[name]-[contenthash].[ext]",
+              "fallback": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/file-loader@6.2.0_webpack@5.75.0/node_modules/file-loader/dist/cjs.js"
+            }
+          }
+        ],
+        "test": "/\\.(?:woff2?|eot|ttf|otf)$/i"
+      },
+      {
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/url-loader@4.1.1_p5dl6emkcwslbw72e37w4ug7em/node_modules/url-loader/dist/cjs.js",
+            "options": {
+              "limit": 10000,
+              "name": "assets/medias/[name]-[contenthash].[ext]",
+              "fallback": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/file-loader@6.2.0_webpack@5.75.0/node_modules/file-loader/dist/cjs.js"
+            }
+          }
+        ],
+        "test": "/\\.(?:mp4|avi|mov|mkv|mpg|mpeg|vob|wmv|m4v|webm|ogv|wav|mp3|m4a|aac|oga|flac)$/i"
+      },
+      {
+        "test": "/\\.svg$/i",
+        "oneOf": [
+          {
+            "use": [
+              {
+                "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@svgr+webpack@6.5.1/node_modules/@svgr/webpack/dist/index.js",
+                "options": {
+                  "prettier": false,
+                  "svgo": true,
+                  "svgoConfig": {
+                    "plugins": [
+                      {
+                        "name": "preset-default",
+                        "params": {
+                          "overrides": {
+                            "removeTitle": false,
+                            "removeViewBox": false
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "titleProp": true,
+                  "ref": false
+                }
+              }
+            ],
+            "issuer": {
+              "and": [
+                "/\\.(?:tsx?|jsx?|mdx?)$/i"
+              ]
+            }
+          },
+          {
+            "use": [
+              {
+                "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/url-loader@4.1.1_p5dl6emkcwslbw72e37w4ug7em/node_modules/url-loader/dist/cjs.js",
+                "options": {
+                  "limit": 10000,
+                  "name": "assets/images/[name]-[contenthash].[ext]",
+                  "fallback": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/file-loader@6.2.0_webpack@5.75.0/node_modules/file-loader/dist/cjs.js"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/file-loader@6.2.0_webpack@5.75.0/node_modules/file-loader/dist/cjs.js",
+            "options": {
+              "name": "assets/files/[name]-[contenthash].[ext]"
+            }
+          }
+        ],
+        "test": "/\\.(?:pdf|docx?|xlsx?|zip|rar)$/i"
+      },
+      {
+        "test": "/\\.[jt]sx?$/i",
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/babel-loader@8.3.0_wa6o5kghywgqu4ybh3mbfxnjqi/node_modules/babel-loader/lib/index.js",
+            "options": {
+              "babelrc": false,
+              "configFile": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/babel.config.js",
+              "caller": {
+                "name": "client"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.css$/i",
+        "exclude": "/\\.module\\.css$/i",
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/mini-css-extract-plugin@2.7.2_webpack@5.75.0/node_modules/mini-css-extract-plugin/dist/loader.js",
+            "options": {
+              "esModule": true
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/css-loader@6.7.3_webpack@5.75.0/node_modules/css-loader/dist/cjs.js",
+            "options": {
+              "esModule": false,
+              "importLoaders": 1,
+              "sourceMap": true
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/postcss-loader@7.0.2_sdypjwo5ssab3pyqgv4b4agnly/node_modules/postcss-loader/dist/cjs.js",
+            "options": {
+              "postcssOptions": {
+                "ident": "postcss",
+                "plugins": [
+                  null
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.module\\.css$/i",
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/mini-css-extract-plugin@2.7.2_webpack@5.75.0/node_modules/mini-css-extract-plugin/dist/loader.js",
+            "options": {
+              "esModule": true
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/css-loader@6.7.3_webpack@5.75.0/node_modules/css-loader/dist/cjs.js",
+            "options": {
+              "esModule": false,
+              "modules": {
+                "localIdentName": "[local]_[path][name]",
+                "exportOnlyLocals": false
+              },
+              "importLoaders": 1,
+              "sourceMap": true
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/postcss-loader@7.0.2_sdypjwo5ssab3pyqgv4b4agnly/node_modules/postcss-loader/dist/cjs.js",
+            "options": {
+              "postcssOptions": {
+                "ident": "postcss",
+                "plugins": [
+                  null
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.mdx?$/i",
+        "include": [
+          "/Users/meesvandongen/personal/patience/packages/toranpu-docs/i18n/en/docusaurus-plugin-content-docs/current/",
+          "/Users/meesvandongen/personal/patience/packages/toranpu/docs/"
+        ],
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/babel-loader@8.3.0_wa6o5kghywgqu4ybh3mbfxnjqi/node_modules/babel-loader/lib/index.js",
+            "options": {
+              "presets": [
+                "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/babel/preset.js"
+              ],
+              "babelrc": false,
+              "configFile": false,
+              "caller": {
+                "name": "client"
+              }
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+mdx-loader@2.2.0_zneentkx4scexj4pzosurqq55y/node_modules/@docusaurus/mdx-loader/lib/index.js",
+            "options": {
+              "admonitions": true,
+              "remarkPlugins": [],
+              "rehypePlugins": [],
+              "beforeDefaultRehypePlugins": [],
+              "beforeDefaultRemarkPlugins": [],
+              "staticDirs": [
+                "/Users/meesvandongen/personal/patience/packages/toranpu-docs/static"
+              ],
+              "siteDir": "/Users/meesvandongen/personal/patience/packages/toranpu-docs",
+              "markdownConfig": {
+                "mermaid": false
+              }
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-content-docs@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-content-docs/lib/markdown/index.js",
+            "options": {
+              "siteDir": "/Users/meesvandongen/personal/patience/packages/toranpu-docs",
+              "sourceToPermalink": {
+                "@site/../toranpu/docs/Card.md": "/toranpu/Card",
+                "@site/../toranpu/docs/Deck.md": "/toranpu/Deck",
+                "@site/../toranpu/docs/index.md": "/toranpu/",
+                "@site/../toranpu/docs/Klondike.md": "/toranpu/Klondike"
+              },
+              "versionsMetadata": [
+                {
+                  "versionName": "current",
+                  "label": "Next",
+                  "banner": null,
+                  "badge": false,
+                  "noIndex": false,
+                  "className": "docs-version-current",
+                  "path": "/toranpu/",
+                  "tagsPath": "/toranpu/tags",
+                  "editUrl": "https://github.com/meesvandongen/toranpu/tree/main/packages/toranpu-docs/../toranpu/docs",
+                  "editUrlLocalized": "https://github.com/meesvandongen/toranpu/tree/main/packages/toranpu-docs/i18n/en/docusaurus-plugin-content-docs/current",
+                  "isLast": true,
+                  "routePriority": -1,
+                  "contentPath": "/Users/meesvandongen/personal/patience/packages/toranpu/docs",
+                  "contentPathLocalized": "/Users/meesvandongen/personal/patience/packages/toranpu-docs/i18n/en/docusaurus-plugin-content-docs/current"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "test": "/\\.mdx?$/i",
+        "include": [
+          "/Users/meesvandongen/personal/patience/packages/toranpu-docs/i18n/en/docusaurus-plugin-content-pages/",
+          "/Users/meesvandongen/personal/patience/packages/toranpu-docs/src/pages/"
+        ],
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/babel-loader@8.3.0_wa6o5kghywgqu4ybh3mbfxnjqi/node_modules/babel-loader/lib/index.js",
+            "options": {
+              "presets": [
+                "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/babel/preset.js"
+              ],
+              "babelrc": false,
+              "configFile": false,
+              "caller": {
+                "name": "client"
+              }
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+mdx-loader@2.2.0_zneentkx4scexj4pzosurqq55y/node_modules/@docusaurus/mdx-loader/lib/index.js",
+            "options": {
+              "admonitions": true,
+              "remarkPlugins": [],
+              "rehypePlugins": [],
+              "beforeDefaultRehypePlugins": [],
+              "beforeDefaultRemarkPlugins": [],
+              "staticDirs": [
+                "/Users/meesvandongen/personal/patience/packages/toranpu-docs/static"
+              ],
+              "siteDir": "/Users/meesvandongen/personal/patience/packages/toranpu-docs",
+              "markdownConfig": {
+                "mermaid": false
+              }
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+plugin-content-pages@2.2.0_lhsnqlb35hvawm3f6bviuzo2eu/node_modules/@docusaurus/plugin-content-pages/lib/markdownLoader.js",
+            "options": {}
+          }
+        ]
+      },
+      {
+        "test": "/\\.mdx?$/i",
+        "exclude": [
+          "/Users/meesvandongen/personal/patience/packages/toranpu-docs/i18n/en/docusaurus-plugin-content-docs/current/",
+          "/Users/meesvandongen/personal/patience/packages/toranpu/docs/",
+          "/Users/meesvandongen/personal/patience/packages/toranpu-docs/i18n/en/docusaurus-plugin-content-pages/",
+          "/Users/meesvandongen/personal/patience/packages/toranpu-docs/src/pages/"
+        ],
+        "use": [
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/babel-loader@8.3.0_wa6o5kghywgqu4ybh3mbfxnjqi/node_modules/babel-loader/lib/index.js",
+            "options": {
+              "presets": [
+                "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/babel/preset.js"
+              ],
+              "babelrc": false,
+              "configFile": false,
+              "caller": {
+                "name": "client"
+              }
+            }
+          },
+          {
+            "loader": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+mdx-loader@2.2.0_zneentkx4scexj4pzosurqq55y/node_modules/@docusaurus/mdx-loader/lib/index.js",
+            "options": {
+              "admonitions": true,
+              "staticDirs": [
+                "/Users/meesvandongen/personal/patience/packages/toranpu-docs/static"
+              ],
+              "siteDir": "/Users/meesvandongen/personal/patience/packages/toranpu-docs",
+              "isMDXPartialFrontMatterWarningDisabled": true,
+              "markdownConfig": {
+                "mermaid": false
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "plugins": [
+    {
+      "_sortedModulesCache": {},
+      "options": {
+        "filename": "[name].css",
+        "ignoreOrder": true,
+        "runtime": true,
+        "chunkFilename": "[name].css"
+      },
+      "runtimeOptions": {
+        "linkType": "text/css"
+      }
+    },
+    {},
+    {
+      "profile": false,
+      "modulesCount": 5000,
+      "dependenciesCount": 10000,
+      "showEntries": true,
+      "showModules": true,
+      "showDependencies": true,
+      "showActiveModules": true,
+      "options": {
+        "name": "Client",
+        "color": "green",
+        "reporters": [
+          "fancy"
+        ],
+        "reporter": null
+      },
+      "reporters": [
+        {}
+      ]
+    },
+    {
+      "userOptions": {
+        "template": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/webpack/templates/index.html.template.ejs",
+        "inject": false,
+        "filename": "index.html",
+        "title": "Toranpu",
+        "headTags": "",
+        "preBodyTags": "<script>\n(function() {\n  var defaultMode = 'light';\n  var respectPrefersColorScheme = false;\n\n  function setDataThemeAttribute(theme) {\n    document.documentElement.setAttribute('data-theme', theme);\n  }\n\n  function getStoredTheme() {\n    var theme = null;\n    try {\n      theme = localStorage.getItem('theme');\n    } catch (err) {}\n    return theme;\n  }\n\n  var storedTheme = getStoredTheme();\n  if (storedTheme !== null) {\n    setDataThemeAttribute(storedTheme);\n  } else {\n    if (\n      respectPrefersColorScheme &&\n      window.matchMedia('(prefers-color-scheme: dark)').matches\n    ) {\n      setDataThemeAttribute('dark');\n    } else if (\n      respectPrefersColorScheme &&\n      window.matchMedia('(prefers-color-scheme: light)').matches\n    ) {\n      setDataThemeAttribute('light');\n    } else {\n      setDataThemeAttribute(defaultMode === 'dark' ? 'dark' : 'light');\n    }\n  }\n})();\n\n            </script>",
+        "postBodyTags": ""
+      },
+      "version": 5
+    },
+    {
+      "resourceRegExp": "/prismjs[\\\\/]components$/",
+      "newContentRegExp": "/^.\\/()$/"
+    }
+  ],
+  "entry": "/Users/meesvandongen/personal/patience/node_modules/.pnpm/@docusaurus+core@2.2.0_vukvsfkp4hxnee7vteliqou2xy/node_modules/@docusaurus/core/lib/client/clientEntry.js",
+  "watchOptions": {
+    "ignored": "/node_modules\\/(?!@docusaurus)/"
+  },
+  "infrastructureLogging": {
+    "level": "warn"
+  },
+  "ignoreWarnings": [
+    null
+  ]
+}

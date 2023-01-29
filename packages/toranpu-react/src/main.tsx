@@ -1,10 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import ReactDOM from "react-dom";
+import { Toranpu } from "./component";
 import "./tailwind.css";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Toranpu />
   </React.StrictMode>,
+  document.getElementById("root") as HTMLElement,
 );

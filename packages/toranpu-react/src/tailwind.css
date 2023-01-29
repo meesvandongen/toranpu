@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:where(.toranpu-react *) {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+}
+
+:where(.toranpu-react) {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: sans-serif;
+}
+
+:where(.toranpu-react button) {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.toranpu-react button),
+:where(.toranpu-react select) {
+  text-transform: none;
+}
+
+:where(.toranpu-react button),
+:where(.toranpu-react [type="button"]),
+:where(.toranpu-react [type="reset"]),
+:where(.toranpu-react [type="submit"]) {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+:where(.toranpu-react *:-moz-focusring) {
+  outline: auto;
+}
+
+:where(.toranpu-react:-moz-ui-invalid) {
+  box-shadow: none;
+}
+
+:where(.toranpu-react button),
+:where(.toranpu-react [role="button"]) {
+  cursor: pointer;
+}
+
+:where(.toranpu-react *:disabled) {
+  cursor: default;
+}
