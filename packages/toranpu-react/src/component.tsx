@@ -217,11 +217,24 @@ function Undo() {
   );
 }
 
+/**
+ *
+ */
 interface ToranpuProps {
   seed?: string;
   onWin?: () => void;
 }
-export function Toranpu({ seed, onWin }: ToranpuProps) {
+
+/**
+ * The main Toranpu component. Renders the full game. This must be used as a
+ * standalone component (it should not be wrapped in a ToranpuProvider).
+ *
+ * @category Components
+ *
+ * @param toranpuProps The props for the Toranpu component
+ * @returns
+ */
+export function Toranpu({ seed, onWin }: ToranpuProps): JSX.Element {
   return (
     <ToranpuProvider seed={seed} onWin={onWin}>
       <div className="toranpu-react flex h-screen items-start justify-center">

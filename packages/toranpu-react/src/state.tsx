@@ -15,7 +15,7 @@ import {
 import { proxy, subscribe } from "valtio";
 import { useProxy } from "valtio/utils";
 import { proxyWithHistory } from "./proxy-with-history-storage";
-import { useEvent } from "./utils";
+import { useEvent } from "./use-event";
 
 export type Hand = { source: Source | null };
 const HandContext = createContext<Hand | null>(null);
@@ -133,6 +133,15 @@ interface ToranpuProviderProps {
   children: ReactNode;
   onWin?: () => void;
 }
+/**
+ * The ToranpuProvider is the Provider for the state. This component should be
+ * used if you make use of the hooks.
+ *
+ * @category Components
+ *
+ * @param ToranpuProviderProps The props for the ToranpuProvider
+ * @returns A JSX Element
+ */
 export function ToranpuProvider({
   children,
   seed,

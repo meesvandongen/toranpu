@@ -912,6 +912,18 @@ if (import.meta.vitest) {
   });
 }
 
+/**
+ * Recursively moves neutral cards from the tableau to the foundation.
+ *
+ * A neutral card is a card that does not impact the ability of the player to
+ * win the game. For example, an Ace is always neutral, as it is the lowest
+ * card; no card can be placed on top of it in the tableau. Similarly, a nine is
+ * neutral if an eight of the opposite color is already on the foundation.
+ *
+ * @category Klondike
+ *
+ * @param state The game state.
+ */
 export function solveNeutral(state: GameState): void {
   while (solveNeutralStep(state)) {
     // Empty.
@@ -923,12 +935,8 @@ if (import.meta.vitest) {
 }
 
 /**
- * Moves a neutral card form the tableau to the foundation, if possible.
- *
- * A neutral card is a card that does not impact the ability of the player to
- * win the game. For example, an Ace is always neutral, as it is the lowest
- * card; no card can be placed on top of it in the tableau. Similarly, a nine is
- * neutral if an eight of the opposite color is already on the foundation.
+ * Moves a neutral card form the tableau to the foundation, if possible. See
+ * {@link solveNeutral} for more information.
  *
  * @category Klondike
  *
@@ -1122,6 +1130,16 @@ if (import.meta.vitest) {
   });
 }
 
+/**
+ * Checks if a card is neutral. See {@link solveNeutral} for more information
+ * about neutral cards.
+ *
+ * @category Klondike
+ *
+ * @param state The game state
+ * @param card The card for which to check if it is neutral
+ * @returns `true` if the card is neutral, `false` otherwise
+ */
 export function getIsNeutralCard(state: GameState, card: Card): boolean {
   if (getRank(card) === Rank.ace) {
     return true;

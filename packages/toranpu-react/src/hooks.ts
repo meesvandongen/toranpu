@@ -12,7 +12,33 @@ import {
 import { subscribe } from "valtio";
 import { useGameState, useGameStateContext, useHandState } from "./state";
 
-export function useStock() {
+/**
+ * Allows the component to access the stock. The stock is the deck of cards from
+ * which cards are drawn and moved to the discard pile. When the stock is empty,
+ * the discard pile is flipped over and becomes the new stock.
+ *
+ * @category Hooks
+ *
+ * @returns An object containing properties related to the stock.
+ */
+export function useStock(): {
+  /**
+   * The card that is on top of the stock. If the stock is empty, this will be
+   * `null`.
+   */
+  card: Card | null;
+  /**
+   * Whether or not the discard pile has any cards. If the `card` is null (thus
+   * the stock is empty), this prop can be used to inform the UI that the
+   * discard pile cannot be flipped over anymore.
+   */
+  discardHasCards: boolean;
+  /**
+   * Draws a card from the stock and moves it to the discard pile. If the stock
+   * is empty, the discard pile is flipped over and becomes the new stock.
+   */
+  draw: () => void;
+} {
   const gameState = useGameState();
   const stock = gameState.value.stock;
   const discard = gameState.value.discard;
@@ -31,6 +57,8 @@ export function useStock() {
  * Allows the component to access the discard pile. The discard pile is the
  * deck of cards to which cards are moved when they are removed from the
  * stock.
+ *
+ * @category Hooks
  *
  * @returns An object containing properties related to the discard pile.
  */
@@ -65,6 +93,8 @@ export function useDiscard(): {
  * piles at the top of the screen. Use the `useFoundation` hook to access the
  * individual foundations.
  *
+ * @category Hooks
+ *
  * @returns An object containing properties related to the foundations.
  */
 export function useFoundations(): {
@@ -84,6 +114,8 @@ export function useFoundations(): {
 
 /**
  * Allows the component to access and manage the foundation.
+ *
+ * @category Hooks
  *
  * @param index The index of the foundation.
  * @returns An object containing properties related to the foundation.
@@ -132,6 +164,8 @@ export function useFoundation(index: number): {
 
 /**
  * Allows the component to access a column in the tableau.
+ *
+ * @category Hooks
  *
  * @param index The index of the column.
  * @returns An object containing properties related to the column.
@@ -230,6 +264,8 @@ export function useTableauColumn(index: number): {
  * Allows the component to access the tableau root. The tableau is the main
  * playing area of the game. It consists of 7 columns of cards. Use the
  * `useTableauColumn` hook to access the cards in each column.
+ *
+ * @category Hooks
  *
  * @returns An object containing properties related to the tableau.
  */

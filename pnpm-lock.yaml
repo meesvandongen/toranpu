@@ -112,7 +112,7 @@ importers:
 
   packages/toranpu-react:
     specifiers:
-      '@mvd/tsmd': latest
+      '@mvd/tsmd': ^1.0.3
       '@types/react': ^18.0.26
       '@types/react-dom': ^18.0.9
       '@typescript-eslint/parser': ^5.49.0
@@ -135,7 +135,7 @@ importers:
       toranpu: link:../toranpu
       valtio: 1.9.0_react@17.0.2
     devDependencies:
-      '@mvd/tsmd': 1.0.1_typescript@4.9.4
+      '@mvd/tsmd': 1.0.3_typescript@4.9.4
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
       '@typescript-eslint/parser': 5.49.0_7uibuqfxkfaozanbtbziikiqje
@@ -3192,6 +3192,16 @@ packages:
 
   /@mvd/tsmd/1.0.1_typescript@4.9.4:
     resolution: {integrity: sha512-KDQ5f03tdQQn/iYBPPyZLeU5sQ/1EMdcZJ4QOSkBX7prfshCDwEMbBKdmBYGCrYJ+iv2DEXrDiYfyVUesyrUXw==}
+    hasBin: true
+    dependencies:
+      '@structured-types/api': 3.46.12_typescript@4.9.4
+      yargs: 17.6.2
+    transitivePeerDependencies:
+      - typescript
+    dev: true
+
+  /@mvd/tsmd/1.0.3_typescript@4.9.4:
+    resolution: {integrity: sha512-aTTWKv9LE/eZOdHCwePH+IJOyPUd13TwCuh3KwU9niiiP1HZLzlyw7zj/xrgCJWUSrT0URMUJ3YAtWA0pUdPdA==}
     hasBin: true
     dependencies:
       '@structured-types/api': 3.46.12_typescript@4.9.4
