@@ -950,36 +950,35 @@ export function solveNeutralStep(state: GameState): boolean {
     }
 
     if (getIsNeutralCard(state, tableauCard)) {
-      const tableauCardColor = getColor(tableauCard);
+      const tableauCardSuit = getSuit(tableauCard);
       const tableauCardRank = getRank(tableauCard);
 
       const foundationColumnIndex = state.foundations.findIndex(
         (foundation) => {
           const foundationCard = getCard(foundation);
           if (foundationCard === null) {
-            if (tableauCardRank === Rank.ace) {
-              return true;
-            }
-            return false;
+            return tableauCardRank === Rank.ace;
           }
-          const foundationCardColor = getColor(foundationCard);
-          return foundationCardColor === tableauCardColor;
+          const foundationCardSuit = getSuit(foundationCard);
+          return foundationCardSuit === tableauCardSuit;
         },
       );
 
-      moveFromTableau(
-        state,
-        {
-          type: "tableau",
-          index: tableauColumn.open.length - 1,
-          column: tableauColumnIndex,
-        },
-        {
-          type: "foundation",
-          column: foundationColumnIndex,
-        },
-      );
-      return true;
+      const source: Source = {
+        type: "tableau",
+        index: tableauColumn.open.length - 1,
+        column: tableauColumnIndex,
+      };
+
+      const destination: Destination = {
+        type: "foundation",
+        column: foundationColumnIndex,
+      };
+
+      if (getCanMoveFromTableau(state, source, destination)) {
+        moveFromTableau(state, source, destination);
+        return true;
+      }
     }
   }
 
@@ -987,7 +986,140 @@ export function solveNeutralStep(state: GameState): boolean {
 }
 
 if (import.meta.vitest) {
-  // TODO: Add tests.
+  it("solves an ace", () => {
+    const state = empty();
+    state.tableau[0].open = ["As"];
+    state.foundations = [[], [], [], []];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As"]);
+  });
+
+  it("solves a three when all foundations are twos", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad", "2d"],
+      ["Ac", "2c"],
+      ["Ah", "2h"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As", "2s", "3s"]);
+  });
+
+  it("does not solve a three when all foundations are aces", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [["As"], ["Ad"], ["Ac"], ["Ah"]];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual(["3s"]);
+    expect(state.foundations[0]).toEqual(["As"]);
+  });
+
+  it("solves a three when all other foundations are fours", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad", "2d", "3d", "4d"],
+      ["Ac", "2c", "3c", "4c"],
+      ["Ah", "2h", "3h", "4h"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As", "2s", "3s"]);
+  });
+
+  it("solves a three when all other foundations of the opposite color are fours", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad", "2d", "3d", "4d"],
+      ["Ac"],
+      ["Ah", "2h", "3h", "4h"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual([]);
+    expect(state.foundations[0]).toEqual(["As", "2s", "3s"]);
+  });
+
+  it("does not solve a three when all other foundations of the opposite color are aces", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    state.foundations = [
+      ["As", "2s"],
+      ["Ad"],
+      ["Ac", "2c", "3c", "4c"],
+      ["Ah"],
+    ];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual(["3s"]);
+    expect(state.foundations[0]).toEqual(["As", "2s"]);
+  });
+
+  it("works with multiple cards in the tableau", () => {
+    const state = empty();
+    state.tableau[0].open = ["2d", "Ac"];
+    state.foundations[0] = ["As"];
+
+    solveNeutralStep(state);
+
+    expect(state.tableau[0].open).toEqual(["2d"]);
+    expect(state.foundations[0]).toEqual(["As"]);
+    expect(state.foundations[1]).toEqual(["Ac"]);
+  });
+
+  it("returns false if no neutral card was moved", () => {
+    const state = empty();
+    state.tableau[0].open = ["3s"];
+    const result = solveNeutralStep(state);
+
+    expect(result).toBe(false);
+  });
+
+  it("returns true if a neutral card was moved", () => {
+    const state = empty();
+    state.tableau[0].open = ["As"];
+    const result = solveNeutralStep(state);
+
+    expect(result).toBe(true);
+  });
+
+  it("only allows valid moves, if multiple of the same suit are neutral", () => {
+    const state = empty();
+
+    state.foundations = [
+      ["As", "2s", "3s"],
+      ["Ac"],
+      ["Ah", "2h", "3h", "4h", "5h"],
+      ["Ad", "2d"],
+    ];
+
+    state.tableau[0].open = ["3c"];
+    state.tableau[1].open = ["2c"];
+
+    const result = solveNeutralStep(state);
+
+    expect(result).toBe(true);
+    expect(state.tableau[0].open).toEqual(["3c"]);
+    expect(state.tableau[1].open).toEqual([]);
+    expect(state.foundations[1]).toEqual(["Ac", "2c"]);
+  });
 }
 
 export function getIsNeutralCard(state: GameState, card: Card): boolean {
@@ -1053,5 +1185,12 @@ if (import.meta.vitest) {
 
     expect(getIsNeutralCard(state, "2s")).toBe(false);
     expect(getIsNeutralCard(state, "As")).toBe(true);
+  });
+
+  it("works for 2 same-colored aces in the foundation, but a different-colored two in the tableau", () => {
+    const state = empty();
+    state.foundations = [["As"], ["Ac"], [], []];
+
+    expect(getIsNeutralCard(state, "2d")).toBe(false);
   });
 }

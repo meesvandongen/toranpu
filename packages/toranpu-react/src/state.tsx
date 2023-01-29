@@ -5,7 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
-import { GameState, getIsWinningState, setupGame, Source } from "toranpu";
+import {
+  GameState,
+  getIsWinningState,
+  setupGame,
+  solveNeutral,
+  Source,
+} from "toranpu";
 import { proxy, subscribe } from "valtio";
 import { useProxy } from "valtio/utils";
 import { proxyWithHistory } from "./proxy-with-history-storage";
@@ -88,6 +94,17 @@ export function GameStateProvider({
 
     return sub;
   }, [_onWin, gameStateProxy, seed]);
+
+  useEffect(() => {
+    const sub = subscribe(gameStateProxy, () => {
+      // We are at the end of the history, so we can try auto solving.
+      if (!gameStateProxy.canRedo()) {
+        solveNeutral(gameStateProxy.value);
+      }
+    });
+
+    return sub;
+  }, [gameStateProxy]);
 
   return (
     <GameStateContext.Provider value={gameStateProxy}>
