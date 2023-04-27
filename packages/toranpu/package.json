@@ -7,9 +7,7 @@
   },
   "private": false,
   "source": "src/index.ts",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "test": "vitest --coverage",
@@ -19,12 +17,12 @@
   "devDependencies": {
     "@mvd/tsmd": "latest",
     "@structured-types/api": "^3.46.12",
-    "@types/node": "^18.11.18",
-    "@vitest/coverage-c8": "^0.27.3",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.4",
-    "vite-plugin-dts": "^1.7.1",
-    "vitest": "^0.27.3"
+    "@types/node": "^18.16.1",
+    "@vitest/coverage-c8": "^0.30.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3",
+    "vite-plugin-dts": "^2.3.0",
+    "vitest": "^0.30.1"
   },
   "docs": "./docs",
   "publishConfig": {
@@ -32,8 +30,7 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
