@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -99,8 +103,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(react-dom@17.0.2)(react@17.0.2)
       '@tsconfig/docusaurus':
-        specifier: ^1.0.5
-        version: 1.0.6
+        specifier: ^2.0.0
+        version: 2.0.0
       '@types/react':
         specifier: ^18.0.26
         version: 18.0.26
@@ -4319,8 +4323,8 @@ packages:
       path-browserify: 1.0.1
     dev: true
 
-  /@tsconfig/docusaurus@1.0.6:
-    resolution: {integrity: sha512-1QxDaP54hpzM6bq9E+yFEo4F9WbWHhsDe4vktZXF/iDlc9FqGr9qlg+3X/nuKQXx8QxHV7ue8NXFazzajsxFBA==}
+  /@tsconfig/docusaurus@2.0.0:
+    resolution: {integrity: sha512-X5wptT7pXA/46/IRFTW76oR5GNjoy9qjNM/1JGhFV4QAsmLh3YUpJJA+Vpx7Ds6eEBxSxz1QrgoNEBy6rLVs8w==}
     dev: true
 
   /@types/argparse@1.0.38:
