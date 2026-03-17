@@ -2,6 +2,7 @@
   "name": "toranpu-repo",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@10.5.2",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
@@ -15,15 +16,15 @@
     "url": "https://github.com/meesvandongen/patience.git"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.1",
-    "@parcel/core": "^2.8.3",
-    "@parcel/packager-ts": "^2.8.3",
-    "@parcel/transformer-typescript-types": "^2.8.3",
-    "parcel": "^2.8.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "turbo": "^1.9.3",
-    "typescript": "^5.0.4"
+    "@changesets/cli": "^2.30.0",
+    "@parcel/core": "^2.16.4",
+    "@parcel/packager-ts": "^2.16.4",
+    "@parcel/transformer-typescript-types": "^2.16.4",
+    "parcel": "^2.16.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "turbo": "^2.8.17",
+    "typescript": "^5.9.3"
   },
   "alias": {
     "process": {

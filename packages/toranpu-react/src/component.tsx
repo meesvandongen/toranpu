@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ComponentProps } from "react";
+import React, { ComponentProps } from "react";
 import { Card } from "toranpu";
 import {
   useDiscard,
@@ -232,9 +232,9 @@ interface ToranpuProps {
  * @category Components
  *
  * @param toranpuProps The props for the Toranpu component
- * @returns
+ * @returns The Toranpu JSX Element
  */
-export function Toranpu({ seed, onWin }: ToranpuProps): JSX.Element {
+export function Toranpu({ seed, onWin }: ToranpuProps): React.JSX.Element {
   return (
     <ToranpuProvider seed={seed} onWin={onWin}>
       <div className="toranpu-react flex h-screen items-start justify-center">

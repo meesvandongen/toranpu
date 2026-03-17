@@ -9,20 +9,19 @@
   "source": "src/index.ts",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "tsdown src/index.ts --format esm --dts --sourcemap --clean",
     "test": "vitest --coverage",
     "coverage": "vitest run --coverage",
     "docs": "npx @mvd/tsmd"
   },
   "devDependencies": {
-    "@mvd/tsmd": "latest",
+    "@mvd/tsmd": "^1.0.3",
     "@structured-types/api": "^3.46.12",
-    "@types/node": "^18.16.1",
-    "@vitest/coverage-c8": "^0.30.1",
-    "typescript": "^5.0.4",
-    "vite": "^4.3.3",
-    "vite-plugin-dts": "^2.3.0",
-    "vitest": "^0.30.1"
+    "@types/node": "^25.5.0",
+    "@vitest/coverage-v8": "^4.1.0",
+    "tsdown": "^0.21.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
   },
   "docs": "./docs",
   "publishConfig": {
@@ -30,8 +29,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
     }
   },
   "files": [
