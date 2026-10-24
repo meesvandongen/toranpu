@@ -128,7 +128,7 @@ importers:
         version: link:../toranpu
       valtio:
         specifier: ^2.3.1
-        version: 2.3.1(@types/react@19.2.14)(react@19.2.4)
+        version: 2.3.2(@types/react@19.2.14)(react@19.2.4)
     devDependencies:
       '@mvd/tsmd':
         specifier: ^1.0.3
@@ -7104,8 +7104,8 @@ packages:
     deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
-  valtio@2.3.1:
-    resolution: {integrity: sha512-ZsOaOEn0U9IJ96cAj3CZ3GjwpN3EJdjsi1PT4PREuB+Pcqfsczu16isT5DT1UrmHbk4PtLjk8kwNEHuR2CX56w==}
+  valtio@2.3.2:
+    resolution: {integrity: sha512-YXhWQei9IN/ZDce9rhL3trCq9+vVq8M1gWmKVdP3YSZ2gxsmmNWVbxXwf9yG6ffu/dAvAD91nevg8xirGr4Dhg==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=18.0.0'
@@ -16040,7 +16040,7 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  valtio@2.3.1(@types/react@19.2.14)(react@19.2.4):
+  valtio@2.3.2(@types/react@19.2.14)(react@19.2.4):
     dependencies:
       proxy-compare: 3.0.1
     optionalDependencies:
