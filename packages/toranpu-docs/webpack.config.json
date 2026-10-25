@@ -27,15 +27,7 @@
   "devtool": "eval-cheap-module-source-map",
   "resolve": {
     "unsafeCache": false,
-    "extensions": [
-      ".wasm",
-      ".mjs",
-      ".js",
-      ".jsx",
-      ".ts",
-      ".tsx",
-      ".json"
-    ],
+    "extensions": [".wasm", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"],
     "symlinks": false,
     "roots": [
       "/Users/meesvandongen/personal/patience/packages/toranpu-docs/static",
@@ -844,9 +836,7 @@
               }
             ],
             "issuer": {
-              "and": [
-                "/\\.(?:tsx?|jsx?|mdx?)$/i"
-              ]
+              "and": ["/\\.(?:tsx?|jsx?|mdx?)$/i"]
             }
           },
           {
@@ -912,9 +902,7 @@
             "options": {
               "postcssOptions": {
                 "ident": "postcss",
-                "plugins": [
-                  null
-                ]
+                "plugins": [null]
               }
             }
           }
@@ -946,9 +934,7 @@
             "options": {
               "postcssOptions": {
                 "ident": "postcss",
-                "plugins": [
-                  null
-                ]
+                "plugins": [null]
               }
             }
           }
@@ -1131,14 +1117,10 @@
       "options": {
         "name": "Client",
         "color": "green",
-        "reporters": [
-          "fancy"
-        ],
+        "reporters": ["fancy"],
         "reporter": null
       },
-      "reporters": [
-        {}
-      ]
+      "reporters": [{}]
     },
     {
       "userOptions": {
@@ -1164,7 +1146,5 @@
   "infrastructureLogging": {
     "level": "warn"
   },
-  "ignoreWarnings": [
-    null
-  ]
+  "ignoreWarnings": [null]
 }

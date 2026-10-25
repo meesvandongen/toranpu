@@ -2,14 +2,16 @@
   "name": "toranpu-repo",
   "private": true,
   "version": "1.0.0",
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@12.15.0+sha512.b3951d6d6ff4a9f13dc7cf56cd28d2b8eb37dbcc9c68e52e1e1191873ea9f82a017287ab50baadc5ccc494f036c67c0e47eb13608c2fa36f47711b61ea128e61",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "docs": "turbo run docs",
-    "test": "turbo run test",
-    "publish-packages": "turbo run docs build lint test && changeset version && changeset publish"
+    "build": "vp run -r build",
+    "dev": "vp run -r --parallel dev",
+    "lint": "vp lint",
+    "fmt": "vp fmt",
+    "fmt:check": "vp fmt --check",
+    "docs": "vp run -r docs",
+    "test": "vp run -r test",
+    "publish-packages": "pnpm run build && pnpm run lint && pnpm run test && changeset version && changeset publish"
   },
   "repository": {
     "type": "git",
@@ -17,18 +19,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.30.0",
-    "@parcel/core": "^2.16.4",
-    "@parcel/packager-ts": "^2.16.4",
-    "@parcel/transformer-typescript-types": "^2.16.4",
-    "parcel": "^2.16.4",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "turbo": "^2.8.17",
-    "typescript": "^5.9.3"
-  },
-  "alias": {
-    "process": {
-      "global": "{}"
-    }
+    "typescript": "^5.9.3",
+    "vite-plus": "catalog:"
   }
 }

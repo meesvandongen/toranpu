@@ -59,7 +59,6 @@ const config = {
             href: "/demo",
             label: "Demo",
             position: "left",
-            
           },
 
           {
