@@ -1,5 +1,0 @@
----
-"toranpu": minor
----
-
-add sourcemaps
