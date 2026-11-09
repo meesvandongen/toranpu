@@ -1,5 +1,0 @@
----
-"toranpu": minor
----
-
-export getSourceCards
